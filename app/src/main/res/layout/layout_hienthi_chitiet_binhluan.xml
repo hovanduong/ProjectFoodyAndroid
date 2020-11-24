@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
+    >
+    <include layout="@layout/layout_toolbar"/>
+    <LinearLayout
+        android:id="@+id/containerBinhLuan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cicleImageUser"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="6.8"
+            android:textColor="@color/colorAccent"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:src="@drawable/background"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtTieudebinhluan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="google"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/txtNoidungbinhluan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="36 trieu quang phuc"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtDiembinhluan"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="6.6" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHinhAnhBinhLuan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+</android.widget.LinearLayout>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swiperefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorBackgroungTrangchu"
+            android:layout_height="match_parent">
+            <RadioGroup
+                android:id="@+id/group_tab_radio"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:background="@color/colorAccent"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/rd_moinhat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/moinhat"
+                    android:textAlignment="center"
+                    android:drawableBottom="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:button="@android:color/transparent"
+                    android:textColor="@drawable/changtext_tabtrangchu"
+                    android:background="@drawable/changebackgroup_tab"
+                    />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBackgroungTrangchu"/>
+                <RadioButton
+                    android:id="@+id/rd_danhmuc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/danhmuc"
+                    android:textAlignment="center"
+                    android:drawableBottom="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:textColor="@drawable/changtext_tabtrangchu"
+                    android:background="@drawable/changebackgroup_tab"
+                    android:button="@android:color/transparent"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBackgroungTrangchu"/>
+                <RadioButton
+                    android:id="@+id/rd_khuvuc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/khuvuc"
+                    android:textAlignment="center"
+                    android:drawableBottom="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:textColor="@drawable/changtext_tabtrangchu"
+                    android:background="@drawable/changebackgroup_tab"
+                    android:button="@android:color/transparent"/>
+
+
+            </RadioGroup>
+
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/netsScrollODau"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:scrollbars="none"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorAccent"
+                            android:drawableLeft="@drawable/nearby"
+                            android:drawablePadding="10dp"
+                            android:gravity="left|center"
+                            android:padding="10dp"
+                            android:text="@string/gantoi"
+                            android:textAllCaps="false" />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorAccent"
+                            android:drawableLeft="@drawable/blog"
+                            android:drawablePadding="10dp"
+                            android:gravity="left|center"
+                            android:padding="10dp"
+                            android:text="@string/blog"
+                            android:textAllCaps="false" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorAccent"
+                            android:drawableLeft="@drawable/order"
+                            android:drawablePadding="10dp"
+                            android:gravity="left|center"
+                            android:padding="10dp"
+                            android:text="@string/giaohang"
+                            android:textAllCaps="false" />
+
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorAccent"
+                            android:drawableLeft="@drawable/gameandfun"
+                            android:drawablePadding="10dp"
+                            android:gravity="left|center"
+                            android:padding="10dp"
+                            android:text="@string/gameandfun"
+                            android:textAllCaps="false" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorAccent"
+                            android:drawableLeft="@drawable/review"
+                            android:drawablePadding="10dp"
+                            android:gravity="left|center"
+                            android:padding="10dp"
+                            android:text="@string/danhgia"
+                            android:textAllCaps="false" />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorAccent"
+                            android:drawableLeft="@drawable/user"
+                            android:drawablePadding="10dp"
+                            android:gravity="left|center"
+                            android:padding="10dp"
+                            android:text="@string/topmenber"
+                            android:textAllCaps="false" />
+
+                    </LinearLayout>
+                    <ProgressBar
+                        android:id="@+id/progressBarOdau"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerOdau"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+
+
+        </LinearLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+

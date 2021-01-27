@@ -69,10 +69,10 @@ public class HienThiChiTietBinhLuanActivity extends AppCompatActivity {
                     if (bitmapList.size() == binhLuanModel.getHinhanhbinhluan().size()) {
                         AdapterRecyclerHinhBinhLuan adapterRecyclerHinhBinhLuan = new AdapterRecyclerHinhBinhLuan(HienThiChiTietBinhLuanActivity.this, R.layout.custom_layout_hinhbinhluan, bitmapList, true, binhLuanModel);
                         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(HienThiChiTietBinhLuanActivity.this, 2); // truyền màn hình hiển thị và số cột hiện thi ảnh là 2
-                        recyclerViewHinhBinhLuan.setLayoutManager(layoutManager);
-                        recyclerViewHinhBinhLuan.setAdapter(adapterRecyclerHinhBinhLuan);
-                        adapterRecyclerHinhBinhLuan.notifyDataSetChanged();
-                    }
+                    recyclerViewHinhBinhLuan.setLayoutManager(layoutManager);
+                    recyclerViewHinhBinhLuan.setAdapter(adapterRecyclerHinhBinhLuan);
+                    adapterRecyclerHinhBinhLuan.notifyDataSetChanged();
+                }
                 }
             });
         }

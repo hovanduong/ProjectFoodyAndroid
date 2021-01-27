@@ -3,7 +3,7 @@ package com.example.foody2.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foody2.Model.BinhLuanModel;
-import com.example.foody2.Model.QuanAnModel;
+
 import com.example.foody2.R;
 import com.example.foody2.View.HienThiChiTietBinhLuanActivity;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterRecyclerHinhBinhLuan extends RecyclerView.Adapter<AdapterRecyclerHinhBinhLuan.ViewHolderHinhBinhLuan> {
@@ -32,7 +25,6 @@ public class AdapterRecyclerHinhBinhLuan extends RecyclerView.Adapter<AdapterRec
     Context context;
     int resource;
     List<Bitmap> listHinh;
-    List<Bitmap> bitmapList;
     BinhLuanModel binhLuanModel;
     boolean isChiTietBinhLuan;
     public AdapterRecyclerHinhBinhLuan(Context context, int resource, List<Bitmap> listHinh,boolean isChiTietBinhLuan,BinhLuanModel binhLuanModel){

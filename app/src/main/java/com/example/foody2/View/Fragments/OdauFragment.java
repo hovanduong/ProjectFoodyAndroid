@@ -30,6 +30,7 @@ public class OdauFragment extends Fragment {
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,13 +39,7 @@ public class OdauFragment extends Fragment {
       progressBar=view.findViewById(R.id.progressBarOdau);
       nestedScrollView=view.findViewById(R.id.netsScrollODau);
       swiperefresh=view.findViewById(R.id.swiperefresh);
-      return view;
-    }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    @Override
-    public void onStart() {
-        super.onStart();
         // Fragment dùng getCOntexxt để add Vào ACtivity
         sharedPreferences=getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
         Location vitrihientai=new Location("");
@@ -52,6 +47,15 @@ public class OdauFragment extends Fragment {
         vitrihientai.setLongitude(Double.parseDouble(sharedPreferences.getString("longitude","0")));
         odauController =new OdauController(getContext());
         odauController.getDanhSachQuanAnController(nestedScrollView,recyclerOdau,progressBar,vitrihientai,swiperefresh);
+
+      return view;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onStart() {
+        super.onStart();
+
 
     }
 }

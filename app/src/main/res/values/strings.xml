@@ -43,7 +43,11 @@
     <string name="chiase">Chia sẻ</string>
     <string name="dangmocua">Đang mở cửa</string>
     <string name="dadongcua">Đã Đóng cửa</string>
-    <string name="google_maps_key"
-        templateMergeStrategy="preserve"
-        translatable="true">AIzaSyDVCqf9lwDEu0GumZcyzzIJcgdlMAsfvC0</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="true">AIzaSyDVCqf9lwDEu0GumZcyzzIJcgdlMAsfvC0</string>
+    <string name="capnhawifi">Cập Nhật Wifi</string>
+    <string name="nhaptenwifi">Nhập tên wifi</string>
+    <string name="nhapmatkhauwifi">Nhập mật khẩu wifi</string>
+    <string name="dongy">Đồng Ý</string>
+    <string name="loithemwifi">Vui Lòng Nhập Đầy Đủ Thông Tin Wifi</string>
+    <string name="themthanhcong">Thêm thành công</string>
 </resources>

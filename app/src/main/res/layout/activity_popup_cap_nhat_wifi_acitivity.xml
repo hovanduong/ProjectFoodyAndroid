@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".View.PopupCapNhatWifiAcitivity">
+    <EditText
+        android:id="@+id/edTenWifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/nhaptenwifi"
+        />
+    <EditText
+        android:id="@+id/edNhapMatKhauWifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/nhapmatkhauwifi"
+        />
+    <Button
+        android:id="@+id/btnDongYCapNhatWifi"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dongy"
+        android:background="@drawable/custom_button_chung"
+        android:textColor="@color/colorAccent"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        />
+
+
+</android.widget.LinearLayout>

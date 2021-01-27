@@ -100,12 +100,7 @@
                 android:paddingTop="5dp"
                 android:paddingLeft="10dp"
                 />
-            <TextView
-                android:id="@+id/txtDiaChiQuanAn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="23 duong"
-                android:paddingLeft="10dp"/>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -243,7 +238,15 @@
 
             </LinearLayout>
             <include layout="@layout/layout_tinhnang_chitietquanan"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBackgroungTrangchu"
+                />
+            <include layout="@layout/layout_wifi_chitietquanan"/>
             <include layout="@layout/layout_binhluan_chitietquanan"  />
+
+
             </LinearLayout>
 
 

@@ -6,6 +6,8 @@
     <color name="transparenBackgroundDangNhap">#33000000</color>
     <color name="colorBack">#000</color>
     <color name="colorBackgroungTrangchu">#10AFAAAA</color>
+    <color name="colorformtext">#90AFAAAA</color>
+
     <color name="transparenWhile">#CCFFFFFF</color>
     <color name="colorButoon">#1e90ff</color>
 

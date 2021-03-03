@@ -89,11 +89,11 @@ public class ChiTietQuanAnActivity extends AppCompatActivity  implements OnMapRe
         txtNgayDangWifi=findViewById(R.id.txtNgayDangWifi);
         khungWifi=findViewById(R.id.khungWifi);
         // goi id để xứ lý bit map
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);;
-        mapFragment.getMapAsync(this);
+            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.map);;
+            mapFragment.getMapAsync(this);
 
-        recyclerViewBinhLuan=findViewById(R.id.recyclerBinhLuanChiTietQuanAn);
+           recyclerViewBinhLuan=findViewById(R.id.recyclerBinhLuanChiTietQuanAn);
 
         // xử lý tool bar
         txtTieuDeToolBar=findViewById(R.id.txtTieuDeToolBar);

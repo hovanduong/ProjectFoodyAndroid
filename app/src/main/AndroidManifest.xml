@@ -38,6 +38,7 @@
         <activity android:name=".View.DangNhapActivity" />
         <activity android:name=".View.SplashScreenActivity" >
 
+
         </activity>
     </application>
 

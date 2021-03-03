@@ -18,7 +18,7 @@
     <string name="dangkythanhcong">Bạn Đã Đăng Ký Tài Khoản Thành Công</string>
     <string name="dangxuly">Đang Xử Lý</string>
     <string name="dangnhapthatbai">Tài Khoản Không Hợp Lệ</string>
-    <string name="khoiphucmatkhau">Khôi Phục Mật Khẩu</string>
+    <string name="khoiphucmatkhau">Forgot password</string>
     <string name="chuoikhoiphucmatkhau">Bạn Vui Lòng Nhập Địa Chỉ Email Vào Khung Ben Dưới Để Khôi Phục Mật Khẩu</string>
     <string name="guimail">Gửi mail</string>
     <string name="chuoithanhvien">Bạn Không Phải Là Thành Viên?</string>

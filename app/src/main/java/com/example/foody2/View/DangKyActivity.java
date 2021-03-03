@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -70,6 +71,8 @@ public class DangKyActivity extends AppCompatActivity implements View.OnClickLis
                             dangKyController=new DangKyController();
                             dangKyController.ThemThongTinThanhVien(thanhVienModel,uid);
                             Toast.makeText(DangKyActivity.this,getString(R.string.dangkythanhcong),Toast.LENGTH_LONG).show();
+                            Intent idDangNhap=new Intent(DangKyActivity.this,DangNhapActivity.class);
+                            startActivity(idDangNhap);
                         }else{
                             progressDialog.dismiss();
                             Toast.makeText(DangKyActivity.this,"that bai ",Toast.LENGTH_LONG).show();

@@ -23,7 +23,7 @@
     <string name="guimail">Gửi mail</string>
     <string name="chuoithanhvien">Bạn Không Phải Là Thành Viên?</string>
     <string name="thongbaoemailkhonghople">Email Không Hợp Lệ Vui Lòng Nhập Đúng Định Dạng Email</string>
-    <string name="thongbaoguimailthanhcong">Gửi Email Thành Công</string>
+    <string name="thongbaoguimailthanhcong">Vui Lòng Kiểm Tra Mail</string>
     <string name="odau">Ở Đâu</string>
     <string name="angi">Ăn Gì</string>
     <string name="moinhat">Mới Nhất</string>

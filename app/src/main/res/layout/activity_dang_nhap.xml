@@ -4,67 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context=".View.DangNhapActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/transparenBackgroundDangNhap"
+        android:background="@drawable/custom_layout_manhinh"
         android:orientation="vertical"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         android:paddingBottom="20dp">
 
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            app:srcCompat="@drawable/foodytext" />
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textColor="#90000000"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="40dp"
+        android:textAllCaps="false"
+        />
 
         <EditText
             android:id="@+id/edEmailKhoiPhucMatKhau"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
             android:drawableLeft="@drawable/icon_adduser"
+            android:paddingLeft="10dp"
             android:drawablePadding="10dp"
             android:ems="10"
             android:hint="@string/Email"
             android:inputType="textPersonName"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textColorLink="#FFFFFF" />
-
+            android:background="@drawable/custom_form_text"
+            android:backgroundTint="#80dcdcdc"
+            android:textColor="#000000"
+            android:textColorHint="#80000000"
+            android:textColorLink="#dcdcdc" />
         <EditText
             android:id="@+id/edPassWordDangNhap"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
             android:drawableLeft="@drawable/ic_lock_outline_white_24dp"
+            android:paddingLeft="10dp"
             android:drawablePadding="10dp"
             android:ems="10"
             android:hint="@string/PasWord"
             android:inputType="textPersonName|textPassword"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:backgroundTint="#FFFFFF"
-            android:textColorLink="#FFFFFF" />
+            android:background="@drawable/custom_form_text"
+            android:backgroundTint="#80dcdcdc"
+            android:textColor="#000000"
+            android:textColorHint="#80000000"
+            android:textColorLink="#dcdcdc" />
 
         <Button
             android:id="@+id/btnGuiMailKhoiPhuc"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:paddingLeft="60dp"
             android:paddingRight="60dp"
             android:text="@string/DangNhap"
             android:textAllCaps="false"
+            android:background="@drawable/custom_button_chung"
             android:textColor="#FFFFFF" />
 
         <LinearLayout
@@ -77,7 +83,7 @@
                 android:layout_width="236dp"
                 android:layout_height="2dp"
                 android:layout_weight="1"
-                android:background="@color/colorAccent"></View>
+                android:background="#80000000"></View>
 
             <TextView
                 android:id="@+id/textView"
@@ -90,7 +96,7 @@
                 android:layout_width="236dp"
                 android:layout_height="2dp"
                 android:layout_weight="1"
-                android:background="@color/colorAccent"></View>
+                android:background="#80000000"></View>
 
         </LinearLayout>
 
@@ -123,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/quenmatkhau"
-                android:textColor="#FFFFFF" />
+                android:textColor="#80000000" />
 
             <TextView
                 android:id="@+id/txtDangKyKhoiPhuc"
@@ -132,7 +138,7 @@
                 android:layout_weight="1"
                 android:text="@string/dangkymoi"
                 android:textAlignment="textEnd"
-                android:textColor="#FFFFFF" />
+                android:textColor="#80000000" />
         </LinearLayout>
 
     </LinearLayout>

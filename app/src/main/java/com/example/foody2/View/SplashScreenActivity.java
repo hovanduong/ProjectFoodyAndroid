@@ -36,28 +36,28 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
         setContentView(R.layout.layout_splashscreen);
 
         txtPhienBan = findViewById(R.id.txtPhienBan);
-            sharedPreferences=getSharedPreferences("toado",MODE_PRIVATE);
-        googleApiClient=new GoogleApiClient.Builder(this)
+        sharedPreferences = getSharedPreferences("toado", MODE_PRIVATE);
+        googleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
 
-        int checkPrermissionCoareLocation= ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        int checkPrermissionFineLocation= ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
-        if(checkPrermissionCoareLocation != PackageManager.PERMISSION_GRANTED && checkPrermissionFineLocation != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_PERMISSION_LOCATION);
+        int checkPrermissionCoareLocation = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        int checkPrermissionFineLocation = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        if (checkPrermissionCoareLocation != PackageManager.PERMISSION_GRANTED && checkPrermissionFineLocation != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION_LOCATION);
 
-        }else{
+        } else {
             googleApiClient.connect();
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
+        switch (requestCode) {
             case REQUEST_PERMISSION_LOCATION:
-                if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     googleApiClient.connect();
                 }
                 break;
@@ -71,7 +71,17 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        Location vitrihientai=LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Location vitrihientai = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
         if(vitrihientai!=null){
             SharedPreferences.Editor editor=sharedPreferences.edit();
             editor.putString("latitude", String.valueOf(vitrihientai.getLatitude()));

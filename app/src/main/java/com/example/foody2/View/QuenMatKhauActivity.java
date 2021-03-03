@@ -56,6 +56,8 @@ public class QuenMatKhauActivity extends AppCompatActivity implements View.OnCli
                                 if(task.isSuccessful()){
                                   //  progressDialog.dismiss();
                                     Toast.makeText(QuenMatKhauActivity.this,getString(R.string.thongbaoguimailthanhcong),Toast.LENGTH_SHORT).show();
+                                    Intent idDangNhap=new Intent(QuenMatKhauActivity.this,DangNhapActivity.class);
+                                    startActivity(idDangNhap);
                                 }else{
                                   //  progressDialog.dismiss();
                                     Toast.makeText(QuenMatKhauActivity.this,"that bai",Toast.LENGTH_SHORT).show();

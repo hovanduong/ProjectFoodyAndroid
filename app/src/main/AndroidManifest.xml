@@ -18,20 +18,13 @@
             ></activity>
         <activity android:name=".View.CapNhatDanhSachWiFiActivity" />
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD3svaiURUeF4TWYtc3M0IfJprXAggSlNo" />
 
         <activity android:name=".View.HienThiChiTietBinhLuanActivity" />
         <activity android:name=".View.ChiTietQuanAnActivity" />
         <activity android:name=".View.QuenMatKhauActivity" />
         <activity android:name=".View.DangKyActivity" />
         <activity android:name=".View.TrangChuActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data
@@ -39,7 +32,13 @@
             android:value="@string/facebook_app_id" />
 
         <activity android:name=".View.DangNhapActivity" />
-        <activity android:name=".View.SplashScreenActivity" />
+        <activity android:name=".View.SplashScreenActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

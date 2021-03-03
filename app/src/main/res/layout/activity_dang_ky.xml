@@ -4,88 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context=".View.DangNhapActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:background="@color/transparenBackgroundDangNhap"
+        android:background="@color/colorAccent"
         android:layout_height="match_parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/transparenBackgroundDangNhap"
+            android:background="@color/colorAccent"
             android:orientation="vertical"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
             android:paddingBottom="20dp"
             android:layout_gravity="center">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Acount"
+                android:textColor="#90000000"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:textAllCaps="false"
+                />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="200dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                app:srcCompat="@drawable/foodytext" />
 
             <EditText
                 android:id="@+id/edEmailKhoiPhucMatKhau"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#FFFFFF"
+                android:layout_height="50dp"
                 android:drawableLeft="@drawable/icon_adduser"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:hint="@string/Email"
-                android:inputType="textEmailAddress"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"
-                android:textColorLink="#FFFFFF" />
-
+                android:inputType="textPersonName"
+                android:background="@drawable/custom_form_text"
+                android:backgroundTint="#80dcdcdc"
+                android:textColor="#000000"
+                android:textColorHint="#80000000"
+                android:textColorLink="#dcdcdc" />
             <EditText
                 android:id="@+id/edPassWordDangNhap"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#FFFFFF"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
                 android:drawableLeft="@drawable/ic_lock_outline_white_24dp"
+                android:paddingLeft="10dp"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:hint="@string/PasWord"
                 android:inputType="textPersonName|textPassword"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"
-                android:textColorLink="#FFFFFF" />
+                android:background="@drawable/custom_form_text"
+                android:backgroundTint="#80dcdcdc"
+                android:textColor="#000000"
+                android:textColorHint="#80000000"
+                android:textColorLink="#dcdcdc" />
 
             <EditText
                 android:id="@+id/edNhapLaiPassWordDK"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#FFFFFF"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
                 android:drawableLeft="@drawable/ic_lock_outline_white_24dp"
+                android:paddingLeft="10dp"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:hint="@string/nhaplaimatkhau"
                 android:inputType="textPersonName|textPassword"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"
-                android:textColorLink="#FFFFFF" />
+                android:background="@drawable/custom_form_text"
+                android:backgroundTint="#80dcdcdc"
+                android:textColor="#000000"
+                android:textColorHint="#80000000"
+                android:textColorLink="#dcdcdc" />
 
             <Button
                 android:id="@+id/btnGuiMailKhoiPhuc"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button_chung"
                 android:paddingLeft="60dp"
                 android:paddingRight="60dp"
                 android:text="@string/dangky"
-                android:textAllCaps="true"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
         </LinearLayout>

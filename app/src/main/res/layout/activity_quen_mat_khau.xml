@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context=".View.DangNhapActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:background="@color/transparenBackgroundDangNhap"
+        android:background="@color/colorAccent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/transparenBackgroundDangNhap"
+            android:background="@color/colorAccent"
             android:orientation="vertical"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
@@ -29,45 +28,46 @@
                 android:layout_height="wrap_content"
                 android:text="@string/khoiphucmatkhau"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="20dp"
+                android:textColor="#80000000"
+                android:textSize="30dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="20dp"
                 android:text="@string/chuoikhoiphucmatkhau"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
+                android:textColor="#80000000"
                 android:textSize="14dp" />
-
             <EditText
                 android:id="@+id/edEmailKhoiPhucMatKhau"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#FFFFFF"
+                android:layout_height="50dp"
                 android:drawableLeft="@drawable/icon_adduser"
+                android:paddingLeft="10dp"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:hint="@string/Email"
-                android:inputType="textEmailAddress"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"
-                android:textColorLink="#FFFFFF" />
+                android:inputType="textPersonName"
+                android:background="@drawable/custom_form_text"
+                android:backgroundTint="#80dcdcdc"
+                android:textColor="#000000"
+                android:textColorHint="#80000000"
+                android:textColorLink="#dcdcdc" />
 
             <Button
                 android:id="@+id/btnGuiMailKhoiPhuc"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:paddingLeft="60dp"
                 android:paddingRight="60dp"
                 android:text="@string/guimail"
-                android:textAllCaps="true"
+                android:background="@drawable/custom_button_chung"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
             <LinearLayout
@@ -82,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/chuoithanhvien"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#80000000" />
 
                 <TextView
                     android:id="@+id/txtDangKyKhoiPhuc"
@@ -92,7 +92,7 @@
                     android:text="@string/dangkymoi"
                     android:textAlignment="textEnd"
                     android:textAllCaps="false"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#80000000" />
             </LinearLayout>
 
         </LinearLayout>

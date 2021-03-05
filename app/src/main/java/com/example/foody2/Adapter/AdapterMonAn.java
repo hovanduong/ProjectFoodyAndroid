@@ -32,6 +32,20 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 
     }
 
+    public class HolderMonAn extends RecyclerView.ViewHolder {
+        TextView txtTenMonAn,txtSoLuong,txtGia;
+        ImageView imgGiamSoLuong,imgTangSoLuong;
+
+        public HolderMonAn(View itemView) {
+            super(itemView);
+            txtTenMonAn = itemView.findViewById(R.id.txtTenMonAn);
+            txtGia=itemView.findViewById(R.id.txtGia);
+            txtSoLuong =  itemView.findViewById(R.id.txtSoLuong);
+            imgGiamSoLuong =  itemView.findViewById(R.id.imgGiamSoLuong);
+            imgTangSoLuong =  itemView.findViewById(R.id.imgTangSoLuong);
+        }
+    }
+
     @Override
     public HolderMonAn onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.custom_layout_monan,parent,false);
@@ -42,6 +56,7 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
     public void onBindViewHolder(final HolderMonAn holder, int position) {
         final MonAnModel monAnModel = monAnModelList.get(position);
         holder.txtTenMonAn.setText(monAnModel.getTenmon());
+        holder.txtGia.setText(monAnModel.getGiatien() + "đ");
 
         holder.txtSoLuong.setTag(0);
         holder.imgTangSoLuong.setOnClickListener(new View.OnClickListener() {
@@ -92,16 +107,5 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
         return monAnModelList.size();
     }
 
-    public class HolderMonAn extends RecyclerView.ViewHolder {
-        TextView txtTenMonAn,txtSoLuong;
-        ImageView imgGiamSoLuong,imgTangSoLuong;
 
-        public HolderMonAn(View itemView) {
-            super(itemView);
-            txtTenMonAn = (TextView) itemView.findViewById(R.id.txtTenMonAn);
-            txtSoLuong = (TextView) itemView.findViewById(R.id.txtSoLuong);
-            imgGiamSoLuong = (ImageView) itemView.findViewById(R.id.imgGiamSoLuong);
-            imgTangSoLuong = (ImageView) itemView.findViewById(R.id.imgTangSoLuong);
-        }
-    }
 }

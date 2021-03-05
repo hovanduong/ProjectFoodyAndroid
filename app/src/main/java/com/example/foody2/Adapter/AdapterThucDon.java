@@ -55,8 +55,8 @@ public class AdapterThucDon extends RecyclerView.Adapter<AdapterThucDon.HolderTh
         public HolderThucDon(View itemView) {
             super(itemView);
 
-            txtThucDon = (TextView) itemView.findViewById(R.id.txtTenThucDon);
-            recyclerViewMonAn = (RecyclerView) itemView.findViewById(R.id.recyclerMonAn);
+            txtThucDon = itemView.findViewById(R.id.txtTenThucDon);
+            recyclerViewMonAn = itemView.findViewById(R.id.recyclerMonAn);
         }
     }
 }

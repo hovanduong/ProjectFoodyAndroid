@@ -15,6 +15,7 @@
         android:orientation="horizontal"
         android:background="@color/colorAccent"
         android:padding="5dp"
+        android:layout_weight="1"
         >
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/cicleMenuMonAn"
@@ -46,12 +47,22 @@
                 android:text="da dat duoc 2 lan"
                 />
         </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/imgThemmonannn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:src="@drawable/minus"
+            android:paddingLeft="10dp"
+            />
         <TextView
             android:id="@+id/txtGiamonan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="gia mon an"
             android:paddingRight="10dp"
+            android:text="0"
 
             />
 

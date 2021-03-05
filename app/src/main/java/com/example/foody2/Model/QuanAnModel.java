@@ -29,6 +29,25 @@ public class QuanAnModel implements Parcelable {
     List<String> tienich;
     List<String> hinhanhquanan;
     List<BinhLuanModel> binhluanModeList;
+    List<MenuQuanAn> menuQuanAnList;
+    List<ThucDonModel> thucDons;
+
+    public List<ThucDonModel> getThucDons() {
+        return thucDons;
+    }
+
+    public void setThucDons(List<ThucDonModel> thucDons) {
+        this.thucDons = thucDons;
+    }
+
+    public List<MenuQuanAn> getMenuQuanAnList() {
+        return menuQuanAnList;
+    }
+
+    public void setMenuQuanAnList(List<MenuQuanAn> menuQuanAnList) {
+        this.menuQuanAnList = menuQuanAnList;
+    }
+
     List<Bitmap> bitmapList;
     long giatoida;
 
@@ -64,10 +83,15 @@ public class QuanAnModel implements Parcelable {
         giatoida=in.readLong();
         giatoithieu=in.readLong();
         // dọc dữ liệu cho đối tượng
+
         chiNhanhQuanAnModelList=new ArrayList<ChiNhanhQuanAnModel>(); // neu null thi khời tạo arraylisst
         in.readTypedList(chiNhanhQuanAnModelList,ChiNhanhQuanAnModel.CREATOR);
+
         binhluanModeList=new ArrayList<BinhLuanModel>();
         in.readTypedList(binhluanModeList,BinhLuanModel.CREATOR);
+
+        menuQuanAnList=new ArrayList<MenuQuanAn>();
+        in.readTypedList(menuQuanAnList,MenuQuanAn.CREATOR);
     }
 
     public static final Creator<QuanAnModel> CREATOR = new Creator<QuanAnModel>() {
@@ -269,6 +293,20 @@ public class QuanAnModel implements Parcelable {
                 binhLuanModels.add(binhLuanModel);
             }
             quanAnModel.setBinhluanModeList(binhLuanModels);
+      //      Log.d("kiemttra",quanAnModel.getBinhluanModeList() + "");
+            // lay danh menu
+            DataSnapshot dataSnapshotMenuQuanAn= dataSnapshot.child("menuquanans").child(quanAnModel.getMaquanan());
+
+            List<MenuQuanAn> menuQuanAns=new ArrayList<>();
+            for(DataSnapshot valueMenu : dataSnapshotMenuQuanAn.getChildren()){
+                MenuQuanAn menuQuanAn=valueMenu.getValue(MenuQuanAn.class);
+                menuQuanAn.setMamenu(valueMenu.getKey());
+                menuQuanAns.add(menuQuanAn);
+
+            }
+            quanAnModel.setMenuQuanAnList(menuQuanAns);
+          //  Log.d("kiemtra",quanAnModel.getMenuQuanAnList() + " ");
+
             // lay chi nhánh bình luận
             List<ChiNhanhQuanAnModel> chiNhanhQuanAnModels = new ArrayList<>();
             DataSnapshot dataSnapshotChiNhanhQuanAn = dataSnapshot.child("chinhanhquanans").child(quanAnModel.getMaquanan());
@@ -311,5 +349,7 @@ public class QuanAnModel implements Parcelable {
         dest.writeTypedList(chiNhanhQuanAnModelList);
 
         dest.writeTypedList(binhluanModeList);
+
+        dest.writeTypedList(menuQuanAnList);
     }
 }

@@ -24,6 +24,7 @@ import com.example.foody2.Model.QuanAnModel;
 import com.example.foody2.R;
 import com.example.foody2.View.ChiTietQuanAnActivity;
 
+import com.example.foody2.View.DatMonAnActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -151,6 +152,14 @@ public class ApdaterRecyclerOdau extends RecyclerView.Adapter<ApdaterRecyclerOda
                 Intent iChiTietQuanAn= new Intent(context, ChiTietQuanAnActivity.class);
                 iChiTietQuanAn.putExtra("quanan",quanAnModel);
                 context.startActivity(iChiTietQuanAn);
+            }
+        });
+        holder.btnDatMonOdau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent idMenuQuanAn= new Intent(context, DatMonAnActivity.class);
+                idMenuQuanAn.putExtra("quanan1",quanAnModel);
+                context.startActivity(idMenuQuanAn);
             }
         });
     }

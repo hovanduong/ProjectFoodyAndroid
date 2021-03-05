@@ -244,6 +244,9 @@
                 android:background="@color/colorBackgroungTrangchu"
                 />
             <include layout="@layout/layout_wifi_chitietquanan"/>
+
+            <include layout="@layout/layout_thucdon_chitiet"/>
+
             <include layout="@layout/layout_binhluan_chitietquanan"  />
 
 

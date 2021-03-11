@@ -2,6 +2,7 @@ package com.example.foody2.Adapter;
 
 import android.content.Context;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foody2.Controller.GioHangContronller;
 import com.example.foody2.Model.DatMon;
 import com.example.foody2.Model.MonAnModel;
 import com.example.foody2.R;
@@ -21,6 +23,8 @@ import java.util.List;
  */
 
 public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn> {
+    GioHangContronller gioHangContronller;
+
 
     Context context;
     List<MonAnModel> monAnModelList;
@@ -35,6 +39,7 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
     public class HolderMonAn extends RecyclerView.ViewHolder {
         TextView txtTenMonAn,txtSoLuong,txtGia;
         ImageView imgGiamSoLuong,imgTangSoLuong;
+        RecyclerView recyclerView;
 
         public HolderMonAn(View itemView) {
             super(itemView);
@@ -43,6 +48,7 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
             txtSoLuong =  itemView.findViewById(R.id.txtSoLuong);
             imgGiamSoLuong =  itemView.findViewById(R.id.imgGiamSoLuong);
             imgTangSoLuong =  itemView.findViewById(R.id.imgTangSoLuong);
+            recyclerView=itemView.findViewById(R.id.recyclerViewGioHang);
         }
     }
 
@@ -79,6 +85,9 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
                 holder.imgGiamSoLuong.setTag(datMon);
 
                 AdapterMonAn.datMonList.add(datMon);
+
+                gioHangContronller=new GioHangContronller(context);
+                gioHangContronller.getDanhSachDatMon(holder.recyclerView);
 
             }
         });

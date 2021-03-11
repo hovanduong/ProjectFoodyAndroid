@@ -62,6 +62,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
+<<<<<<< Updated upstream
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -71,12 +72,20 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewGioHang"
+=======
+        android:layout_height="wrap_content">
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                
+>>>>>>> Stashed changes
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
 
             </androidx.recyclerview.widget.RecyclerView>
-        </LinearLayout>
+
 
     </androidx.core.widget.NestedScrollView>
 

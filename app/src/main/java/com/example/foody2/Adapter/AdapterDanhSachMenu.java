@@ -63,7 +63,6 @@ public class AdapterDanhSachMenu extends RecyclerView.Adapter<AdapterDanhSachMen
                     intent.putExtra("tenmonan", menuQuanAn.getTenmon());  // Truyền một String
                     intent.putExtra("giamonan", menuQuanAn.getGiatien());
                    context.startActivity(intent);
-
                 }
             });
 

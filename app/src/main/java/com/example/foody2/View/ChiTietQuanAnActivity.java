@@ -166,7 +166,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity  implements OnMapRe
 
         // lưu trữ hình ảnh
         StorageReference storageHinhQuanAn= FirebaseStorage.getInstance().getReference().child("hinhanh").child(quanAnModel.getHinhanhquanan().get(0));
-        final long ONE_MEGABYTE=1024 * 1024;
+        final long ONE_MEGABYTE=1024 * 1024 *5;
         storageHinhQuanAn.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {

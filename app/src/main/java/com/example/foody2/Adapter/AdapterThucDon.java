@@ -27,7 +27,16 @@ public class AdapterThucDon extends RecyclerView.Adapter<AdapterThucDon.HolderTh
         this.context = context;
         this.thucDonModels = thucDonModels;
     }
+    public class HolderThucDon extends RecyclerView.ViewHolder {
+        TextView txtThucDon;
+        RecyclerView recyclerViewMonAn;
+        public HolderThucDon(View itemView) {
+            super(itemView);
 
+            txtThucDon = itemView.findViewById(R.id.txtTenThucDon);
+            recyclerViewMonAn = itemView.findViewById(R.id.recyclerMonAn);
+        }
+    }
     @Override
     public AdapterThucDon.HolderThucDon onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.custom_layout_thucdon,parent,false);
@@ -49,14 +58,5 @@ public class AdapterThucDon extends RecyclerView.Adapter<AdapterThucDon.HolderTh
         return thucDonModels.size();
     }
 
-    public class HolderThucDon extends RecyclerView.ViewHolder {
-        TextView txtThucDon;
-        RecyclerView recyclerViewMonAn;
-        public HolderThucDon(View itemView) {
-            super(itemView);
 
-            txtThucDon = (TextView) itemView.findViewById(R.id.txtTenThucDon);
-            recyclerViewMonAn = (RecyclerView) itemView.findViewById(R.id.recyclerMonAn);
-        }
-    }
 }

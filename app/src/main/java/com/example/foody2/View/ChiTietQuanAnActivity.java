@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foody2.Adapter.AdapterBinhLuan;
 import com.example.foody2.Controller.ChiTietQuanAnController;
+import com.example.foody2.Controller.ThucDonController;
 import com.example.foody2.Model.QuanAnModel;
 import com.example.foody2.Model.TienIchModel;
 import com.example.foody2.R;
@@ -62,7 +63,8 @@ public class ChiTietQuanAnActivity extends AppCompatActivity  implements OnMapRe
     GoogleMap googleMap;
     LinearLayout khungtienich,khungWifi;
     ChiTietQuanAnController chiTietQuanAnController;
-
+    ThucDonController thucDonController;
+    RecyclerView recyclerThucDon;
     //MapFragment mapFragment;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -89,11 +91,12 @@ public class ChiTietQuanAnActivity extends AppCompatActivity  implements OnMapRe
         txtNgayDangWifi=findViewById(R.id.txtNgayDangWifi);
         khungWifi=findViewById(R.id.khungWifi);
         // goi id để xứ lý bit map
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);;
-        mapFragment.getMapAsync(this);
+//            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+//                    .findFragmentById(R.id.map);;
+//            mapFragment.getMapAsync(this);
 
-        recyclerViewBinhLuan=findViewById(R.id.recyclerBinhLuanChiTietQuanAn);
+           recyclerViewBinhLuan=findViewById(R.id.recyclerBinhLuanChiTietQuanAn);
+            recyclerThucDon = findViewById(R.id.recyclerThucDon);
 
         // xử lý tool bar
         txtTieuDeToolBar=findViewById(R.id.txtTieuDeToolBar);
@@ -105,7 +108,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity  implements OnMapRe
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
+        thucDonController=new ThucDonController();
         chiTietQuanAnController=new ChiTietQuanAnController();
         HienThiThiChiTietQUanAn();
     }
@@ -163,7 +166,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity  implements OnMapRe
 
         // lưu trữ hình ảnh
         StorageReference storageHinhQuanAn= FirebaseStorage.getInstance().getReference().child("hinhanh").child(quanAnModel.getHinhanhquanan().get(0));
-        final long ONE_MEGABYTE=1024 * 1024;
+        final long ONE_MEGABYTE=1024 * 1024 *5;
         storageHinhQuanAn.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
@@ -188,77 +191,12 @@ public class ChiTietQuanAnActivity extends AppCompatActivity  implements OnMapRe
                 startActivity(idDanhSachWifi);
             }
         });
+        thucDonController.getDanhSachThucDonQuanAnTheoMa(this,quanAnModel.getMaquanan(),recyclerThucDon);
+
+
 
     }
 
-   // @Override
-//    protected void onStart() {
-//        super.onStart();
-//        // lấy thời gian hiện tại
-//        Calendar calendar=Calendar.getInstance();
-//        SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm");
-//        String gioHienTai=dateFormat.format(calendar.getTime());
-//        String giomocua=quanAnModel.getGiomocua();
-//        String giodongcua=quanAnModel.getGiodongcua();
-//
-//        try {
-//                Date dateHienTai=dateFormat.parse(gioHienTai);
-//                Date dateMoCua=dateFormat.parse(giomocua);
-//                Date dateDongCua=dateFormat.parse(giodongcua);
-//                if(dateHienTai.after(dateMoCua) && dateHienTai.before(dateDongCua)){
-//                    // gio mo cua
-//                    txtTrangThaiHoatDong.setText(getString(R.string.dangmocua));
-//                }else{
-//                //gio dong cua
-//                txtTrangThaiHoatDong.setText(getString(R.string.dadongcua));
-//            }
-//        }catch (ParseException e){
-//            e.printStackTrace();
-//        }
-//        downLoadHinhTienIich();
-//
-//
-//        txtTieuDeToolBar.setText(quanAnModel.getTenquanan());
-//
-//        txtTenQuanAn.setText(quanAnModel.getTenquanan());
-//        txtDiaChi.setText(quanAnModel.getChiNhanhQuanAnModelList().get(0).getDiachi());
-//        txtThoiGianHoatDong.setText(quanAnModel.getGiomocua()+" - "+quanAnModel.getGiodongcua());
-//        txtTongSoHinhAnh.setText(quanAnModel.getHinhanhquanan().size() + " ");
-//        txtTongSoBinhLuan.setText(quanAnModel.getBinhluanModeList().size() + " ");
-//        txtThoiGianHoatDong.setText(giomocua +" - "+giodongcua);
-//
-//
-//        if(quanAnModel.getGiatoithieu() != 0 && quanAnModel.getGiatoida() != 0){
-//            NumberFormat numberFormat=new DecimalFormat("###,###"); // NumvberFormat java.text
-//            String giatoithieuu=numberFormat.format(quanAnModel.getGiatoithieu())+"đ";
-//            String giatoidaa=numberFormat.format(quanAnModel.getGiatoida())+"đ";
-//
-//                txtGioiHanGia.setText(giatoithieuu + "đ"+" - " + giatoidaa+"đ");
-//        }else{
-//            txtGioiHanGia.setVisibility(View.INVISIBLE);
-//        }
-//
-//
-//        // lưu trữ hình ảnh
-//        StorageReference storageHinhQuanAn= FirebaseStorage.getInstance().getReference().child("hinhanh").child(quanAnModel.getHinhanhquanan().get(0));
-//        final long ONE_MEGABYTE=1024 * 1024;
-//        storageHinhQuanAn.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-//            @Override
-//            public void onSuccess(byte[] bytes) {
-//                Bitmap bitmap= BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-//                imgHinhQuanAn.setImageBitmap(bitmap);
-//            }
-//        });
-//        // load danh sách bình luận của quán ăn
-//        RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this);
-//        recyclerViewBinhLuan.setLayoutManager(layoutManager);
-//        adapterBinhLuan=new AdapterBinhLuan(this,R.layout.custom_layout_binhluan ,quanAnModel.getBinhluanModeList());
-//        recyclerViewBinhLuan.setAdapter(adapterBinhLuan);
-//        adapterBinhLuan.notifyDataSetChanged();
-//
-//
-//        chiTietQuanAnController.HienThiDanhSachWifWi(quanAnModel.getMaquanan(),txtTenWifi,txtMatKhauWifi,txtNgayDangWifi);
-//    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

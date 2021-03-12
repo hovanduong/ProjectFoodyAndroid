@@ -1,6 +1,6 @@
 package com.example.foody2.Controller;
 
-import android.util.Log;
+
 import android.widget.TextView;
 
 import com.example.foody2.Controller.interfaces.ChiTietQuanAnInterface;

@@ -52,7 +52,7 @@ public class OdauController {
                     final List<Bitmap> bitmaps=new ArrayList<>();
                     for(String linkhinh : quanAnModel.getHinhanhquanan()){
                         StorageReference storageHinhAnh= FirebaseStorage.getInstance().getReference().child("hinhanh").child(linkhinh);
-                        final long ONE_MEGABYTE=1024 * 1024;
+                        final long ONE_MEGABYTE=1024 * 1024 * 5;
                         storageHinhAnh.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                             @Override
                             public void onSuccess(byte[] bytes) {

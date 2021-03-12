@@ -2,6 +2,7 @@ package com.example.foody2.Adapter;
 
 import android.content.Context;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foody2.Controller.GioHangContronller;
 import com.example.foody2.Model.DatMon;
 import com.example.foody2.Model.MonAnModel;
 import com.example.foody2.R;
+import com.example.foody2.View.Fragments.AngiFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,11 +29,12 @@ import java.util.List;
 
 public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn> {
     GioHangContronller gioHangContronller;
+    AngiFragment angiFragment;
 
 
     Context context;
     List<MonAnModel> monAnModelList;
-    public static List<DatMon> datMonList = new ArrayList<>();
+     public static List<DatMon> datMonList = new ArrayList<>();
 
     public AdapterMonAn(Context context, List<MonAnModel> monAnModelList){
         this.context = context;
@@ -60,6 +66,7 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 
     @Override
     public void onBindViewHolder(final HolderMonAn holder, int position) {
+  //      @NonNull final LayoutInflater inflater = null; @Nullable final ViewGroup container=null; @Nullable final Bundle savedInstanceState=null;
         final MonAnModel monAnModel = monAnModelList.get(position);
         holder.txtTenMonAn.setText(monAnModel.getTenmon());
         holder.txtGia.setText(monAnModel.getGiatien() + "đ");
@@ -86,8 +93,13 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 
                 AdapterMonAn.datMonList.add(datMon);
 
-                gioHangContronller=new GioHangContronller(context);
-                gioHangContronller.getDanhSachDatMon(holder.recyclerView);
+
+//                gioHangContronller=new GioHangContronller(context);
+//                gioHangContronller.getDanhSachDatMon();
+                angiFragment=new AngiFragment();
+                angiFragment.getDanhSachDatMon();
+//                angiFragment.onCreateView(inflater,container,savedInstanceState);
+
 
             }
         });

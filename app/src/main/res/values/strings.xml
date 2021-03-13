@@ -50,5 +50,16 @@
     <string name="dongy">Đồng Ý</string>
     <string name="loithemwifi">Vui Lòng Nhập Đầy Đủ Thông Tin Wifi</string>
     <string name="themthanhcong">Thêm thành công</string>
-    <string name="thucdon">Thuc don </string>
+    <string name="thucdon">Menu </string>
+    <string name="khongiaohang">Không giao hàng</string>
+    <string name="giomocua">Giờ mở cửa</string>
+    <string name="giodongcua">Giờ đóng cửa </string>
+    <string name="luuquanan">Lưu</string>
+    <string name="tenquanan">Tên quán</string>
+    <string name="chinhanh">Chỉnh ảnh</string>
+    <string name="themthucdon">Thêm thực đơn</string>
+    <string name="tenmon">Tên món</string>
+<string name="giatien">Giá tiền</string>
+    <string name="giatoida">Giát tối đa</string>
+    <string name="giatoithieu">Giá tối thiểu</string>
 </resources>

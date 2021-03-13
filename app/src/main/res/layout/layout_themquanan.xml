@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:gravity="center"
+    android:background="@color/colorAccent"
+
+    >
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -13,30 +20,52 @@
             android:orientation="vertical"
             android:padding="5dp"
             >
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Thêm chi nhánh"
+                android:textAllCaps="false"
+                android:textSize="30dp"
+                />
 
             <EditText
                 android:id="@+id/edTenQuan"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/custom_form_text"
+                android:backgroundTint="#80dcdcdc"
+                android:paddingLeft="10dp"
                 android:hint="@string/tenquanan"
+                android:layout_marginTop="5dp"
                 />
 
             <EditText
                 android:id="@+id/edGiaToiDa"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/giatoida"
+                android:layout_height="50dp"
+                android:background="@drawable/custom_form_text"
+                android:backgroundTint="#80dcdcdc"
+                android:paddingLeft="10dp"
                 android:text="0"
                 android:inputType="number"
+                android:layout_marginTop="5dp"
+
+
                 />
 
             <EditText
                 android:id="@+id/edGiaToiThieu"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/custom_form_text"
+                android:backgroundTint="#80dcdcdc"
+                android:paddingLeft="10dp"
                 android:hint="@string/giatoithieu"
                 android:text="0"
                 android:inputType="number"
+                android:layout_marginTop="5dp"
+
                 />
 
             <RadioGroup
@@ -44,6 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+
                 >
 
                 <RadioButton
@@ -63,6 +94,7 @@
             </RadioGroup>
 
             <LinearLayout
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -74,7 +106,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/giomocua"
+                    android:textColor="@color/colorAccent"
                     android:textAllCaps="false"
+                    android:background="@drawable/custom_button_chung"
                     />
 
                 <Button
@@ -83,7 +117,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/giodongcua"
+                    android:textColor="@color/colorAccent"
                     android:textAllCaps="false"
+                    android:background="@drawable/custom_button_chung"
                     />
 
             </LinearLayout>
@@ -107,13 +143,18 @@
 
 
             <Spinner
+                android:layout_marginTop="5dp"
                 android:id="@+id/spinnerKhuVuc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="50dp"
+                android:background="@drawable/custom_form_text"
+                android:backgroundTint="#80dcdcdc"
+                >
 
             </Spinner>
 
             <ImageView
+                android:layout_marginTop="5dp"
                 android:id="@+id/imgHinhQuan1"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
@@ -143,11 +184,10 @@
                     android:id="@+id/imgHinhQuan3"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/img_mini_themhinh"
-                    android:scaleType="centerCrop"
                     android:layout_margin="5dp"
-                    />
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_mini_themhinh" />
 
                 <ImageView
                     android:id="@+id/imgHinhQuan4"
@@ -191,11 +231,16 @@
             </LinearLayout>
 
             <Button
+                android:layout_marginTop="10dp"
                 android:id="@+id/btnThemQuanAn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/luuquanan"
-                android:background="@color/colorPrimaryDark"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/custom_button_chung"
+                android:textStyle="bold"
+
                 />
         </LinearLayout>
 

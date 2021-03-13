@@ -14,6 +14,7 @@
             android:src="@drawable/img_mini_themhinh"
             android:scaleType="centerCrop"
             android:layout_gravity="center"
+            android:paddingRight="10dp"
             />
 
         <LinearLayout
@@ -21,12 +22,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1"
+            android:layout_marginTop="5dp"
             >
 
             <EditText
                 android:id="@+id/edTenMon"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/custom_form_text"
+                android:backgroundTint="#80dcdcdc"
+                android:paddingLeft="10dp"
+                android:inputType="text"
                 android:hint="@string/tenmon"
                 />
 
@@ -37,11 +43,16 @@
                 >
 
                 <EditText
+                    android:layout_marginTop="5dp"
                     android:id="@+id/edGiaTien"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/custom_form_text"
+                    android:backgroundTint="#80dcdcdc"
+                    android:paddingLeft="10dp"
                     android:layout_weight="1"
                     android:hint="@string/giatien"
+                    android:inputType="number"
                     android:text="0"
                     />
 
@@ -56,9 +67,15 @@
     </LinearLayout>
 
     <Button
+        android:layout_marginTop="10dp"
         android:id="@+id/btnThemThucDon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_button_chung"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
         android:text="@string/themthucdon"
+        android:textAllCaps="false"
+
         />
 </LinearLayout>

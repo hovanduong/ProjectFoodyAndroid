@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.annotation.Nullable;
@@ -491,7 +492,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
         quanAnModel.setGiatoida(giaToiDa);
         quanAnModel.setGiatoithieu(giaToiThieu);
         quanAnModel.setGiaohang(giaoHang);
-        quanAnModel.setVideogioithieu(videoSelected.getLastPathSegment());
+//        quanAnModel.setVideogioithieu(videoSelected.getLastPathSegment());
         quanAnModel.setTienich(selectedTienIchList);
         quanAnModel.setLuotthich(0);
 
@@ -502,11 +503,11 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
             }
         });
 
-        FirebaseStorage.getInstance().getReference().child("video/"+videoSelected.getLastPathSegment()).putFile(videoSelected);
-        for(Uri hinhquan : hinhQuanAn){
-            FirebaseStorage.getInstance().getReference().child("hinhanh"+hinhquan.getLastPathSegment()).putFile(hinhquan);
-            nodeRoot.child("hinhanhquanans").child(maQuanAn).push().child(hinhquan.getLastPathSegment());
-        }
+//        FirebaseStorage.getInstance().getReference().child("video/"+videoSelected.getLastPathSegment()).putFile(videoSelected);
+//        for(Uri hinhquan : hinhQuanAn){
+//            FirebaseStorage.getInstance().getReference().child("hinhanh"+hinhquan.getLastPathSegment()).putFile(hinhquan);
+//            nodeRoot.child("hinhanhquanans").child(maQuanAn).push().child(hinhquan.getLastPathSegment());
+//        }
 
         for (int i=0 ;i< themThucDonModelList.size() ; i++){
             nodeRoot.child("thucdonquanans").child(maQuanAn).child(themThucDonModelList.get(i).getMathucdon()).push().setValue(themThucDonModelList.get(i).getMonAnModel());
@@ -517,6 +518,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
 
             FirebaseStorage.getInstance().getReference().child("hinhanh/"+themThucDonModelList.get(i).getMonAnModel().getHinhanh()).putBytes(data);
         }
+        Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show();
 
 
     }

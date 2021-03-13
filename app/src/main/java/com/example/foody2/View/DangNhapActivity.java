@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -191,14 +192,19 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     private  void DangNhap(){
             String email=edEmail.getText().toString();
             String password=edPassWord.getText().toString();
-            firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(!task.isSuccessful()){
-                        Toast.makeText(DangNhapActivity.this,getString(R.string.dangnhapthatbai),Toast.LENGTH_SHORT).show();
+            if(email.isEmpty() || password.isEmpty()){
+                Toast.makeText(this,"Vui long nhap thong tin day du",Toast.LENGTH_LONG).show();
+            }else{
+                firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(!task.isSuccessful()){
+                            Toast.makeText(DangNhapActivity.this,getString(R.string.dangnhapthatbai),Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
+                });
+            }
+
 
     }
 //end  lăng nghe sự kiện user  click vào button đăng nhập google,fb email account
@@ -207,9 +213,18 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     @Override
     public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
         FirebaseUser user=firebaseAuth.getCurrentUser();
-        if(user!=null){
-            Intent idTrangChu=new Intent(DangNhapActivity.this,TrangChuActivity.class);
-            startActivity(idTrangChu);
+       // Log.d("kiemtra",user + "");
+        if(user != null){
+            String email = user.getEmail();
+            if(email.equals("admin@gmail.com")){
+                Intent idThemquanan=new Intent(DangNhapActivity.this,ThemQuanAnActivity.class);
+                startActivity(idThemquanan);
+            }
+            else{
+                Intent idTrangChu=new Intent(DangNhapActivity.this,TrangChuActivity.class);
+                startActivity(idTrangChu);
+            }
+
         }else{
 
         }

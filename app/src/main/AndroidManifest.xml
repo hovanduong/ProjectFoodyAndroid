@@ -13,37 +13,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-        <activity android:name=".View.GiohangActivity"></activity>
+        <activity android:name=".View.ProfileUserActivity"></activity>
+        <activity android:name=".View.GiohangActivity" />
         <activity android:name=".View.DatMonAnActivity" />
         <activity
             android:name=".View.PopupCapNhatWifiAcitivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity android:name=".View.CapNhatDanhSachWiFiActivity" />
         <activity android:name=".View.HienThiChiTietBinhLuanActivity" />
-        <activity android:name=".View.ChiTietQuanAnActivity" >
-
-
-        </activity>
+        <activity android:name=".View.ChiTietQuanAnActivity"></activity>
         <activity android:name=".View.QuenMatKhauActivity" />
         <activity android:name=".View.DangKyActivity" />
-        <activity android:name=".View.TrangChuActivity">
+        <activity android:name=".View.TrangChuActivity"></activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity android:name=".View.DangNhapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-
-        <activity android:name=".View.DangNhapActivity" />
-        <activity android:name=".View.SplashScreenActivity" >
-
-
-        </activity>
-
+        <activity android:name=".View.SplashScreenActivity"></activity>
+        <activity android:name=".View.ThemQuanAnActivity"></activity>
     </application>
 
 </manifest>

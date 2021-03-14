@@ -25,7 +25,11 @@
         <activity android:name=".View.QuenMatKhauActivity" />
         <activity android:name=".View.DangKyActivity" />
         <activity android:name=".View.TrangChuActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
 
@@ -42,11 +46,7 @@
         </activity>
         <activity android:name=".View.ThemQuanAnActivity"></activity>
         <activity android:name=".View.LuckyWheel">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

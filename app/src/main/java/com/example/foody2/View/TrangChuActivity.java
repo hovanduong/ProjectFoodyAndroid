@@ -1,10 +1,13 @@
 package com.example.foody2.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -12,74 +15,52 @@ import android.widget.RadioGroup;
 
 import com.example.foody2.Adapter.AdapterViewPagerTrangChu;
 import com.example.foody2.R;
+import com.example.foody2.View.Fragments.AngiFragment;
+import com.example.foody2.View.Fragments.OdauFragment;
+import com.example.foody2.View.Fragments.ProfileFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class TrangChuActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
-    ViewPager viewPagerTrangChu;
-    RadioButton rd_odau,rd_angi;
-        RadioGroup groupAngiODau;
-        ImageView btnlogout;
-    FirebaseUser user;
+public class TrangChuActivity extends AppCompatActivity  {
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trang_chu);
-        viewPagerTrangChu=findViewById(R.id.viewpager_trangchu);
-        rd_odau=findViewById(R.id.rd_odau);
-        rd_angi=findViewById(R.id.rd_angi);
-        groupAngiODau=findViewById(R.id.group_odau_agni);
-        btnlogout=findViewById(R.id.btnLogout);
-        AdapterViewPagerTrangChu adapterViewPagerTrangChu=new AdapterViewPagerTrangChu(getSupportFragmentManager());
-        viewPagerTrangChu.setAdapter(adapterViewPagerTrangChu);
-        viewPagerTrangChu.addOnPageChangeListener(this);
-        groupAngiODau.setOnCheckedChangeListener(this);
-        btnlogout.setOnClickListener(this);
-    }
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        switch (position){
-            case 0:
-                rd_odau.setChecked(true);
-                break;
-            case 1:
-                rd_angi.setChecked(true);
-                break;
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new OdauFragment()).commit();
         }
-    }
 
-    @Override
-    public void onPageScrollStateChanged(int state) {
 
     }
 
-    @Override
-    public void onCheckedChanged(RadioGroup group, int checkedId) {
-        switch (checkedId){
-            case R.id.rd_odau:
-                viewPagerTrangChu.setCurrentItem(0);
-            break;
-            case R.id.rd_angi:
-                viewPagerTrangChu.setCurrentItem(1);
-                break;
-        }
-    }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-    @Override
-    public void onClick(View v) {
-        user= FirebaseAuth.getInstance().getCurrentUser();
-
-       if(user != null){
-           Intent idLogin=new Intent(this,DangNhapActivity.class);
-           startActivity(idLogin);
-           finish();
-       }
-
-    }
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
+                    switch (item.getItemId()) {
+                        case R.id.nav_home:
+                            selectedFragment = new OdauFragment();
+                            break;
+                        case R.id.nav_favorites:
+                            selectedFragment = new AngiFragment();
+                            break;
+                        case R.id.nav_search:
+                            selectedFragment = new ProfileFragment();
+                            break;
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).commit();
+                    return true;
+                }
+            };
 }

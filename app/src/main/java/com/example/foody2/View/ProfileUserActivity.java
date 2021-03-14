@@ -11,6 +11,6 @@ public class ProfileUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_proflie_user);
+        setContentView(R.layout.layout_fragment_profileuser);
     }
 }

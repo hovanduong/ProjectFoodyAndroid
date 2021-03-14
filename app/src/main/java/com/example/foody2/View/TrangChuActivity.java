@@ -54,7 +54,7 @@ public class TrangChuActivity extends AppCompatActivity  {
                         case R.id.nav_favorites:
                             selectedFragment = new AngiFragment();
                             break;
-                        case R.id.nav_search:
+                        case R.id.nav_profileuser:
                             selectedFragment = new ProfileFragment();
                             break;
                     }

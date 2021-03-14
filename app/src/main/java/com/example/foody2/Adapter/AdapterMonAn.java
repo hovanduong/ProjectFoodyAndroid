@@ -23,7 +23,7 @@ import java.util.List;
  */
 
 public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn> {
-    GioHangContronller gioHangContronller;
+//    GioHangContronller gioHangContronller;
     AngiFragment angiFragment;
 
 

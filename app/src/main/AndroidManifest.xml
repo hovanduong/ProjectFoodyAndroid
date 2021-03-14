@@ -40,7 +40,10 @@
         <activity android:name=".View.DangNhapActivity">
 
         </activity>
-        <activity android:name=".View.SplashScreenActivity"></activity>
+        <activity android:name=".View.SplashScreenActivity">
+
+
+        </activity>
         <activity android:name=".View.ThemQuanAnActivity"></activity>
     </application>
 

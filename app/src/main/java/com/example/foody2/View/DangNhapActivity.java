@@ -219,6 +219,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
             if(email.equals("admin@gmail.com")){
                 Intent idThemquanan=new Intent(DangNhapActivity.this,ThemQuanAnActivity.class);
                 startActivity(idThemquanan);
+
             }
             else{
                 Intent idTrangChu=new Intent(DangNhapActivity.this,TrangChuActivity.class);

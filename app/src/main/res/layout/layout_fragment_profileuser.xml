@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".View.ProfileUserActivity">
 
+
+
+
+
     <RelativeLayout
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
@@ -29,12 +33,12 @@
                 android:background="@drawable/circle"
                 android:padding="3dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_user" />
+                app:srcCompat="@drawable/ic_user" />
 
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/txtEmailProfile"
+            android:id="@+id/txtNameProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgUser"
@@ -50,7 +54,7 @@
             android:id="@+id/tv_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtEmailProfile"
+            android:layout_below="@+id/txtNameProfile"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif"
             android:text="new york, usa"
@@ -60,14 +64,14 @@
 
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
+            android:layout_marginRight="26dp"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_settings" />
+            app:srcCompat="@drawable/ic_settings" />
 
     </RelativeLayout>
 
@@ -100,6 +104,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/linlay1">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -123,6 +133,7 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/txtMailProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -225,9 +236,26 @@
 
             </LinearLayout>
 
-
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_button_profileuser"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:text="Logout"
+                android:textColor="@color/colorAccent"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                />
         </LinearLayout>
 
+
+
     </RelativeLayout>
+
+
+
 
 </RelativeLayout>

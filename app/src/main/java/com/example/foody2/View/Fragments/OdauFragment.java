@@ -1,6 +1,7 @@
 package com.example.foody2.View.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Build;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
@@ -21,14 +23,16 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.foody2.Controller.OdauController;
 import com.example.foody2.Model.QuanAnModel;
 import com.example.foody2.R;
+import com.example.foody2.View.LuckyWheel;
 
-public class OdauFragment extends Fragment {
+public class OdauFragment extends Fragment implements View.OnClickListener {
     OdauController odauController;
     RecyclerView recyclerOdau;
     ProgressBar progressBar;
     SharedPreferences sharedPreferences;
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
+    Button btnLuckyWheel;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
@@ -39,7 +43,8 @@ public class OdauFragment extends Fragment {
       progressBar=view.findViewById(R.id.progressBarOdau);
       nestedScrollView=view.findViewById(R.id.netsScrollODau);
       swiperefresh=view.findViewById(R.id.swiperefresh);
-
+        btnLuckyWheel=view.findViewById(R.id.btnLuckyWheel);
+        btnLuckyWheel.setOnClickListener(this);
         // Fragment dùng getCOntexxt để add Vào ACtivity
         sharedPreferences=getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
         Location vitrihientai=new Location("");
@@ -57,5 +62,11 @@ public class OdauFragment extends Fragment {
         super.onStart();
 
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent idLuckyWheel = new Intent(getContext(), LuckyWheel.class);
+        startActivity(idLuckyWheel);
     }
 }

@@ -7,11 +7,15 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SearchView;
 
 import com.example.foody2.Adapter.AdapterViewPagerTrangChu;
 import com.example.foody2.R;
@@ -63,4 +67,6 @@ public class TrangChuActivity extends AppCompatActivity  {
                     return true;
                 }
             };
+
+
 }

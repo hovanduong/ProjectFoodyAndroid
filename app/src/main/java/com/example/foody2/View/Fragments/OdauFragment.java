@@ -7,10 +7,13 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,22 +41,23 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-      View view=inflater.inflate(R.layout.layout_fragment_odau,container,false);
-      recyclerOdau =view.findViewById(R.id.recyclerOdau);
-      progressBar=view.findViewById(R.id.progressBarOdau);
-      nestedScrollView=view.findViewById(R.id.netsScrollODau);
-      swiperefresh=view.findViewById(R.id.swiperefresh);
-        btnLuckyWheel=view.findViewById(R.id.btnLuckyWheel);
+        View view = inflater.inflate(R.layout.layout_fragment_odau, container, false);
+        recyclerOdau = view.findViewById(R.id.recyclerOdau);
+        progressBar = view.findViewById(R.id.progressBarOdau);
+        nestedScrollView = view.findViewById(R.id.netsScrollODau);
+        swiperefresh = view.findViewById(R.id.swiperefresh);
+        btnLuckyWheel = view.findViewById(R.id.btnLuckyWheel);
         btnLuckyWheel.setOnClickListener(this);
         // Fragment dùng getCOntexxt để add Vào ACtivity
-        sharedPreferences=getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
-        Location vitrihientai=new Location("");
-        vitrihientai.setLatitude(Double.parseDouble(sharedPreferences.getString("latitude","0")));
-        vitrihientai.setLongitude(Double.parseDouble(sharedPreferences.getString("longitude","0")));
-        odauController =new OdauController(getContext());
-        odauController.getDanhSachQuanAnController(nestedScrollView,recyclerOdau,progressBar,vitrihientai,swiperefresh);
+        sharedPreferences = getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
+        Location vitrihientai = new Location("");
+        vitrihientai.setLatitude(Double.parseDouble(sharedPreferences.getString("latitude", "0")));
+        vitrihientai.setLongitude(Double.parseDouble(sharedPreferences.getString("longitude", "0")));
+        odauController = new OdauController(getContext());
+        odauController.getDanhSachQuanAnController(nestedScrollView, recyclerOdau, progressBar, vitrihientai, swiperefresh);
+        setHasOptionsMenu(true);
 
-      return view;
+        return view;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -69,4 +73,5 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         Intent idLuckyWheel = new Intent(getContext(), LuckyWheel.class);
         startActivity(idLuckyWheel);
     }
+
 }

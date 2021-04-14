@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,19 +31,25 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ApdaterRecyclerOdau extends RecyclerView.Adapter<ApdaterRecyclerOdau.ViewHolder> {
+public class ApdaterRecyclerOdau extends RecyclerView.Adapter<ApdaterRecyclerOdau.ViewHolder> implements Filterable {
     List<QuanAnModel> quanAnModelList;
     int resource;
     Context context;
+    private List<QuanAnModel> quanAnModelListFull;
+
     public ApdaterRecyclerOdau( Context context,List<QuanAnModel> quanAnModelList,int resource){
         this.quanAnModelList=quanAnModelList;
         this.resource=resource;
         this.context=context;
+        quanAnModelListFull=new ArrayList<>(quanAnModelList);
     }
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtTenQuanAnOdau;
@@ -179,6 +187,40 @@ public class ApdaterRecyclerOdau extends RecyclerView.Adapter<ApdaterRecyclerOda
         return quanAnModelList.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        return quanAnModeFiltert;
+    }
+    private Filter quanAnModeFiltert = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<QuanAnModel> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(quanAnModelListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (QuanAnModel item : quanAnModelListFull) {
+                    if (item.getTenquanan().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            quanAnModelList.clear();
+            quanAnModelList.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
 }
 

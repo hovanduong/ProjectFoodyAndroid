@@ -48,6 +48,9 @@ public class AdapterGioHang  extends RecyclerView.Adapter<AdapterGioHang.ViewHol
        DatMon datMon=datMons.get(position);
        holder.txtTenMonAn.setText(datMon.getTenMonAn());
 //       holder.txtSoLuong.setText(datMon.getSoLuong());
+        //if(datMon.getTenMonAn().equals())
+
+
 
     }
 

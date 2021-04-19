@@ -50,10 +50,10 @@ public class DangKyActivity extends AppCompatActivity implements View.OnClickLis
              String matkhau=edPassWorDk.getText().toString();
             String nhaplaimatkhau=edNhapLaiPassWord.getText().toString();
             String thongbaoloi=getString(R.string.thongbaoloidangky);
-            if(email.trim().length()==0){
+            if(email.isEmpty()){
                 thongbaoloi+=getString(R.string.Email);
                 Toast.makeText(DangKyActivity.this,thongbaoloi,Toast.LENGTH_LONG).show();
-            }else if(matkhau.trim().length()==0){
+            }else if(matkhau.isEmpty()){
                 thongbaoloi+=getString(R.string.PasWord);
                 Toast.makeText(DangKyActivity.this,thongbaoloi,Toast.LENGTH_LONG).show();
             }else if(!nhaplaimatkhau.equals( matkhau)){

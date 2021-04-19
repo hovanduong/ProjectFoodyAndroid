@@ -10,5 +10,5 @@ import java.util.List;
  */
 
 public interface ThucDonInterface {
-    public void getThucDonThanhCong(List<ThucDonModel> thucDonModelList);
+     void getThucDonThanhCong(List<ThucDonModel> thucDonModelList);
 }

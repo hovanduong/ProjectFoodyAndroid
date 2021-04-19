@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,48 +39,48 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 
-public class DangNhapActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener , View.OnClickListener,FirebaseAuth.AuthStateListener {
-    SignInButton btnDangNhapGoogle;
-    LoginButton btnDangNhapFaceBook;
-    CallbackManager callbackManagerFaceBook;
-    GoogleApiClient apiClient;
-    public static int RESERQUEST_CODE_DANGNHAP_GOOLE=99;
-    public static int KIEMTRA_PROVIDER_DANGNHAP=0;
-    FirebaseAuth firebaseAuth;
-    TextView txtDangKyMoi,txtQuenMatKhau;
-    Button btnDangNhap;
+public class DangNhapActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener, FirebaseAuth.AuthStateListener {
+    private SignInButton btnDangNhapGoogle;
+    private LoginButton btnDangNhapFaceBook;
+    private CallbackManager callbackManagerFaceBook;
+    private GoogleApiClient apiClient;
+    public static int RESERQUEST_CODE_DANGNHAP_GOOLE = 99;
+    public static int KIEMTRA_PROVIDER_DANGNHAP = 0;
+    private FirebaseAuth firebaseAuth;
+    private TextView txtDangKyMoi, txtQuenMatKhau;
+    private Button btnDangNhap;
 
-    EditText edEmail,edPassWord;
+    private EditText edEmail, edPassWord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_dang_nhap);
-        callbackManagerFaceBook=CallbackManager.Factory.create();
-        firebaseAuth=FirebaseAuth.getInstance();
+        callbackManagerFaceBook = CallbackManager.Factory.create();
+        firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.signOut();
         LoginManager.getInstance().logOut();
 
-        btnDangNhapGoogle=findViewById(R.id.btnDangNhapGoogle);
-        txtDangKyMoi=findViewById(R.id.txtDangKyKhoiPhuc);
-        btnDangNhapFaceBook=findViewById(R.id.btnDangNhapFaceBook);
-        txtQuenMatKhau=findViewById(R.id.txtQuenMatKhau);
+        btnDangNhapGoogle = findViewById(R.id.btnDangNhapGoogle);
+        txtDangKyMoi = findViewById(R.id.txtDangKyKhoiPhuc);
+        btnDangNhapFaceBook = findViewById(R.id.btnDangNhapFaceBook);
+        txtQuenMatKhau = findViewById(R.id.txtQuenMatKhau);
 
-        btnDangNhap=findViewById(R.id.btnGuiMailKhoiPhuc);
-        edEmail=findViewById(R.id.edEmailKhoiPhucMatKhau);
-        edPassWord=findViewById(R.id.edPassWordDangNhap);
+        btnDangNhap = findViewById(R.id.btnGuiMailKhoiPhuc);
+        edEmail = findViewById(R.id.edEmailKhoiPhucMatKhau);
+        edPassWord = findViewById(R.id.edPassWordDangNhap);
 
         txtQuenMatKhau.setOnClickListener(this);
-        txtDangKyMoi.setOnClickListener(this );
+        txtDangKyMoi.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
 
-        btnDangNhapFaceBook.setReadPermissions("email","public_profile");
+        btnDangNhapFaceBook.setReadPermissions("email", "public_profile");
         btnDangNhapFaceBook.registerCallback(callbackManagerFaceBook, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                KIEMTRA_PROVIDER_DANGNHAP=2;
-                String tokenId=loginResult.getAccessToken().getToken();
+                KIEMTRA_PROVIDER_DANGNHAP = 2;
+                String tokenId = loginResult.getAccessToken().getToken();
                 ChungThucDangNhapFireBase(tokenId);
             }
 
@@ -96,17 +97,18 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         btnDangNhapGoogle.setOnClickListener(this);
         TaoClientDangNhapGooogle();
     }
+
     // Khởi tạo client đăng nhập goole
-    private  void TaoClientDangNhapGooogle(){
+    private void TaoClientDangNhapGooogle() {
         // Configure Google Sign In
         // Configure Google Sign In
-       GoogleSignInOptions signInOptions=new GoogleSignInOptions.Builder()
+        GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder()
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-             apiClient=new GoogleApiClient.Builder(this)
-                    .enableAutoManage(this,this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,signInOptions)
+        apiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions)
                 .build();
 
     }
@@ -125,40 +127,41 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     // Mở form đăng nhập bằng goole
-    private void DangNhapGoole(GoogleApiClient apiClient){
-        KIEMTRA_PROVIDER_DANGNHAP=1;
-        Intent  IdGoogle=Auth.GoogleSignInApi.getSignInIntent(apiClient);
-        startActivityForResult(IdGoogle,RESERQUEST_CODE_DANGNHAP_GOOLE);
+    private void DangNhapGoole(GoogleApiClient apiClient) {
+        KIEMTRA_PROVIDER_DANGNHAP = 1;
+        Intent IdGoogle = Auth.GoogleSignInApi.getSignInIntent(apiClient);
+        startActivityForResult(IdGoogle, RESERQUEST_CODE_DANGNHAP_GOOLE);
 
     }
     //End Mở form đăng nhập bằng goole
 
     //Lay tokenId đã đăng nhập google để đăng nhập trên firebase
-    private  void ChungThucDangNhapFireBase(String token) {
+    private void ChungThucDangNhapFireBase(String token) {
 
         if (KIEMTRA_PROVIDER_DANGNHAP == 1) {
-           AuthCredential  authCredential = GoogleAuthProvider.getCredential(token, null);
+            AuthCredential authCredential = GoogleAuthProvider.getCredential(token, null);
             firebaseAuth.signInWithCredential(authCredential);
-        }else if (KIEMTRA_PROVIDER_DANGNHAP==2){
-           AuthCredential  authCredential1= FacebookAuthProvider.getCredential(token);
+        } else if (KIEMTRA_PROVIDER_DANGNHAP == 2) {
+            AuthCredential authCredential1 = FacebookAuthProvider.getCredential(token);
             firebaseAuth.signInWithCredential(authCredential1);
         }
 
     }
+
     //End Lay tokenId đã đăng nhập google để đăng nhập trên firebase
     @Override
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==RESERQUEST_CODE_DANGNHAP_GOOLE){
-            if(resultCode==RESULT_OK){
-                    GoogleSignInResult  signInResult=   Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-                GoogleSignInAccount account=signInResult.getSignInAccount();
-                String tokenID=account.getIdToken();
+        if (requestCode == RESERQUEST_CODE_DANGNHAP_GOOLE) {
+            if (resultCode == RESULT_OK) {
+                GoogleSignInResult signInResult = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+                GoogleSignInAccount account = signInResult.getSignInAccount();
+                String tokenID = account.getIdToken();
                 ChungThucDangNhapFireBase(tokenID);
             }
-        }else {
-            callbackManagerFaceBook.onActivityResult(requestCode,resultCode,data);
+        } else {
+            callbackManagerFaceBook.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -167,38 +170,44 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
 
     }
 
-// lăng nghe sự kiện user  click vào button đăng nhập google,fb email account
+    // lăng nghe sự kiện user  click vào button đăng nhập google,fb email account
     @Override
     public void onClick(View v) {
-            int id=v.getId();
-            switch (id){
-                case R.id.btnDangNhapGoogle:
-                    DangNhapGoole(apiClient);
-                    break;
-                case R.id.txtDangKyKhoiPhuc:
-                    Intent idDangKy= new Intent(DangNhapActivity.this, DangKyActivity.class);
-                    startActivity(idDangKy);
-                    break;
-                case R.id.btnGuiMailKhoiPhuc:
-                    DangNhap();
-                    break;
-                case R.id.txtQuenMatKhau:
-                    Intent idKhoiPhucMatKhau= new Intent(DangNhapActivity.this, QuenMatKhauActivity.class);
-                    startActivity(idKhoiPhucMatKhau);
-                    break;
-            }
+        int id = v.getId();
+        switch (id) {
+            case R.id.btnDangNhapGoogle:
+                DangNhapGoole(apiClient);
+                break;
+            case R.id.txtDangKyKhoiPhuc:
+                Intent idDangKy = new Intent(DangNhapActivity.this, DangKyActivity.class);
+                startActivity(idDangKy);
+                break;
+            case R.id.btnGuiMailKhoiPhuc:
+                DangNhap();
+                break;
+            case R.id.txtQuenMatKhau:
+                Intent idKhoiPhucMatKhau = new Intent(DangNhapActivity.this, QuenMatKhauActivity.class);
+                startActivity(idKhoiPhucMatKhau);
+                break;
+        }
     }
-    private  void DangNhap(){
-            String email=edEmail.getText().toString();
-            String password=edPassWord.getText().toString();
-            firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+    private void DangNhap() {
+        String email = edEmail.getText().toString();
+        String password = edPassWord.getText().toString();
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Vui long nhap thong tin day du", Toast.LENGTH_LONG).show();
+        } else {
+            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(!task.isSuccessful()){
-                        Toast.makeText(DangNhapActivity.this,getString(R.string.dangnhapthatbai),Toast.LENGTH_SHORT).show();
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(DangNhapActivity.this, getString(R.string.dangnhapthatbai), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
+        }
+
 
     }
 //end  lăng nghe sự kiện user  click vào button đăng nhập google,fb email account
@@ -206,11 +215,20 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     // Sự Kiện kiểm tra người dùng đã đăng nhập thành công hay đăng xuất
     @Override
     public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-        FirebaseUser user=firebaseAuth.getCurrentUser();
-        if(user!=null){
-            Intent idTrangChu=new Intent(DangNhapActivity.this,TrangChuActivity.class);
-            startActivity(idTrangChu);
-        }else{
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        // Log.d("kiemtra",user + "");
+        if (user != null) {
+            String email = user.getEmail();
+            if (email.equals("admin@gmail.com")) {
+                Intent idThemquanan = new Intent(DangNhapActivity.this, ThemQuanAnActivity.class);
+                startActivity(idThemquanan);
+
+            } else {
+                Intent idTrangChu = new Intent(DangNhapActivity.this, TrangChuActivity.class);
+                startActivity(idTrangChu);
+            }
+
+        } else {
 
         }
     }

@@ -2,23 +2,19 @@ package com.example.foody2.Adapter;
 
 import android.content.Context;
 
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.foody2.Controller.GioHangContronller;
 import com.example.foody2.Model.DatMon;
 import com.example.foody2.Model.MonAnModel;
 import com.example.foody2.R;
 import com.example.foody2.View.Fragments.AngiFragment;
+import com.example.foody2.View.TrangChuActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +24,9 @@ import java.util.List;
  */
 
 public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn> {
-    GioHangContronller gioHangContronller;
+//    GioHangContronller gioHangContronller;
     AngiFragment angiFragment;
-
+    TrangChuActivity trangChuActivity;
 
     Context context;
     List<MonAnModel> monAnModelList;
@@ -98,6 +94,8 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 //                gioHangContronller.getDanhSachDatMon();
                 angiFragment=new AngiFragment();
                 angiFragment.getDanhSachDatMon();
+
+
 //                angiFragment.onCreateView(inflater,container,savedInstanceState);
 
 

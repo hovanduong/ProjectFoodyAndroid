@@ -68,6 +68,12 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     public void onStart() {
         super.onStart();
 
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
 
     }
 

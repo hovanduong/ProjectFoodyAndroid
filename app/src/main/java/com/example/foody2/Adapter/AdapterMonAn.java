@@ -14,6 +14,7 @@ import com.example.foody2.Model.DatMon;
 import com.example.foody2.Model.MonAnModel;
 import com.example.foody2.R;
 import com.example.foody2.View.Fragments.AngiFragment;
+import com.example.foody2.View.TrangChuActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ import java.util.List;
 public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn> {
 //    GioHangContronller gioHangContronller;
     AngiFragment angiFragment;
-
+    TrangChuActivity trangChuActivity;
 
     Context context;
     List<MonAnModel> monAnModelList;
@@ -93,6 +94,8 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 //                gioHangContronller.getDanhSachDatMon();
                 angiFragment=new AngiFragment();
                 angiFragment.getDanhSachDatMon();
+
+
 //                angiFragment.onCreateView(inflater,container,savedInstanceState);
 
 

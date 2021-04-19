@@ -40,17 +40,17 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 
 public class DangNhapActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener, FirebaseAuth.AuthStateListener {
-    SignInButton btnDangNhapGoogle;
-    LoginButton btnDangNhapFaceBook;
-    CallbackManager callbackManagerFaceBook;
-    GoogleApiClient apiClient;
+    private SignInButton btnDangNhapGoogle;
+    private LoginButton btnDangNhapFaceBook;
+    private CallbackManager callbackManagerFaceBook;
+    private GoogleApiClient apiClient;
     public static int RESERQUEST_CODE_DANGNHAP_GOOLE = 99;
     public static int KIEMTRA_PROVIDER_DANGNHAP = 0;
-    FirebaseAuth firebaseAuth;
-    TextView txtDangKyMoi, txtQuenMatKhau;
-    Button btnDangNhap;
+    private FirebaseAuth firebaseAuth;
+    private TextView txtDangKyMoi, txtQuenMatKhau;
+    private Button btnDangNhap;
 
-    EditText edEmail, edPassWord;
+    private EditText edEmail, edPassWord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

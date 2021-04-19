@@ -37,12 +37,15 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     SwipeRefreshLayout swiperefresh;
     Button btnLuckyWheel;
 
+
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_fragment_odau, container, false);
         recyclerOdau = view.findViewById(R.id.recyclerOdau);
+        recyclerOdau.setHasFixedSize(true);
         progressBar = view.findViewById(R.id.progressBarOdau);
         nestedScrollView = view.findViewById(R.id.netsScrollODau);
         swiperefresh = view.findViewById(R.id.swiperefresh);

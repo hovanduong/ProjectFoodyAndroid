@@ -18,6 +18,8 @@ import android.widget.RadioGroup;
 import android.widget.SearchView;
 
 import com.example.foody2.Adapter.AdapterViewPagerTrangChu;
+import com.example.foody2.Adapter.ApdaterRecyclerOdau;
+import com.example.foody2.Model.QuanAnModel;
 import com.example.foody2.R;
 import com.example.foody2.View.Fragments.AngiFragment;
 import com.example.foody2.View.Fragments.OdauFragment;
@@ -26,8 +28,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.List;
+
 public class TrangChuActivity extends AppCompatActivity  {
 
+    private ApdaterRecyclerOdau apdaterRecyclerOdau;
+    private List<QuanAnModel> quanAnModelList;
 
 
     @Override
@@ -41,7 +47,7 @@ public class TrangChuActivity extends AppCompatActivity  {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new OdauFragment()).commit();
         }
-
+        apdaterRecyclerOdau=new ApdaterRecyclerOdau(this,quanAnModelList,R.layout.cus_layout_recyclerview_odau);
 
     }
 
@@ -67,6 +73,7 @@ public class TrangChuActivity extends AppCompatActivity  {
                     return true;
                 }
             };
+
 
 
 }

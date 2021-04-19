@@ -25,11 +25,7 @@
         <activity android:name=".View.QuenMatKhauActivity" />
         <activity android:name=".View.DangKyActivity" />
         <activity android:name=".View.TrangChuActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
 
@@ -38,7 +34,11 @@
             android:value="@string/facebook_app_id" />
 
         <activity android:name=".View.DangNhapActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".View.SplashScreenActivity">
 

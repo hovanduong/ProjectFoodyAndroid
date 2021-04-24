@@ -1,5 +1,6 @@
 package com.example.foody2.View.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -79,6 +80,8 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
 
 
     }
+
+
 
     @Override
     public void onClick(View v) {

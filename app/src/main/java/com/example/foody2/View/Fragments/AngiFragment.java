@@ -4,6 +4,7 @@ package com.example.foody2.View.Fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,7 +33,6 @@ public class AngiFragment extends Fragment {
     AdapterGioHang adapterGioHang;
     public static List<DatMon> datMonList = new ArrayList<>();
     List<DatMon> datMonList1 = new ArrayList<>();
-    MenuItem item;
 
     // DatMon datMon;
     @Nullable
@@ -45,22 +45,23 @@ public class AngiFragment extends Fragment {
 //        gioHangContronller=new GioHangContronller(getContext());
 //        gioHangContronller.getDanhSachDatMon();
         Log.d("kiemtra", datMonList + "");
-        recyclerViewGioHang.clearOnChildAttachStateChangeListeners();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerViewGioHang.setLayoutManager(layoutManager);
-        // recyclerViewGioHang.setLayoutManager(new LinearLayoutManager(context));
-
-//        Log.d("kiemtra1","ab");
-//        adapterGioHang = new AdapterGioHang(context, datMonList, R.layout.custom_layout_monan);
-//        Log.d("kiemtra1","a");
-//        recyclerViewGioHang.setAdapter(adapterGioHang);
-//        adapterGioHang.notifyDataSetChanged();
-//        Log.d("kiemtra1","abc");
+        adapterGioHang = new AdapterGioHang(context, datMonList, R.layout.custom_layout_monan);
+        recyclerViewGioHang.setAdapter(adapterGioHang);
+        adapterGioHang.notifyDataSetChanged();
 
         return view;
     }
 
+
     public AngiFragment() {
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
 
     }
 
@@ -72,11 +73,8 @@ public class AngiFragment extends Fragment {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.nav_favorites:
-                Log.d("kiemtra1", "Abc");
-                adapterGioHang = new AdapterGioHang(context, datMonList, R.layout.custom_layout_monan);
-                recyclerViewGioHang.setAdapter(adapterGioHang);
-                adapterGioHang.notifyDataSetChanged();
+            case R.id.nav_home:
+                Log.d("kiemtra","123");
             default:
                 super.onOptionsItemSelected(item);
         }

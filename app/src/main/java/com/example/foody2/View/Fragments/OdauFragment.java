@@ -63,12 +63,15 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onStart() {
         super.onStart();
 
     }
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,5 +85,6 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         Intent idLuckyWheel = new Intent(getContext(), LuckyWheel.class);
         startActivity(idLuckyWheel);
     }
+
 
 }

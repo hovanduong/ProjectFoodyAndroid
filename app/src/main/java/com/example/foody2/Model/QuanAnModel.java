@@ -26,6 +26,7 @@ public class QuanAnModel implements Parcelable {
     String videogioithieu;
     String maquanan;
     long luotthich;
+
     List<String> tienich;
     List<String> hinhanhquanan;
     List<BinhLuanModel> binhluanModeList;

@@ -98,8 +98,6 @@ public class OdauController {
         quanAnModel.getDanhSachQuanAn(odauInterface, vitrihientai, itemdaco, 0);
 
     }
-
-
 }
 
 

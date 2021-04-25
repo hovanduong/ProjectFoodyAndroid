@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.foody2.Adapter.AdapterGiaoHang;
+import com.example.foody2.Model.GiaoHangModel;
 import com.example.foody2.Model.QuanAnModel;
 import com.example.foody2.R;
 
@@ -15,13 +16,19 @@ import java.util.List;
 
 public class Giaohang extends AppCompatActivity {
     RecyclerView recyclerView;
-    List<QuanAnModel> listGH;
+    List<GiaoHangModel> listGH;
     AdapterGiaoHang adapterGiaoHang;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cus_layout_recyclerview_giaohang);
         initUi();
+        getGiaohang();
+    }
+
+    private void getGiaohang() {
+
     }
 
     private void initUi() {

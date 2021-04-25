@@ -40,7 +40,7 @@ public class ApdaterRecyclerOdau extends RecyclerView.Adapter<ApdaterRecyclerOda
     List<QuanAnModel> quanAnModelList;
     int resource;
     Context context;
-    private List<QuanAnModel> quanAnModelListFull;
+     List<QuanAnModel> quanAnModelListFull;
 
     public ApdaterRecyclerOdau(Context context, List<QuanAnModel> quanAnModelList, int resource) {
         this.quanAnModelList = quanAnModelList;

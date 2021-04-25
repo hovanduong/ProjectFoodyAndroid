@@ -27,6 +27,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.foody2.Controller.OdauController;
 import com.example.foody2.Model.QuanAnModel;
 import com.example.foody2.R;
+import com.example.foody2.View.BlogActivity;
 import com.example.foody2.View.LuckyWheel;
 import com.example.foody2.activities.chat.ChatActivity;
 
@@ -37,7 +38,9 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     SharedPreferences sharedPreferences;
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
+    Button btnLuckyWheel, btnChat,btnBlog;
     Button btnLuckyWheel, btnChat;
+  
     private static OdauFragment odauFragment = null;
 
     public static OdauFragment getInstance() {
@@ -47,6 +50,7 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         }
         return odauFragment;
     }
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -67,6 +71,8 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         btnLuckyWheel.setOnClickListener(this);
         btnChat = view.findViewById(R.id.btnChat);
         btnChat.setOnClickListener(this);
+        btnBlog=view.findViewById(R.id.btnblog);
+        btnBlog.setOnClickListener(this);
         // Fragment dùng getCOntexxt để add Vào ACtivity
         sharedPreferences = getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
         Location vitrihientai = new Location("");
@@ -98,10 +104,23 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent idLuckyWheel = new Intent(getContext(), LuckyWheel.class);
-        startActivity(idLuckyWheel);
-        Intent idChat = new Intent(getContext(), ChatActivity.class);
-        startActivity(idChat);
+        int id = v.getId();
+        switch (id) {
+            case R.id.btnLuckyWheel:
+                Intent idLuckyWheel = new Intent(getContext(), LuckyWheel.class);
+                startActivity(idLuckyWheel);
+                break;
+            case R.id.btnChat:
+                Intent idChat = new Intent(getContext(), ChatActivity.class);
+                startActivity(idChat);
+                break;
+            case R.id.btnblog:
+                Intent idBlog = new Intent(getContext(), BlogActivity.class);
+                startActivity(idBlog);
+                break;
+        }
+
+
     }
 
 

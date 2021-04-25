@@ -40,6 +40,13 @@ public class AngiFragment extends Fragment {
     TextView txtTieuDeToolBar;
     Toolbar toolbar;
 
+    private static AngiFragment angiFragment = null;
+    public static AngiFragment getInstance(){
+        if (angiFragment == null){
+            angiFragment = new AngiFragment();
+            return angiFragment;
+        }return angiFragment;
+    }
     // DatMon datMon;
     @Nullable
     @Override
@@ -108,7 +115,7 @@ public class AngiFragment extends Fragment {
     }
 
     public void getDanhSachDatMon() {
-        // datMonList.clear();
+         datMonList.clear();
         for (DatMon datMon : AdapterMonAn.datMonList) {
             datMonList.add(datMon);
 

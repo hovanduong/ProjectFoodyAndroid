@@ -39,13 +39,29 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
     Button btnLuckyWheel, btnChat,btnBlog;
+    Button btnLuckyWheel, btnChat;
+  
+    private static OdauFragment odauFragment = null;
+
+    public static OdauFragment getInstance() {
+        if (odauFragment == null) {
+            odauFragment = new OdauFragment();
+            return odauFragment;
+        }
+        return odauFragment;
+    }
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
         View view = inflater.inflate(R.layout.layout_fragment_odau, container, false);
+
+
         recyclerOdau = view.findViewById(R.id.recyclerOdau);
         recyclerOdau.setHasFixedSize(true);
         progressBar = view.findViewById(R.id.progressBarOdau);

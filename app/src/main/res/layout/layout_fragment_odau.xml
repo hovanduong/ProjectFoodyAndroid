@@ -178,6 +178,7 @@
                             android:textAllCaps="false" />
 
                         <Button
+                            android:id="@+id/btnChat"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
@@ -187,7 +188,7 @@
                             android:drawablePadding="10dp"
                             android:gravity="left|center"
                             android:padding="10dp"
-                            android:text="@string/topmenber"
+                            android:text="Chat"
                             android:textAllCaps="false" />
 
                     </LinearLayout>

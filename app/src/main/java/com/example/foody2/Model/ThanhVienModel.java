@@ -64,7 +64,7 @@ public class ThanhVienModel implements Parcelable {
     }
     public void ThemThongTinThanhVien(ThanhVienModel thanhVienModel,String uid){
 
-            dataNodeThanhVien.child(uid).setValue(thanhVienModel);
+        dataNodeThanhVien.child(uid).setValue(thanhVienModel);
     }
 
     @Override

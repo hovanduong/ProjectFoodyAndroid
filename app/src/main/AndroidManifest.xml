@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-        <activity android:name=".View.Giaohang"></activity>
+        <activity android:name=".activities.message.MessageActivity"></activity>
+<!--        <activity android:name=".activities.chat.ChatActivity" />-->
         <activity android:name=".View.ProfileUserActivity" />
         <activity android:name=".View.GiohangActivity" />
         <activity android:name=".View.DatMonAnActivity" />
@@ -25,6 +26,14 @@
         <activity android:name=".View.ChiTietQuanAnActivity" />
         <activity android:name=".View.QuenMatKhauActivity" />
         <activity android:name=".View.DangKyActivity" />
+        <activity android:name=".activities.chat.ChatActivity">
+
+        </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
         <activity android:name=".View.TrangChuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,15 +41,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".View.DangNhapActivity" >
 
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-
-        <activity android:name=".View.DangNhapActivity"></activity>
-        <activity android:name=".View.SplashScreenActivity"></activity>
+        </activity>
+        <activity android:name=".View.SplashScreenActivity" />
         <activity android:name=".View.ThemQuanAnActivity" />
-        <activity android:name=".View.LuckyWheel"></activity>
+        <activity android:name=".View.LuckyWheel" />
     </application>
 
 </manifest>

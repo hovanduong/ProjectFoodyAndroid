@@ -42,6 +42,7 @@ public class TrangChuActivity extends AppCompatActivity  {
 
     private ApdaterRecyclerOdau apdaterRecyclerOdau;
     private List<QuanAnModel> quanAnModelList;
+    AdapterGioHang adapterGioHang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class TrangChuActivity extends AppCompatActivity  {
                     new OdauFragment()).commit();
         }
         apdaterRecyclerOdau=new ApdaterRecyclerOdau(this,quanAnModelList,R.layout.cus_layout_recyclerview_odau);
+
 
     }
 

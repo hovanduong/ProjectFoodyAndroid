@@ -37,8 +37,7 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     SharedPreferences sharedPreferences;
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
-    Button btnLuckyWheel,btnChat;
-
+    Button btnLuckyWheel, btnChat;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -53,7 +52,7 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         swiperefresh = view.findViewById(R.id.swiperefresh);
         btnLuckyWheel = view.findViewById(R.id.btnLuckyWheel);
         btnLuckyWheel.setOnClickListener(this);
-        btnChat=view.findViewById(R.id.btnChat);
+        btnChat = view.findViewById(R.id.btnChat);
         btnChat.setOnClickListener(this);
         // Fragment dùng getCOntexxt để add Vào ACtivity
         sharedPreferences = getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
@@ -76,7 +75,6 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     }
 
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,13 +83,22 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     }
 
 
-
     @Override
     public void onClick(View v) {
-        Intent idLuckyWheel = new Intent(getContext(), LuckyWheel.class);
-        startActivity(idLuckyWheel);
-        Intent idChat = new Intent(getContext(), ChatActivity.class);
-        startActivity(idChat);
+        int id = v.getId();
+        switch (id) {
+            case R.id.btnLuckyWheel:
+                Intent idLuckyWheel = new Intent(getContext(), LuckyWheel.class);
+                startActivity(idLuckyWheel);
+                break;
+            case R.id.btnChat:
+                Intent idChat = new Intent(getContext(), ChatActivity.class);
+                startActivity(idChat);
+                break;
+
+        }
+
+
     }
 
 

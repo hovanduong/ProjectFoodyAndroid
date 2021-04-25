@@ -27,6 +27,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.foody2.Controller.OdauController;
 import com.example.foody2.Model.QuanAnModel;
 import com.example.foody2.R;
+import com.example.foody2.View.BlogActivity;
 import com.example.foody2.View.LuckyWheel;
 import com.example.foody2.activities.chat.ChatActivity;
 
@@ -37,7 +38,7 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     SharedPreferences sharedPreferences;
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
-    Button btnLuckyWheel, btnChat;
+    Button btnLuckyWheel, btnChat,btnBlog;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -54,6 +55,8 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         btnLuckyWheel.setOnClickListener(this);
         btnChat = view.findViewById(R.id.btnChat);
         btnChat.setOnClickListener(this);
+        btnBlog=view.findViewById(R.id.btnblog);
+        btnBlog.setOnClickListener(this);
         // Fragment dùng getCOntexxt để add Vào ACtivity
         sharedPreferences = getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
         Location vitrihientai = new Location("");
@@ -95,7 +98,10 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
                 Intent idChat = new Intent(getContext(), ChatActivity.class);
                 startActivity(idChat);
                 break;
-
+            case R.id.btnblog:
+                Intent idBlog = new Intent(getContext(), BlogActivity.class);
+                startActivity(idBlog);
+                break;
         }
 
 

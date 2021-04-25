@@ -6,66 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackgroungTrangchu"
     android:orientation="vertical"
-    android:weightSum="4">
-
-    <RadioGroup
-        android:id="@+id/group_tab_radio"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/rd_moinhat"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/changebackgroup_tab"
-            android:button="@android:color/transparent"
-            android:drawableBottom="@drawable/ic_keyboard_arrow_down_black_24dp"
-            android:text="@string/moinhat"
-            android:textAlignment="center"
-            android:textColor="@drawable/changtext_tabtrangchu" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorBackgroungTrangchu" />
-
-        <RadioButton
-            android:id="@+id/rd_danhmuc"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/changebackgroup_tab"
-            android:button="@android:color/transparent"
-            android:drawableBottom="@drawable/ic_keyboard_arrow_down_black_24dp"
-            android:text="@string/danhmuc"
-            android:textAlignment="center"
-            android:textColor="@drawable/changtext_tabtrangchu" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorBackgroungTrangchu" />
-
-        <RadioButton
-            android:id="@+id/rd_khuvuc"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/changebackgroup_tab"
-            android:button="@android:color/transparent"
-            android:drawableBottom="@drawable/ic_keyboard_arrow_down_black_24dp"
-            android:text="@string/khuvuc"
-            android:textAlignment="center"
-            android:textColor="@drawable/changtext_tabtrangchu" />
-
-
-    </RadioGroup>
-
+    android:weightSum="3.5">
+    <include layout="@layout/layout_toolbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewGioHang"
@@ -105,7 +47,8 @@
         android:text="@string/thanhtoan"
         android:textAllCaps="false"
         android:textColor="#FFF"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
 
 </LinearLayout>

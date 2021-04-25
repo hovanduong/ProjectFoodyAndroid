@@ -1,5 +1,6 @@
 package com.example.foody2.View.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,15 +37,27 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     SharedPreferences sharedPreferences;
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
-    Button btnLuckyWheel,btnChat;
+    Button btnLuckyWheel, btnChat;
+    private static OdauFragment odauFragment = null;
 
+    public static OdauFragment getInstance() {
+        if (odauFragment == null) {
+            odauFragment = new OdauFragment();
+            return odauFragment;
+        }
+        return odauFragment;
+    }
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
         View view = inflater.inflate(R.layout.layout_fragment_odau, container, false);
+
+
         recyclerOdau = view.findViewById(R.id.recyclerOdau);
         recyclerOdau.setHasFixedSize(true);
         progressBar = view.findViewById(R.id.progressBarOdau);
@@ -52,7 +65,7 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         swiperefresh = view.findViewById(R.id.swiperefresh);
         btnLuckyWheel = view.findViewById(R.id.btnLuckyWheel);
         btnLuckyWheel.setOnClickListener(this);
-        btnChat=view.findViewById(R.id.btnChat);
+        btnChat = view.findViewById(R.id.btnChat);
         btnChat.setOnClickListener(this);
         // Fragment dùng getCOntexxt để add Vào ACtivity
         sharedPreferences = getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
@@ -75,13 +88,13 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     }
 
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
     }
+
 
     @Override
     public void onClick(View v) {

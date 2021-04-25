@@ -39,12 +39,16 @@
                 android:layout_height="wrap_content"
                 android:text="Ech xao xa ot"
                 android:textStyle="bold"
+                android:textColor="@color/colorBack"
+                android:textAllCaps="false"
                 android:textSize="18sp"/>
             <TextView
                 android:id="@+id/txtSoluongMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="da dat duoc 2 lan"
+                android:textColor="@color/colorBack"
+                android:textAllCaps="false"
                 />
         </LinearLayout>
 
@@ -63,7 +67,8 @@
             android:layout_height="wrap_content"
             android:paddingRight="10dp"
             android:text="0"
-
+            android:textColor="@color/colorBack"
+            android:textAllCaps="false"
             />
 
         <ImageView

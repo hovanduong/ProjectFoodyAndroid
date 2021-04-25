@@ -3,6 +3,7 @@ package com.example.foody2.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -42,7 +43,8 @@ public class TrangChuActivity extends AppCompatActivity  {
 
     private ApdaterRecyclerOdau apdaterRecyclerOdau;
     private List<QuanAnModel> quanAnModelList;
-
+    AdapterGioHang adapterGioHang;
+    private Fragment fragmentTemp = OdauFragment.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +54,10 @@ public class TrangChuActivity extends AppCompatActivity  {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new OdauFragment()).commit();
+                    OdauFragment.getInstance()).commit();
         }
         apdaterRecyclerOdau=new ApdaterRecyclerOdau(this,quanAnModelList,R.layout.cus_layout_recyclerview_odau);
+
 
     }
 
@@ -66,18 +69,20 @@ public class TrangChuActivity extends AppCompatActivity  {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.nav_home:
-                            selectedFragment = new OdauFragment();
+                            selectedFragment = OdauFragment.getInstance();
                             break;
                         case R.id.nav_favorites:
-                            selectedFragment = new AngiFragment();
-
+                            selectedFragment = AngiFragment.getInstance();
                             break;
                         case R.id.nav_profileuser:
                             selectedFragment = new ProfileFragment();
                             break;
                     }
+                    String backStateName = fragmentTemp.getClass().getName();
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
+                            selectedFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
+//                    getSupportFragmentManager().beginTransaction().
+                    fragmentTemp = selectedFragment;
                     return true;
                 }
             };

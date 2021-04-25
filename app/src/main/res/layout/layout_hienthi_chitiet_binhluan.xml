@@ -36,6 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="google"
+                android:textColor="@color/colorBack"
+                android:textAllCaps="false"
                 android:textStyle="bold"
                 android:textSize="18sp"/>
             <TextView
@@ -43,6 +45,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="36 trieu quang phuc"
+                android:textColor="@color/colorBack"
+                android:textAllCaps="false"
                 />
         </LinearLayout>
 

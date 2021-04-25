@@ -28,6 +28,7 @@
         android:textColor="@color/colorAccent"
         android:textAllCaps="false"
         android:layout_gravity="center"
+        android:textStyle="bold"
         />
 
 

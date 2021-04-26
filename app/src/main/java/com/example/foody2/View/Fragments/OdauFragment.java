@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,11 +26,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.foody2.Adapter.ApdaterRecyclerOdau;
 import com.example.foody2.Controller.OdauController;
 import com.example.foody2.Model.QuanAnModel;
 import com.example.foody2.R;
 import com.example.foody2.View.LuckyWheel;
 import com.example.foody2.activities.chat.ChatActivity;
+import com.like.LikeButton;
 
 public class OdauFragment extends Fragment implements View.OnClickListener {
     OdauController odauController;
@@ -38,6 +42,8 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
     Button btnLuckyWheel, btnChat;
+    ApdaterRecyclerOdau apdaterRecyclerOdau;
+
     private static OdauFragment odauFragment = null;
 
     public static OdauFragment getInstance() {
@@ -57,7 +63,6 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate(R.layout.layout_fragment_odau, container, false);
 
-
         recyclerOdau = view.findViewById(R.id.recyclerOdau);
         recyclerOdau.setHasFixedSize(true);
         progressBar = view.findViewById(R.id.progressBarOdau);
@@ -75,6 +80,7 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         odauController = new OdauController(getContext());
         odauController.getDanhSachQuanAnController(nestedScrollView, recyclerOdau, progressBar, vitrihientai, swiperefresh);
         setHasOptionsMenu(true);
+
 
         return view;
     }
@@ -95,7 +101,6 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
 
     }
 
-
     @Override
     public void onClick(View v) {
         Intent idLuckyWheel = new Intent(getContext(), LuckyWheel.class);
@@ -103,6 +108,5 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         Intent idChat = new Intent(getContext(), ChatActivity.class);
         startActivity(idChat);
     }
-
 
 }

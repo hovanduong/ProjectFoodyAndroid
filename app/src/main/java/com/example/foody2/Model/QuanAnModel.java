@@ -32,6 +32,13 @@ public class QuanAnModel implements Parcelable {
     List<MenuQuanAn> menuQuanAnList;
     List<ThucDonModel> thucDons;
 
+    int countlike;
+
+    public int getCountLike(int countlike){
+        return countlike;
+    }
+
+
     public List<ThucDonModel> getThucDons() {
         return thucDons;
     }

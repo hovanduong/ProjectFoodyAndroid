@@ -25,5 +25,7 @@
     <color name="followersBg">#65DCE5</color>
     <color name="followingBg">#49BEFF</color>
     <color name="grey">#E5E5E5</color>
+    <color name="drak">#c0c0c0</color>
+
 
 </resources>

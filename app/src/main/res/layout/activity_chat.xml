@@ -20,7 +20,7 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_marginStart="50dp"
         app:title="Chat"
-        app:titleTextColor="#251C1C">
+        app:titleTextColor="@color/colorBack">
 
 
     </androidx.appcompat.widget.Toolbar>
@@ -28,9 +28,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_Chat"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
+        android:layout_marginTop="10dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </RelativeLayout>

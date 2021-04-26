@@ -1,5 +1,6 @@
 package com.example.foody2.Adapter;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -22,14 +23,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foody2.Model.BinhLuanModel;
 import com.example.foody2.Model.ChiNhanhQuanAnModel;
+import com.example.foody2.Model.CountLike;
 import com.example.foody2.Model.QuanAnModel;
 import com.example.foody2.R;
 import com.example.foody2.View.ChiTietQuanAnActivity;
 
 import com.example.foody2.View.DatMonAnActivity;
+import com.example.foody2.activities.like.LikeViewModel;
+import com.facebook.internal.metrics.Tag;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.like.LikeButton;
+import com.like.OnAnimationEndListener;
+import com.like.OnLikeListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +48,10 @@ public class ApdaterRecyclerOdau extends RecyclerView.Adapter<ApdaterRecyclerOda
     List<QuanAnModel> quanAnModelList;
     int resource;
     Context context;
+
+    Application application = new Application();
+    LikeViewModel likeViewModel = new LikeViewModel(application);
+    int dem = 1;
     private List<QuanAnModel> quanAnModelListFull;
 
     public ApdaterRecyclerOdau(Context context, List<QuanAnModel> quanAnModelList, int resource) {
@@ -58,6 +70,8 @@ public class ApdaterRecyclerOdau extends RecyclerView.Adapter<ApdaterRecyclerOda
                 txtDiemBinhLuan, txtDiemBinhLuan2, txtTongbinhluan, txtTonghinhanhbinhluan, txtDiemTrungbinh, txtDiaChiQuanAnOdau, txtKhoangCachQuanAnOdau;
         LinearLayout containerBinhLuan, containerBinhLuan2;
         CardView cardView;
+        LikeButton likeButton;
+        TextView tvCount;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,6 +94,9 @@ public class ApdaterRecyclerOdau extends RecyclerView.Adapter<ApdaterRecyclerOda
             txtDiaChiQuanAnOdau = itemView.findViewById(R.id.txtDiaChiQuanAnOdau);
             txtKhoangCachQuanAnOdau = itemView.findViewById(R.id.txtKhoangCachQuanAnOdau);
             cardView = itemView.findViewById(R.id.carViewODau);
+
+            likeButton = itemView.findViewById(R.id.like_button);
+            tvCount = itemView.findViewById(R.id.tv_count);
         }
     }
 
@@ -169,6 +186,19 @@ public class ApdaterRecyclerOdau extends RecyclerView.Adapter<ApdaterRecyclerOda
                 context.startActivity(idMenuQuanAn);
             }
         });
+        if (holder.likeButton.isLiked()){
+            holder.likeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    likeViewModel.changeLike(dem+1, count -> likeViewModel.displayLike(quanAnModel.getCountLike(count)));
+                    holder.tvCount.setText((dem + 1)+ "");
+                }
+            });
+        }
+        else{
+            likeViewModel.changeLike(dem-1, count -> likeViewModel.displayLike(quanAnModel.getCountLike(count)));
+            holder.tvCount.setText((dem-1) + "");
+        }
     }
 
     private void setHinhAnhBinhLuan(final CircleImageView circleImageView, String linkhinh) {
@@ -223,6 +253,5 @@ public class ApdaterRecyclerOdau extends RecyclerView.Adapter<ApdaterRecyclerOda
             notifyDataSetChanged();
         }
     };
-
 }
 

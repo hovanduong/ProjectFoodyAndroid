@@ -44,7 +44,7 @@ public class MessageFirebase {
     }
 
     public static void displayMess(String idSend, final ISendMessage callback) {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(idSend);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("thanhviens").child(idSend);
 //        đọc tin toàn bộ tin nhắn user từ firebase xuống
         reference.addValueEventListener(new ValueEventListener() {
             @Override

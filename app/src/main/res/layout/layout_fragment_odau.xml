@@ -131,6 +131,7 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/btnGiaoHang"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
@@ -141,7 +142,9 @@
                             android:gravity="left|center"
                             android:padding="10dp"
                             android:text="@string/giaohang"
-                            android:textAllCaps="false" />
+                            android:textAllCaps="false"
+
+                            />
 
 
                         <Button

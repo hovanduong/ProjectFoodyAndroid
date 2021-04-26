@@ -33,7 +33,6 @@ public class DealMain extends AppCompatActivity {
         recview.setLayoutManager(new LinearLayoutManager(this));
         GridLayoutManager linearLayoutManager = new GridLayoutManager(this, 3);
 
-
         recview.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
         FirebaseRecyclerOptions<DealModel> options = new FirebaseRecyclerOptions.Builder<DealModel>()
                 .setQuery(FirebaseDatabase.getInstance().getReference().child("hinhanhdeal"), DealModel.class)
@@ -48,7 +47,6 @@ public class DealMain extends AppCompatActivity {
         super.onStart();
         adapter.startListening();
     }
-
 
     @Override
     protected void onStop() {

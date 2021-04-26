@@ -209,9 +209,6 @@
                 </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>
-
-
-
         </LinearLayout>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -39,10 +39,10 @@
         </activity>
         <activity android:name=".View.QuenMatKhauActivity" />
         <activity android:name=".View.DangKyActivity" />
-        <activity android:name=".View.TrangChuActivity">
+        <activity android:name=".View.TrangChuActivity"/>
 
 
-        </activity>
+
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

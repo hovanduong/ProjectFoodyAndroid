@@ -39,8 +39,7 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
     Button btnLuckyWheel, btnChat,btnBlog;
-    Button btnLuckyWheel, btnChat;
-  
+
     private static OdauFragment odauFragment = null;
 
     public static OdauFragment getInstance() {

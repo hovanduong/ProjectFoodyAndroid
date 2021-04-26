@@ -63,6 +63,7 @@
                 android:layout_marginTop="20dp"
                 android:paddingLeft="60dp"
                 android:paddingRight="60dp"
+                android:textSize="20dp"
                 android:text="@string/guimail"
                 android:background="@drawable/custom_button_chung"
                 android:textAllCaps="false"

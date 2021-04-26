@@ -7,13 +7,10 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.foody2.Controller.OdauController;
-import com.example.foody2.Model.QuanAnModel;
 import com.example.foody2.R;
 import com.example.foody2.View.LuckyWheel;
 
@@ -35,7 +31,8 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     SharedPreferences sharedPreferences;
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
-    Button btnLuckyWheel;
+    Button btnLuckyWheel,btnDeal;
+
 
 
 
@@ -50,6 +47,7 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         nestedScrollView = view.findViewById(R.id.netsScrollODau);
         swiperefresh = view.findViewById(R.id.swiperefresh);
         btnLuckyWheel = view.findViewById(R.id.btnLuckyWheel);
+        btnDeal = view.findViewById(R.id.btn_Deal);
         btnLuckyWheel.setOnClickListener(this);
         // Fragment dùng getCOntexxt để add Vào ACtivity
         sharedPreferences = getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
@@ -81,6 +79,9 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         Intent idLuckyWheel = new Intent(getContext(), LuckyWheel.class);
         startActivity(idLuckyWheel);
+
     }
+
+
 
 }

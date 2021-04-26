@@ -42,6 +42,117 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793597065863:android:c56bc47ced5104da419622",
+        "android_client_info": {
+          "package_name": "com.example.vidudocdulieu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793597065863-sjkrt766lb77ngepe1pnklm12llqe5in.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vidudocdulieu",
+            "certificate_hash": "f5ab420563788ae84ba6a50e4941e75e7614264f"
+          }
+        },
+        {
+          "client_id": "793597065863-nt6hqq6pg97q167ucdav0l4roq5ros12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPHi1ZKCnc3DLnVeHWfrg1I4C9kSgeODs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793597065863-nt6hqq6pg97q167ucdav0l4roq5ros12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793597065863:android:85ed0c380ca9e63c419622",
+        "android_client_info": {
+          "package_name": "com.example.vidudocdulieu1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793597065863-ru1tv8foc0obvgj5iehetopmf1i8nk7g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vidudocdulieu1",
+            "certificate_hash": "f5ab420563788ae84ba6a50e4941e75e7614264f"
+          }
+        },
+        {
+          "client_id": "793597065863-nt6hqq6pg97q167ucdav0l4roq5ros12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPHi1ZKCnc3DLnVeHWfrg1I4C9kSgeODs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793597065863-nt6hqq6pg97q167ucdav0l4roq5ros12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793597065863:android:450a6f2cad9510ef419622",
+        "android_client_info": {
+          "package_name": "com.itschool.checongbinh.foody"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793597065863-p5n74hm52u2v8flveut09rk6ncjb87oo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.itschool.checongbinh.foody",
+            "certificate_hash": "f5ab420563788ae84ba6a50e4941e75e7614264f"
+          }
+        },
+        {
+          "client_id": "793597065863-nt6hqq6pg97q167ucdav0l4roq5ros12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPHi1ZKCnc3DLnVeHWfrg1I4C9kSgeODs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793597065863-nt6hqq6pg97q167ucdav0l4roq5ros12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

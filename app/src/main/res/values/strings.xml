@@ -32,7 +32,7 @@
     <string name="gantoi">Gần tôi</string>
     <string name="giaohang">Giao hàng</string>
     <string name="gameandfun">Game And Fun</string>
-    <string name="danhgia">Đánh Giá</string>
+    <string name="deal">Deal</string>
     <string name="blog">Blog</string>
     <string name="topmenber">Top Thành Viên</string>
     <string name="datmon">Đặt Món</string>
@@ -64,4 +64,9 @@
     <string name="giatoithieu">Giá tối thiểu</string>
     <string name="twitterUsername">\@joeytribbiani</string>
     <string name="thanhtoan">Thanh toán</string>
+    <string name="dealgiamgia">Deal xịn giảm nữa</string>
+
+    <string name="diadiem">200 dia diem</string>
+    <string name="uudai">Ưu Đãi</string>
+
 </resources>

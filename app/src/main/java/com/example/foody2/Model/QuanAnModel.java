@@ -270,6 +270,7 @@ public class QuanAnModel implements Parcelable {
             for (DataSnapshot valueHinhQuanAn : dataSnapshotHinhQuanAn.getChildren()) {
                 hinhanhlist.add(valueHinhQuanAn.getValue(String.class));
             }
+
             quanAnModel.setHinhanhquanan(hinhanhlist);
             // Lấy danh sách bình luận của quán ăn
             DataSnapshot dataSnapshotBinhLuanQuanAn = dataSnapshot.child("binhluans").child(quanAnModel.getMaquanan());

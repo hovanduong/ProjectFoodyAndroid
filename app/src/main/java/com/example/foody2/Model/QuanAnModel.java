@@ -25,12 +25,44 @@ public class QuanAnModel implements Parcelable {
     String tenquanan;
     String videogioithieu;
     String maquanan;
+    String noidung;
+    List<Bitmap> bitmapList;
+    long giatoida;
+    long giatoithieu;
+
     long luotthich;
     List<String> tienich;
     List<String> hinhanhquanan;
     List<BinhLuanModel> binhluanModeList;
     List<MenuQuanAn> menuQuanAnList;
     List<ThucDonModel> thucDons;
+    private DatabaseReference nodeRoot;
+
+    // bước đọc
+    protected QuanAnModel(Parcel in) {
+        giaohang = in.readByte() != 0;
+        giodongcua = in.readString();
+        giomocua = in.readString();
+        tenquanan = in.readString();
+        videogioithieu = in.readString();
+        tienich = in.createStringArrayList();
+        hinhanhquanan = in.createStringArrayList();
+        //  bitmapList = in.createTypedArrayList(Bitmap.CREATOR);
+        maquanan = in.readString();
+        luotthich = in.readLong();
+        giatoida = in.readLong();
+        giatoithieu = in.readLong();
+        // dọc dữ liệu cho đối tượng
+
+        chiNhanhQuanAnModelList = new ArrayList<ChiNhanhQuanAnModel>(); // neu null thi khời tạo arraylisst
+        in.readTypedList(chiNhanhQuanAnModelList, ChiNhanhQuanAnModel.CREATOR);
+
+        binhluanModeList = new ArrayList<BinhLuanModel>();
+        in.readTypedList(binhluanModeList, BinhLuanModel.CREATOR);
+
+        menuQuanAnList = new ArrayList<MenuQuanAn>();
+        in.readTypedList(menuQuanAnList, MenuQuanAn.CREATOR);
+    }
 
     public List<ThucDonModel> getThucDons() {
         return thucDons;
@@ -48,8 +80,6 @@ public class QuanAnModel implements Parcelable {
         this.menuQuanAnList = menuQuanAnList;
     }
 
-    List<Bitmap> bitmapList;
-    long giatoida;
 
     public long getGiatoida() {
         return giatoida;
@@ -67,32 +97,6 @@ public class QuanAnModel implements Parcelable {
         this.giatoithieu = giatoithieu;
     }
 
-    long giatoithieu;
-// bước đọc
-    protected QuanAnModel(Parcel in) {
-        giaohang = in.readByte() != 0;
-        giodongcua = in.readString();
-        giomocua = in.readString();
-        tenquanan = in.readString();
-        videogioithieu = in.readString();
-        tienich = in.createStringArrayList();
-        hinhanhquanan = in.createStringArrayList();
-      //  bitmapList = in.createTypedArrayList(Bitmap.CREATOR);
-        maquanan = in.readString();
-        luotthich = in.readLong();
-        giatoida=in.readLong();
-        giatoithieu=in.readLong();
-        // dọc dữ liệu cho đối tượng
-
-        chiNhanhQuanAnModelList=new ArrayList<ChiNhanhQuanAnModel>(); // neu null thi khời tạo arraylisst
-        in.readTypedList(chiNhanhQuanAnModelList,ChiNhanhQuanAnModel.CREATOR);
-
-        binhluanModeList=new ArrayList<BinhLuanModel>();
-        in.readTypedList(binhluanModeList,BinhLuanModel.CREATOR);
-
-        menuQuanAnList=new ArrayList<MenuQuanAn>();
-        in.readTypedList(menuQuanAnList,MenuQuanAn.CREATOR);
-    }
 
     public static final Creator<QuanAnModel> CREATOR = new Creator<QuanAnModel>() {
         @Override
@@ -131,9 +135,6 @@ public class QuanAnModel implements Parcelable {
     public void setBinhluanModeList(List<BinhLuanModel> binhluanModeList) {
         this.binhluanModeList = binhluanModeList;
     }
-
-
-    private DatabaseReference nodeRoot;
 
 
     public List<String> getHinhanhquanan() {
@@ -221,7 +222,16 @@ public class QuanAnModel implements Parcelable {
     public void setMaquanan(String maquanan) {
         this.maquanan = maquanan;
     }
-    private  DataSnapshot dataRoot;
+
+    public String getNoidung() {
+        return noidung;
+    }
+
+    public void setNoidung(String noidung) {
+        this.noidung = noidung;
+    }
+
+    private DataSnapshot dataRoot;
 
     public void getDanhSachQuanAn(final OdauInterface odauInterface, final Location vitrihientai, final int itemtieptheo, final int itemdaco) {
 
@@ -229,18 +239,18 @@ public class QuanAnModel implements Parcelable {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                dataRoot=dataSnapshot;
-                LayDanhSachQuanAn(dataSnapshot,odauInterface,vitrihientai,itemtieptheo,itemdaco );
+                dataRoot = dataSnapshot;
+                LayDanhSachQuanAn(dataSnapshot, odauInterface, vitrihientai, itemtieptheo, itemdaco);
             }
 
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         };
-        if(dataRoot != null){
-            LayDanhSachQuanAn(dataRoot,odauInterface,vitrihientai,itemtieptheo,itemdaco );
+        if (dataRoot != null) {
+            LayDanhSachQuanAn(dataRoot, odauInterface, vitrihientai, itemtieptheo, itemdaco);
 
-        }else{
+        } else {
             nodeRoot.addListenerForSingleValueEvent(valueEventListener);
         }
 
@@ -251,10 +261,10 @@ public class QuanAnModel implements Parcelable {
         //lay danh sach quan ăn
         int i = 0;
         for (DataSnapshot valueQuanAn : dataSnapshotQuanAn.getChildren()) {
-            if(i==itemtieptheo){
+            if (i == itemtieptheo) {
                 break;
             }
-            if(i<itemdaco){
+            if (i < itemdaco) {
                 i++;
                 continue;
             }
@@ -262,7 +272,7 @@ public class QuanAnModel implements Parcelable {
             QuanAnModel quanAnModel = valueQuanAn.getValue(QuanAnModel.class);
             quanAnModel.setMaquanan(valueQuanAn.getKey());
 
-           // Log.d("kiemtra", valueQuanAn.getKey() + "");
+            // Log.d("kiemtra", valueQuanAn.getKey() + "");
             //lay danh sách hình ảnh của quán ăn theo mã
             DataSnapshot dataSnapshotHinhQuanAn = dataSnapshot.child("hinhanhquanans").child(valueQuanAn.getKey());
 
@@ -294,19 +304,19 @@ public class QuanAnModel implements Parcelable {
                 binhLuanModels.add(binhLuanModel);
             }
             quanAnModel.setBinhluanModeList(binhLuanModels);
-      //      Log.d("kiemttra",quanAnModel.getBinhluanModeList() + "");
+            //      Log.d("kiemttra",quanAnModel.getBinhluanModeList() + "");
             // lay danh menu
-            DataSnapshot dataSnapshotMenuQuanAn= dataSnapshot.child("menuquanans").child(quanAnModel.getMaquanan());
+            DataSnapshot dataSnapshotMenuQuanAn = dataSnapshot.child("menuquanans").child(quanAnModel.getMaquanan());
 
-            List<MenuQuanAn> menuQuanAns=new ArrayList<>();
-            for(DataSnapshot valueMenu : dataSnapshotMenuQuanAn.getChildren()){
-                MenuQuanAn menuQuanAn=valueMenu.getValue(MenuQuanAn.class);
+            List<MenuQuanAn> menuQuanAns = new ArrayList<>();
+            for (DataSnapshot valueMenu : dataSnapshotMenuQuanAn.getChildren()) {
+                MenuQuanAn menuQuanAn = valueMenu.getValue(MenuQuanAn.class);
                 menuQuanAn.setMamenu(valueMenu.getKey());
                 menuQuanAns.add(menuQuanAn);
 
             }
             quanAnModel.setMenuQuanAnList(menuQuanAns);
-          //  Log.d("kiemtra",quanAnModel.getMenuQuanAnList() + " ");
+            //  Log.d("kiemtra",quanAnModel.getMenuQuanAnList() + " ");
 
             // lay chi nhánh bình luận
             List<ChiNhanhQuanAnModel> chiNhanhQuanAnModels = new ArrayList<>();
@@ -317,7 +327,7 @@ public class QuanAnModel implements Parcelable {
                 vitriquanan.setLatitude(chiNhanhQuanAnModel.getLatitude());
                 vitriquanan.setLongitude(chiNhanhQuanAnModel.getLongitude());
                 double khoangcach = vitrihientai.distanceTo(vitriquanan) / 1000;
-              //  Log.d("kiemtra", khoangcach + "-" + chiNhanhQuanAnModel.getDiachi());
+                //  Log.d("kiemtra", khoangcach + "-" + chiNhanhQuanAnModel.getDiachi());
                 chiNhanhQuanAnModel.setKhoangcach(khoangcach);
                 chiNhanhQuanAnModels.add(chiNhanhQuanAnModel);
             }

@@ -23,7 +23,6 @@
         android:background="@drawable/custom_button_chung"
         android:textColor="@color/colorAccent"
         android:textAllCaps="false"
-
+        android:textStyle="bold"
         />
-
 </FrameLayout>

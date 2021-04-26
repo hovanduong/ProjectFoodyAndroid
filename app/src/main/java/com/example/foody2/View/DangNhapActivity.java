@@ -40,7 +40,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 
 public class DangNhapActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener, FirebaseAuth.AuthStateListener {
-    private SignInButton btnDangNhapGoogle;
+
     private LoginButton btnDangNhapFaceBook;
     private CallbackManager callbackManagerFaceBook;
     private GoogleApiClient apiClient;
@@ -62,7 +62,6 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         firebaseAuth.signOut();
         LoginManager.getInstance().logOut();
 
-        btnDangNhapGoogle = findViewById(R.id.btnDangNhapGoogle);
         txtDangKyMoi = findViewById(R.id.txtDangKyKhoiPhuc);
         btnDangNhapFaceBook = findViewById(R.id.btnDangNhapFaceBook);
         txtQuenMatKhau = findViewById(R.id.txtQuenMatKhau);
@@ -94,7 +93,6 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
 
             }
         });
-        btnDangNhapGoogle.setOnClickListener(this);
         TaoClientDangNhapGooogle();
     }
 
@@ -126,13 +124,6 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         firebaseAuth.removeAuthStateListener(this);
     }
 
-    // Mở form đăng nhập bằng goole
-    private void DangNhapGoole(GoogleApiClient apiClient) {
-        KIEMTRA_PROVIDER_DANGNHAP = 1;
-        Intent IdGoogle = Auth.GoogleSignInApi.getSignInIntent(apiClient);
-        startActivityForResult(IdGoogle, RESERQUEST_CODE_DANGNHAP_GOOLE);
-
-    }
     //End Mở form đăng nhập bằng goole
 
     //Lay tokenId đã đăng nhập google để đăng nhập trên firebase
@@ -175,9 +166,6 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            case R.id.btnDangNhapGoogle:
-                DangNhapGoole(apiClient);
-                break;
             case R.id.txtDangKyKhoiPhuc:
                 Intent idDangKy = new Intent(DangNhapActivity.this, DangKyActivity.class);
                 startActivity(idDangKy);

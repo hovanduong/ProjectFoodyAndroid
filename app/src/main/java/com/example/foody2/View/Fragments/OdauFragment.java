@@ -35,7 +35,6 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
 
 
 
-
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override

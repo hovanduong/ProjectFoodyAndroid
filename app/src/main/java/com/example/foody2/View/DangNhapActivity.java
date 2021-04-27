@@ -1,28 +1,30 @@
 package com.example.foody2.View;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
-import android.widget.Button;
+
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.foody2.R;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,34 +33,41 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
 
+
+import java.util.Arrays;
+
+import com.facebook.FacebookSdk;
 
 public class DangNhapActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener, FirebaseAuth.AuthStateListener {
 
     private FirebaseAuth firebaseAuth;
     private TextView txtDangKyMoi, txtQuenMatKhau;
-    private Button btnDangNhap;
-
+    LinearLayout btnDangNhap, btnDangNhapFB;
     private EditText edEmail, edPassWord;
+    private CallbackManager callbackManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
+        FacebookSdk.sdkInitialize(getApplicationContext());
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.signOut();
 
-
+        callbackManager = CallbackManager.Factory.create();
         txtDangKyMoi = findViewById(R.id.txtDangKyKhoiPhuc);
 
         txtQuenMatKhau = findViewById(R.id.txtQuenMatKhau);
 
-        btnDangNhap = findViewById(R.id.btnGuiMailKhoiPhuc);
+        btnDangNhap = findViewById(R.id.btnDangnhap);
         edEmail = findViewById(R.id.edEmailKhoiPhucMatKhau);
         edPassWord = findViewById(R.id.edPassWordDangNhap);
+        btnDangNhapFB = findViewById(R.id.btn_Login_FB);
 
+        btnDangNhapFB.setOnClickListener(this);
         txtQuenMatKhau.setOnClickListener(this);
         txtDangKyMoi.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
@@ -67,7 +76,6 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     }
 
 
-    //end Khởi tạo client đăng nhập goole
 
     @Override
     protected void onStart() {
@@ -81,23 +89,25 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         firebaseAuth.removeAuthStateListener(this);
     }
 
-    //End Mở form đăng nhập bằng goole
+
 
 
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 
-    // lăng nghe sự kiện user  click vào button đăng nhập google,fb email account
     @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
+            case R.id.btn_Login_FB:
+                DanhNhapFb();
+                break;
             case R.id.txtDangKyKhoiPhuc:
                 Intent idDangKy = new Intent(DangNhapActivity.this, DangKyActivity.class);
                 startActivity(idDangKy);
                 break;
-            case R.id.btnGuiMailKhoiPhuc:
+            case R.id.btnDangnhap:
                 DangNhap();
                 break;
             case R.id.txtQuenMatKhau:
@@ -105,6 +115,28 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
                 startActivity(idKhoiPhucMatKhau);
                 break;
         }
+    }
+
+    private void DanhNhapFb() {
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "public_profile"));
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                handleFacebookAccessToken(loginResult.getAccessToken());
+                Intent idHome = new Intent(DangNhapActivity.this, TrangChuActivity.class);
+                startActivity(idHome);
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
     }
 
     private void DangNhap() {
@@ -147,5 +179,25 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
 
         }
     }
+
     // End
+    private void handleFacebookAccessToken(AccessToken token) {
+
+
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Intent idHome = new Intent(DangNhapActivity.this, TrangChuActivity.class);
+                            startActivity(idHome);
+                        } else {
+
+                        }
+                    }
+                });
+    }
+
 }

@@ -86,7 +86,7 @@
             android:layout_weight="1" />
 
         <LinearLayout
-            android:id="@+id/btnGuiMailKhoiPhuc"
+            android:id="@+id/btnDangnhap"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -128,7 +128,6 @@
                 android:textColor="@color/colorBack"
 
                 />
-
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
@@ -137,18 +136,38 @@
 
         </LinearLayout>
 
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/btnDangNhapFaceBook"
+        <LinearLayout
+            android:id="@+id/btn_Login_FB"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"></com.facebook.login.widget.LoginButton>
+            android:layout_weight="1"
+            android:background="@drawable/custom_dangnhapfb"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_fb" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="facebook"
+                android:textColor="#FFF"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            >
 
             <TextView
                 android:id="@+id/txtQuenMatKhau"

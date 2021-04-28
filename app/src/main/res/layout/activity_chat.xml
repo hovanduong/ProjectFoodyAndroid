@@ -7,23 +7,7 @@
     android:background="@color/colorBackgroungTrangchu"
     tools:context=".activities.chat.ChatActivity">
 
-    <ImageView
-        android:id="@+id/img_backchat"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="15dp"
-        app:srcCompat="@drawable/ic_back" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginStart="50dp"
-        app:title="Chat"
-        app:titleTextColor="@color/colorBack">
-
-
-    </androidx.appcompat.widget.Toolbar>
+    <include layout="@layout/layout_toolbar"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

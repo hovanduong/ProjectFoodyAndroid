@@ -3,7 +3,12 @@ package com.example.foody2.View;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.foody2.R;
 import com.example.mylibrary.model.LuckyItem;
@@ -14,9 +19,10 @@ import java.util.List;
 import java.util.Random;
 
 
-public class LuckyWheel extends Activity {
+public class LuckyWheel extends AppCompatActivity {
     List<LuckyItem> data = new ArrayList<>();
-
+    Toolbar toolbar;
+    TextView txtTieuDeToolBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +30,14 @@ public class LuckyWheel extends Activity {
         setContentView(R.layout.activity_luckywheel);
 
         final LuckyWheelView luckyWheelView = (LuckyWheelView) findViewById(R.id.luckyWheel);
-
+        txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
+        txtTieuDeToolBar.setText("Lucky Weel");
+        txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(" ");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         LuckyItem luckyItem1 = new LuckyItem();
         luckyItem1.topText = "100";
         //luckyItem1.icon = R.drawable.test1;
@@ -39,7 +52,6 @@ public class LuckyWheel extends Activity {
 
         LuckyItem luckyItem3 = new LuckyItem();
         luckyItem3.topText = "300";
-        luckyItem3.icon = R.drawable.test3;
         luckyItem3.color = 0xffFFCC80;
         data.add(luckyItem3);
 
@@ -129,6 +141,10 @@ public class LuckyWheel extends Activity {
         });
     }
 
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
     private int getRandomIndex() {
         Random rand = new Random();
         return rand.nextInt(data.size() - 1) + 0;

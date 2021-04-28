@@ -115,9 +115,10 @@ public class AngiFragment extends Fragment {
     }
 
     public void getDanhSachDatMon() {
-         datMonList.clear();
+        // datMonList.clear();
         for (DatMon datMon : AdapterMonAn.datMonList) {
             datMonList.add(datMon);
+            Log.d("kiemtraquanan",datMonList + "");
 
         }
     }

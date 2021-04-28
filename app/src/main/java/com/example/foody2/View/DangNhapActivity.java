@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 
 import android.widget.EditText;
@@ -42,6 +43,7 @@ import com.facebook.FacebookSdk;
 public class DangNhapActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener, FirebaseAuth.AuthStateListener {
 
     private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private TextView txtDangKyMoi, txtQuenMatKhau;
     LinearLayout btnDangNhap, btnDangNhapFB;
     private EditText edEmail, edPassWord;
@@ -55,7 +57,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         FacebookSdk.sdkInitialize(getApplicationContext());
 
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth.signOut();
+        //firebaseAuth.signOut();
 
         callbackManager = CallbackManager.Factory.create();
         txtDangKyMoi = findViewById(R.id.txtDangKyKhoiPhuc);
@@ -67,26 +69,41 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         edPassWord = findViewById(R.id.edPassWordDangNhap);
         btnDangNhapFB = findViewById(R.id.btn_Login_FB);
 
-        btnDangNhapFB.setOnClickListener(this);
+        btnDangNhapFB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DanhNhapFb();
+            }
+        });
         txtQuenMatKhau.setOnClickListener(this);
         txtDangKyMoi.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
-
-
+        firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    Intent intent=new Intent(DangNhapActivity.this,TrangChuActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            }
+        };
     }
+
+
 
 
 
     @Override
     protected void onStart() {
         super.onStart();
-        firebaseAuth.addAuthStateListener(this);
+        firebaseAuth.addAuthStateListener(firebaseAuthListener);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        firebaseAuth.removeAuthStateListener(this);
+        firebaseAuth.removeAuthStateListener(firebaseAuthListener);
     }
 
 
@@ -100,9 +117,9 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            case R.id.btn_Login_FB:
-                DanhNhapFb();
-                break;
+//            case R.id.btn_Login_FB:
+//                DanhNhapFb();
+//                break;
             case R.id.txtDangKyKhoiPhuc:
                 Intent idDangKy = new Intent(DangNhapActivity.this, DangKyActivity.class);
                 startActivity(idDangKy);
@@ -191,13 +208,12 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Intent idHome = new Intent(DangNhapActivity.this, TrangChuActivity.class);
-                            startActivity(idHome);
                         } else {
 
                         }
                     }
                 });
     }
+    }
 
-}
+

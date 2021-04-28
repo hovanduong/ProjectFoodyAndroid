@@ -27,10 +27,10 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 //    GioHangContronller gioHangContronller;
     AngiFragment angiFragment;
     TrangChuActivity trangChuActivity;
-
     Context context;
     List<MonAnModel> monAnModelList;
      public static List<DatMon> datMonList = new ArrayList<>();
+
 
     public AdapterMonAn(Context context, List<MonAnModel> monAnModelList){
         this.context = context;
@@ -66,12 +66,21 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
         final MonAnModel monAnModel = monAnModelList.get(position);
         holder.txtTenMonAn.setText(monAnModel.getTenmon());
         holder.txtGia.setText(monAnModel.getGiatien() + "đ");
+        if (datMonList.size() - 1 >= position){
+            holder.txtSoLuong.setText(datMonList.get(position).getSoLuong() + "");
+            holder.txtSoLuong.setTag(datMonList.get(position).getSoLuong());
+        }else{
+            holder.txtSoLuong.setTag(0);
 
-        holder.txtSoLuong.setTag(0);
+        }
         holder.imgTangSoLuong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int dem = Integer.parseInt(holder.txtSoLuong.getTag().toString());
+                if (datMonList.size() - 1 >= position){
+                    dem = datMonList.get(position).getSoLuong();
+
+                }
                 dem++;
                 holder.txtSoLuong.setText(dem+"");
                 holder.txtSoLuong.setTag(dem);

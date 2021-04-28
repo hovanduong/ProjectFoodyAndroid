@@ -47,7 +47,7 @@ public class AdapterGioHang  extends RecyclerView.Adapter<AdapterGioHang.ViewHol
     public void onBindViewHolder(@NonNull AdapterGioHang.ViewHolder holder, int position) {
        DatMon datMon=datMons.get(position);
        holder.txtTenMonAn.setText(datMon.getTenMonAn());
-//       holder.txtSoLuong.setText(datMon.getSoLuong());
+       holder.txtSoLuong.setText(datMon.getSoLuong() + "");
 //       holder.txtSoLuong.setText(datMon.getSoLuong());
         //if(datMon.getTenMonAn().equals())
        // datMons.remove(position);

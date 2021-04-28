@@ -62,7 +62,6 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate(R.layout.layout_fragment_odau, container, false);
 
-
         recyclerOdau = view.findViewById(R.id.recyclerOdau);
         recyclerOdau.setHasFixedSize(true);
         progressBar = view.findViewById(R.id.progressBarOdau);

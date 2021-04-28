@@ -101,8 +101,8 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 
 //                gioHangContronller=new GioHangContronller(context);
 //                gioHangContronller.getDanhSachDatMon();
-                angiFragment= AngiFragment.getInstance();
-                angiFragment.getDanhSachDatMon();
+                    angiFragment= AngiFragment.getInstance();
+                    angiFragment.getDanhSachDatMon();
 
 
 //                angiFragment.onCreateView(inflater,container,savedInstanceState);
@@ -125,7 +125,8 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 
                 holder.txtSoLuong.setText(dem+"");
                 holder.txtSoLuong.setTag(dem);
-
+               angiFragment= AngiFragment.getInstance();
+                angiFragment.getDanhSachDatMon();
             }
         });
     }

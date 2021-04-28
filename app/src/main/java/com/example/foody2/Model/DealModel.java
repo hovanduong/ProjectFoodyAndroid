@@ -1,19 +1,17 @@
 package com.example.foody2.Model;
 
+import android.widget.ImageView;
+
 import java.util.List;
 
 public class DealModel {
-    private List<String> image;
+   private String linkImage;
 
-    public DealModel(List<String> image) {
-        this.image = image;
+    public DealModel(String linkImage) {
+        this.linkImage = linkImage;
     }
 
-    public List<String> getImage() {
-        return image;
-    }
-
-    public void setImage(List<String> image) {
-        this.image = image;
+    public String getLinkImage() {
+        return linkImage;
     }
 }

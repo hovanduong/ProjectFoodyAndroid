@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.foody2.R;
 
 import java.io.IOException;
@@ -25,15 +26,16 @@ public class DealActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deal);
         imgdeal=findViewById(R.id.imgeDeal);
-        imgdeal.setImageDrawable(LoadImageFromWebOperations("https://st3.depositphotos.com/9880800/13074/i/1600/depositphotos_130740248-stock-photo-sale-sign-with-gift-boxes.jpg"));
+        String sale1="https://st.depositphotos.com/1000260/1993/i/950/depositphotos_19939511-stock-photo-close-up-make-up-with.jpg";
+        String sale2="";
+        String sale3="";
+        String sale4="";
+        String sale5="";
+        String sale6="";
+        String sale7="";
+        String sale8="";
+        Glide.with(this).load(sale1).into(imgdeal);
+
     }
-    public static Drawable LoadImageFromWebOperations(String url) {
-        try {
-            InputStream is = (InputStream) new URL(url).getContent();
-            Drawable d = Drawable.createFromStream(is, "src name");
-            return d;
-        } catch (Exception e) {
-            return null;
-        }
-    }
+
 }

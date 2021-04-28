@@ -1,130 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E6E7E9"
     tools:context=".View.DangNhapActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/custom_layout_manhinh"
-        android:orientation="vertical"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
-        android:paddingBottom="20dp"
+        android:background="#E6E7E9"
         android:gravity="center"
-        >
+        android:orientation="vertical"
+        android:padding="50dp"
+        android:weightSum="12">
 
-    <TextView
-        android:layout_marginTop="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:textColor="#90000000"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textSize="40dp"
-        android:textAllCaps="false"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:text="Oder Foody"
+            android:textAlignment="center"
+            android:textColor="@color/colorBack"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:autoSizeTextType="uniform"
+            android:text="@string/Email"
+            android:textColor="@color/colorBack"
+            android:textColorHint="@color/drak"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edEmailKhoiPhucMatKhau"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:drawableLeft="@drawable/icon_adduser"
-            android:paddingLeft="10dp"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="@string/Email"
-            android:inputType="textPersonName"
-            android:background="@drawable/custom_form_text"
-            android:backgroundTint="#80dcdcdc"
-            android:textColor="#000000"
-            android:textColorHint="#80000000"
-            android:textColorLink="#dcdcdc" />
+            android:layout_height="15dp"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/custom_shadow_green"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="35dp"
+            android:hint="Emxample@gmal.com"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:textColorHint="@color/drak" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:autoSizeTextType="uniform"
+            android:text="Mật khẩu"
+            android:textColor="@color/colorBack"
+            android:textStyle="bold"
+
+            />
+
         <EditText
             android:id="@+id/edPassWordDangNhap"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:drawableLeft="@drawable/ic_lock_outline_white_24dp"
-            android:paddingLeft="10dp"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="@string/PasWord"
-            android:inputType="textPersonName|textPassword"
-            android:background="@drawable/custom_form_text"
-            android:backgroundTint="#80dcdcdc"
-            android:textColor="#000000"
-            android:textColorHint="#80000000"
-            android:textColorLink="#dcdcdc" />
+            android:layout_height="15dp"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/custom_shadow_orange"
+            android:drawableLeft="@drawable/ic_lock"
+            android:drawablePadding="35dp"
+            android:hint="Nhập mật khẩu"
+            android:inputType="text|textPassword"
+            android:paddingLeft="20dp"
+            android:textColorHint="@color/drak" />
 
-        <Button
-            android:id="@+id/btnGuiMailKhoiPhuc"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="60dp"
-            android:paddingRight="60dp"
-            android:text="@string/DangNhap"
-            android:textAllCaps="false"
-            android:textStyle="bold"
-            android:background="@drawable/custom_button_chung"
-            android:textColor="#FFFFFF" />
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="46dp"
-            android:orientation="horizontal"
-            android:paddingTop="20dp">
-
-            <View
-                android:layout_width="236dp"
-                android:layout_height="2dp"
-                android:layout_weight="1"
-                android:background="#80000000"></View>
+            android:id="@+id/btnDangnhap"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button_chung"
+            android:gravity="center"
+            android:weightSum="1">
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="150dp"
-                android:layout_height="5dp"
-                android:layout_weight="1"
-                android:text="@string/hoac" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="@string/DangNhap"
+                android:textColor="#FFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:weightSum="4">
 
             <View
-                android:layout_width="236dp"
-                android:layout_height="2dp"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
                 android:layout_weight="1"
-                android:background="#80000000"></View>
+                android:background="#707070" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="Hoặc đăng nhập "
+                android:textAlignment="center"
+                android:textColor="@color/colorBack"
+
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#707070" />
 
         </LinearLayout>
 
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/btnDangNhapFaceBook"
+        <LinearLayout
+            android:id="@+id/btn_Login_FB"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="15dp"></com.facebook.login.widget.LoginButton>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_dangnhapfb"
+            android:gravity="center">
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/btnDangNhapGoogle"
-            android:layout_width="match_parent"
-            android:layout_height="51dp"></com.google.android.gms.common.SignInButton>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_fb" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="facebook"
+                android:textColor="#FFF"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            >
 
             <TextView
                 android:id="@+id/txtQuenMatKhau"
@@ -132,7 +175,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/quenmatkhau"
-                android:textColor="#80000000" />
+                android:textColor="@color/colorBack"
+
+                />
 
             <TextView
                 android:id="@+id/txtDangKyKhoiPhuc"
@@ -141,9 +186,9 @@
                 android:layout_weight="1"
                 android:text="@string/dangkymoi"
                 android:textAlignment="textEnd"
-                android:textColor="#80000000" />
+                android:textColor="@color/colorBack" />
         </LinearLayout>
 
     </LinearLayout>
 
-</android.widget.RelativeLayout>
+</android.widget.LinearLayout>

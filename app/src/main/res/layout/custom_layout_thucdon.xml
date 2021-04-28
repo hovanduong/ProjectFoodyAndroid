@@ -7,6 +7,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
+        android:textColor="@color/colorBack"
+        android:textAllCaps="false"
+        android:textStyle="bold"
         />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMonAn"

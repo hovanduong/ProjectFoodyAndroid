@@ -1,5 +1,6 @@
 package com.example.foody2.View.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,7 +27,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.foody2.Controller.OdauController;
 import com.example.foody2.Model.QuanAnModel;
 import com.example.foody2.R;
+import com.example.foody2.View.BlogActivity;
+import com.example.foody2.View.DealActivity;
+import com.example.foody2.View.GiaoHangActivity;
 import com.example.foody2.View.LuckyWheel;
+import com.example.foody2.activities.chat.ChatActivity;
 
 public class OdauFragment extends Fragment implements View.OnClickListener {
     OdauController odauController;
@@ -35,7 +40,17 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     SharedPreferences sharedPreferences;
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
-    Button btnLuckyWheel;
+    Button btnLuckyWheel, btnChat,btnBlog,btnGiaoHang,btnDeal;
+
+    private static OdauFragment odauFragment = null;
+
+    public static OdauFragment getInstance() {
+        if (odauFragment == null) {
+            odauFragment = new OdauFragment();
+            return odauFragment;
+        }
+        return odauFragment;
+    }
 
 
 
@@ -43,7 +58,10 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
         View view = inflater.inflate(R.layout.layout_fragment_odau, container, false);
+
         recyclerOdau = view.findViewById(R.id.recyclerOdau);
         recyclerOdau.setHasFixedSize(true);
         progressBar = view.findViewById(R.id.progressBarOdau);
@@ -51,6 +69,14 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         swiperefresh = view.findViewById(R.id.swiperefresh);
         btnLuckyWheel = view.findViewById(R.id.btnLuckyWheel);
         btnLuckyWheel.setOnClickListener(this);
+        btnChat = view.findViewById(R.id.btnChat);
+        btnChat.setOnClickListener(this);
+        btnBlog=view.findViewById(R.id.btnblog);
+        btnBlog.setOnClickListener(this);
+        btnGiaoHang=view.findViewById(R.id.btnGiaoHang);
+        btnGiaoHang.setOnClickListener(this);
+        btnDeal=view.findViewById(R.id.btnDeal);
+        btnDeal.setOnClickListener(this);
         // Fragment dùng getCOntexxt để add Vào ACtivity
         sharedPreferences = getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
         Location vitrihientai = new Location("");
@@ -63,12 +89,14 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onStart() {
         super.onStart();
 
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,10 +105,35 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
 
     }
 
+
     @Override
     public void onClick(View v) {
-        Intent idLuckyWheel = new Intent(getContext(), LuckyWheel.class);
-        startActivity(idLuckyWheel);
+        int id = v.getId();
+        switch (id) {
+            case R.id.btnLuckyWheel:
+                Intent idLuckyWheel = new Intent(getContext(), LuckyWheel.class);
+                startActivity(idLuckyWheel);
+                break;
+            case R.id.btnChat:
+                Intent idChat = new Intent(getContext(), ChatActivity.class);
+                startActivity(idChat);
+                break;
+            case R.id.btnblog:
+                Intent idBlog = new Intent(getContext(), BlogActivity.class);
+                startActivity(idBlog);
+                break;
+            case R.id.btnGiaoHang:
+                Intent idGiaohang = new Intent(getContext(), GiaoHangActivity.class);
+                startActivity(idGiaohang);
+                break;
+            case R.id.btnDeal:
+                Intent idDeal = new Intent(getContext(), DealActivity.class);
+                startActivity(idDeal);
+                break;
+        }
+
+
     }
+
 
 }

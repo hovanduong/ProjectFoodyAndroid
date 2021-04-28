@@ -92,7 +92,7 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 
 //                gioHangContronller=new GioHangContronller(context);
 //                gioHangContronller.getDanhSachDatMon();
-                angiFragment=new AngiFragment();
+                angiFragment= AngiFragment.getInstance();
                 angiFragment.getDanhSachDatMon();
 
 

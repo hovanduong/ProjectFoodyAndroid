@@ -1,16 +1,13 @@
 <resources>
     <string name="app_name">foody2</string>
     <string name="phienban">Version</string>
-    <string name="dangtai">dang tai....</string>
-    <string name="tencongty">hovanduong.cucdi</string>
     <string name="Email">Email</string>
     <string name="PasWord">Mật Khẩu</string>
     <string name="DangNhap">Đăng Nhập</string>
     <string name="hoac">Hoặc</string>
-    <string name="facebook_app_id">675752013185899</string>
     <string name="facebook_login">Đăng Nhập FaceBook</string>
     <string name="quenmatkhau">Quên Mật Khẩu ?</string>
-    <string name="dangkymoi"><u>Đăng Ký Mới</u></string>
+    <string name="dangkymoi">Đăng Ký Mới</string>
     <string name="nhaplaimatkhau">Nhập Lại Mật Khẩu</string>
     <string name="dangky">Đăng Ký</string>
     <string name="thongbaoloidangky">Bạn Chưa Nhập</string>
@@ -19,7 +16,7 @@
     <string name="dangxuly">Đang Xử Lý</string>
     <string name="dangnhapthatbai">Tài Khoản Không Hợp Lệ</string>
     <string name="khoiphucmatkhau">Forgot password</string>
-    <string name="chuoikhoiphucmatkhau">Bạn Vui Lòng Nhập Địa Chỉ Email Vào Khung Ben Dưới Để Khôi Phục Mật Khẩu</string>
+    <string name="chuoikhoiphucmatkhau">Vui lòng nhập địa chỉ Email</string>
     <string name="guimail">Gửi mail</string>
     <string name="chuoithanhvien">Bạn Không Phải Là Thành Viên?</string>
     <string name="thongbaoemailkhonghople">Email Không Hợp Lệ Vui Lòng Nhập Đúng Định Dạng Email</string>
@@ -64,4 +61,7 @@
     <string name="giatoithieu">Giá tối thiểu</string>
     <string name="twitterUsername">\@joeytribbiani</string>
     <string name="thanhtoan">Thanh toán</string>
+    <string name="facebook_app_id">1119413118523322</string>
+    <string name="fb_login_protocol_scheme">fb1119413118523322</string>
+
 </resources>

@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".View.GiaoHangActivity"
     >
-    <include layout="@layout/layout_toolbar"/>
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiperefresh"
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:orientation="vertical"
             android:background="@color/colorBackgroungTrangchu"
             android:layout_height="match_parent">
-
+            <include layout="@layout/layout_toolbar"/>
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/netsScrollODau"

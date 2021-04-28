@@ -32,7 +32,7 @@ public class GiaoHangActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_giao_hang);
         txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
         txtTieuDeToolBar.setText("Giao hàng");
         txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
@@ -42,7 +42,7 @@ public class GiaoHangActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        setContentView(R.layout.activity_giao_hang);
+
         recyclerOdau = findViewById(R.id.recyclerOdau);
         recyclerOdau.setHasFixedSize(true);
         progressBar = findViewById(R.id.progressBarOdau);

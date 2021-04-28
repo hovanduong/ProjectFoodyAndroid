@@ -23,4 +23,13 @@ public class DatMon {
 
     String tenMonAn;
     int soLuong;
+    String gia;
+
+    public String getGia() {
+        return gia;
+    }
+
+    public void setGia(String gia) {
+        this.gia = gia;
+    }
 }

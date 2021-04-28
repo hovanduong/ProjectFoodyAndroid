@@ -88,24 +88,23 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
                 DatMon datMonTag = (DatMon) holder.imgGiamSoLuong.getTag();
                 if(datMonTag != null){
                     AdapterMonAn.datMonList.remove(datMonTag);
+
+
                 }
 
                 DatMon datMon = new DatMon();
                 datMon.setSoLuong(dem);
                 datMon.setTenMonAn(monAnModel.getTenmon());
-
+                datMon.setGia(monAnModel.getGiatien()+"");
                 holder.imgGiamSoLuong.setTag(datMon);
 
                 AdapterMonAn.datMonList.add(datMon);
 
-
-//                gioHangContronller=new GioHangContronller(context);
-//                gioHangContronller.getDanhSachDatMon();
-                    angiFragment= AngiFragment.getInstance();
-                    angiFragment.getDanhSachDatMon();
+                angiFragment= AngiFragment.getInstance();
+                angiFragment.getDanhSachDatMon();
 
 
-//                angiFragment.onCreateView(inflater,container,savedInstanceState);
+
 
 
             }
@@ -119,14 +118,13 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
                     dem--;
                     if(dem == 0){
                         DatMon datMon = (DatMon) v.getTag();
-                   AdapterMonAn.datMonList.remove(datMon);
+                      AdapterMonAn.datMonList.remove(datMon);
                     }
                 }
-
                 holder.txtSoLuong.setText(dem+"");
                 holder.txtSoLuong.setTag(dem);
-               angiFragment= AngiFragment.getInstance();
-                angiFragment.getDanhSachDatMon();
+
+
             }
         });
     }

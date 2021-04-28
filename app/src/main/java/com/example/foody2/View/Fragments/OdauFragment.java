@@ -28,6 +28,7 @@ import com.example.foody2.Controller.OdauController;
 import com.example.foody2.Model.QuanAnModel;
 import com.example.foody2.R;
 import com.example.foody2.View.BlogActivity;
+import com.example.foody2.View.DealActivity;
 import com.example.foody2.View.GiaoHangActivity;
 import com.example.foody2.View.LuckyWheel;
 import com.example.foody2.activities.chat.ChatActivity;
@@ -39,7 +40,7 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     SharedPreferences sharedPreferences;
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
-    Button btnLuckyWheel, btnChat,btnBlog,btnGiaoHang;
+    Button btnLuckyWheel, btnChat,btnBlog,btnGiaoHang,btnDeal;
 
     private static OdauFragment odauFragment = null;
 
@@ -75,6 +76,8 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         btnBlog.setOnClickListener(this);
         btnGiaoHang=view.findViewById(R.id.btnGiaoHang);
         btnGiaoHang.setOnClickListener(this);
+        btnDeal=view.findViewById(R.id.btnDeal);
+        btnDeal.setOnClickListener(this);
         // Fragment dùng getCOntexxt để add Vào ACtivity
         sharedPreferences = getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
         Location vitrihientai = new Location("");
@@ -123,6 +126,10 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
             case R.id.btnGiaoHang:
                 Intent idGiaohang = new Intent(getContext(), GiaoHangActivity.class);
                 startActivity(idGiaohang);
+                break;
+            case R.id.btnDeal:
+                Intent idDeal = new Intent(getContext(), DealActivity.class);
+                startActivity(idDeal);
                 break;
         }
 

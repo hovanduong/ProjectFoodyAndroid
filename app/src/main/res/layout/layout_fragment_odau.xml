@@ -168,6 +168,7 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/btnDeal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
@@ -177,7 +178,7 @@
                             android:drawablePadding="10dp"
                             android:gravity="left|center"
                             android:padding="10dp"
-                            android:text="Mã giảm giá"
+                            android:text="Deal"
                             android:textAllCaps="false" />
 
                         <Button

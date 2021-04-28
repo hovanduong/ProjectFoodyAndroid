@@ -2,74 +2,77 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     >
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/swiperefresh"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swiperefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
         <LinearLayout
 
             android:layout_width="match_parent"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
             android:background="@color/colorBackgroungTrangchu"
-            android:layout_height="match_parent">
+            android:orientation="vertical">
+
             <RadioGroup
                 android:id="@+id/group_tab_radio"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:gravity="center"
                 android:background="@color/colorAccent"
+                android:gravity="center"
                 android:orientation="horizontal">
+
                 <RadioButton
                     android:id="@+id/rd_moinhat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@drawable/changebackgroup_tab"
+                    android:button="@android:color/transparent"
+                    android:drawableBottom="@drawable/ic_keyboard_arrow_down_black_24dp"
                     android:text="@string/moinhat"
                     android:textAlignment="center"
-                    android:drawableBottom="@drawable/ic_keyboard_arrow_down_black_24dp"
-                    android:button="@android:color/transparent"
-                    android:textColor="@drawable/changtext_tabtrangchu"
-                    android:background="@drawable/changebackgroup_tab"
-                    />
+                    android:textColor="@drawable/changtext_tabtrangchu" />
+
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/colorBackgroungTrangchu"/>
+                    android:background="@color/colorBackgroungTrangchu" />
+
                 <RadioButton
                     android:id="@+id/rd_danhmuc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@drawable/changebackgroup_tab"
+                    android:button="@android:color/transparent"
+                    android:drawableBottom="@drawable/ic_keyboard_arrow_down_black_24dp"
                     android:text="@string/danhmuc"
                     android:textAlignment="center"
-                    android:drawableBottom="@drawable/ic_keyboard_arrow_down_black_24dp"
-                    android:textColor="@drawable/changtext_tabtrangchu"
-                    android:background="@drawable/changebackgroup_tab"
-                    android:button="@android:color/transparent"/>
+                    android:textColor="@drawable/changtext_tabtrangchu" />
+
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/colorBackgroungTrangchu"/>
+                    android:background="@color/colorBackgroungTrangchu" />
+
                 <RadioButton
                     android:id="@+id/rd_khuvuc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@drawable/changebackgroup_tab"
+                    android:button="@android:color/transparent"
+                    android:drawableBottom="@drawable/ic_keyboard_arrow_down_black_24dp"
                     android:text="@string/khuvuc"
                     android:textAlignment="center"
-                    android:drawableBottom="@drawable/ic_keyboard_arrow_down_black_24dp"
-                    android:textColor="@drawable/changtext_tabtrangchu"
-                    android:background="@drawable/changebackgroup_tab"
-                    android:button="@android:color/transparent"/>
+                    android:textColor="@drawable/changtext_tabtrangchu" />
 
 
             </RadioGroup>
@@ -80,8 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fillViewport="true"
-                android:scrollbars="none"
-                >
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -91,9 +93,9 @@
                     >
 
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
                         <Button
@@ -196,22 +198,20 @@
                             android:textAllCaps="false" />
 
                     </LinearLayout>
+
                     <ProgressBar
                         android:id="@+id/progressBarOdau"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        />
+                        android:layout_marginTop="5dp" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerOdau"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        >
+                        android:layout_height="match_parent">
 
                     </androidx.recyclerview.widget.RecyclerView>
-
 
 
                 </LinearLayout>
@@ -219,10 +219,9 @@
             </androidx.core.widget.NestedScrollView>
 
 
-
         </LinearLayout>
 
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

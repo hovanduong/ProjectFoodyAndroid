@@ -118,9 +118,7 @@ public class AngiFragment extends Fragment {
          datMonList.clear();
         for (DatMon datMon : AdapterMonAn.datMonList) {
             datMonList.add(datMon);
-
+            Log.d("TAG", "getDanhSachDatMon: " + "" + datMonList.size());
         }
     }
-
-
 }

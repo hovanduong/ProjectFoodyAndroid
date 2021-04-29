@@ -37,12 +37,11 @@ public class AngiFragment extends Fragment
     private RecyclerView recyclerViewGioHang;
     AdapterGioHang adapterGioHang;
     public static List<DatMon> datMonList = new ArrayList<>();
-    List<DatMon> datMonList1 = new ArrayList<>();
     TextView txtTongtien;
     TextView txtTieuDeToolBar;
     Toolbar toolbar;
-    double tongtien=0;
-    GioHangInterface gioHangInterface;
+    int tongtien=0;
+
 
     private static AngiFragment angiFragment = null;
     public static AngiFragment getInstance(){
@@ -59,6 +58,9 @@ public class AngiFragment extends Fragment
         setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.layout_fragment_angi, container, false);
         txtTongtien=view.findViewById(R.id.txtTongTien);
+        for(DatMon datMon : datMonList){
+            tongtien=tongtien + datMon.getSoLuong() * Integer.parseInt(datMon.getGia());
+        }
         txtTongtien.setText(tongtien+"");
         // xử lý tool bar
         txtTieuDeToolBar = view.findViewById(R.id.txtTieuDeToolBar);
@@ -110,8 +112,8 @@ public class AngiFragment extends Fragment
          datMonList.clear();
         for (DatMon datMon : AdapterMonAn.datMonList) {
             datMonList.add(datMon);
-            tongtien=datMon.getSoLuong() * Integer.parseInt(datMon.getGia());
         }
+
 
     }
 

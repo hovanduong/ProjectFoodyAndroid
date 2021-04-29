@@ -20,9 +20,7 @@ import com.example.foody2.View.TrangChuActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Binh on 7/17/17.
- */
+
 
 public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn> {
 //    GioHangContronller gioHangContronller;
@@ -39,8 +37,6 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 
 
     }
-
-
     public class HolderMonAn extends RecyclerView.ViewHolder {
         TextView txtTenMonAn,txtSoLuong,txtGia;
         ImageView imgGiamSoLuong,imgTangSoLuong;
@@ -125,7 +121,10 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 
                 DatMon datMon = new DatMon();
                 datMon.setSoLuong(dem);
+                datMon.setGia(monAnModel.getGiatien()+"");
+                datMon.setSoLuong(dem);
                 datMon.setTenMonAn(monAnModel.getTenmon());
+
 
                 holder.imgGiamSoLuong.setTag(datMon);
 

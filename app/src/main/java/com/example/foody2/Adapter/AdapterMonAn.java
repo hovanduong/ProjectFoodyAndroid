@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foody2.Controller.interfaces.GioHangInterface;
 import com.example.foody2.Model.DatMon;
 import com.example.foody2.Model.MonAnModel;
 import com.example.foody2.R;
@@ -32,11 +33,13 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
      public static List<DatMon> datMonList = new ArrayList<>();
 
 
-    public AdapterMonAn(Context context, List<MonAnModel> monAnModelList){
+    public AdapterMonAn(Context context, List<MonAnModel> monAnModelList ){
         this.context = context;
         this.monAnModelList = monAnModelList;
 
+
     }
+
 
     public class HolderMonAn extends RecyclerView.ViewHolder {
         TextView txtTenMonAn,txtSoLuong,txtGia;
@@ -71,7 +74,6 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
             holder.txtSoLuong.setTag(datMonList.get(position).getSoLuong());
         }else{
             holder.txtSoLuong.setTag(0);
-
         }
         holder.imgTangSoLuong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,15 +99,9 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
                 datMon.setTenMonAn(monAnModel.getTenmon());
                 datMon.setGia(monAnModel.getGiatien()+"");
                 holder.imgGiamSoLuong.setTag(datMon);
-
                 AdapterMonAn.datMonList.add(datMon);
-
                 angiFragment= AngiFragment.getInstance();
                 angiFragment.getDanhSachDatMon();
-
-
-
-
 
             }
         });

@@ -1,6 +1,7 @@
 package com.example.foody2.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,21 +10,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foody2.Controller.interfaces.GioHangInterface;
 import com.example.foody2.Model.DatMon;
 import com.example.foody2.R;
 
 import java.util.List;
 
 public class AdapterGioHang  extends RecyclerView.Adapter<AdapterGioHang.ViewHolder>{
+
     Context context;
     List<DatMon> datMons;
     int resource;
+    double sum;
     public  AdapterGioHang(Context context,
             List<DatMon> datMons,
             int resource){
         this.context=context;
         this.datMons=datMons;
         this.resource=resource;
+
 
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -48,7 +53,10 @@ public class AdapterGioHang  extends RecyclerView.Adapter<AdapterGioHang.ViewHol
        DatMon datMon=datMons.get(position);
        holder.txtTenMonAn.setText(datMon.getTenMonAn());
        holder.txtSoLuong.setText(datMon.getSoLuong() + "");
-        holder.txtGia.setText(datMon.getGia());
+       holder.txtGia.setText(datMon.getGia());
+//      sum=datMon.getSoLuong() * Double.parseDouble(datMon.getGia());
+
+
 //       holder.txtSoLuong.setText(datMon.getSoLuong());
         //if(datMon.getTenMonAn().equals())
        // datMons.remove(position);

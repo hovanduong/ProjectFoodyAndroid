@@ -24,6 +24,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     TextView txtMailProfile;
     Button btnLogout;
     FirebaseUser user;
+    FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.layout_fragment_profileuser,container,false);
         user=FirebaseAuth.getInstance().getCurrentUser();
@@ -46,6 +47,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         if(user != null){
             Intent idLogin=new Intent(getContext(), DangNhapActivity.class);
             startActivity(idLogin);
+            firebaseAuth.signOut();
+            getActivity().finish();
+
         }
     }
 }

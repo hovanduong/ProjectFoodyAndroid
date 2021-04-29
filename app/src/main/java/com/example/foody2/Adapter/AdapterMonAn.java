@@ -119,15 +119,15 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
                     AdapterMonAn.datMonList.remove(datMonTag);
                 }
 
+
+
                 DatMon datMon = new DatMon();
                 datMon.setSoLuong(dem);
                 datMon.setGia(monAnModel.getGiatien()+"");
                 datMon.setSoLuong(dem);
                 datMon.setTenMonAn(monAnModel.getTenmon());
 
-
                 holder.imgGiamSoLuong.setTag(datMon);
-
                 AdapterMonAn.datMonList.add(datMon);
 
 
@@ -149,7 +149,6 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
                 }
                 holder.txtSoLuong.setText(dem+"");
                 holder.txtSoLuong.setTag(dem);
-
 
             }
         });

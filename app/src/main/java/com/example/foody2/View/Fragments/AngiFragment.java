@@ -23,22 +23,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foody2.Adapter.AdapterGioHang;
 import com.example.foody2.Adapter.AdapterMonAn;
+import com.example.foody2.Controller.interfaces.GioHangInterface;
 import com.example.foody2.Model.DatMon;
 import com.example.foody2.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AngiFragment extends Fragment {
+public class AngiFragment extends Fragment
+{
     //GioHangContronller gioHangContronller;
     Context context;
     private RecyclerView recyclerViewGioHang;
     AdapterGioHang adapterGioHang;
     public static List<DatMon> datMonList = new ArrayList<>();
-    List<DatMon> datMonList1 = new ArrayList<>();
     TextView txtTongtien;
     TextView txtTieuDeToolBar;
     Toolbar toolbar;
+    int tongtien=0;
+
 
     private static AngiFragment angiFragment = null;
     public static AngiFragment getInstance(){
@@ -54,6 +57,11 @@ public class AngiFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.layout_fragment_angi, container, false);
+        txtTongtien=view.findViewById(R.id.txtTongTien);
+        for(DatMon datMon : datMonList){
+            tongtien=tongtien + datMon.getSoLuong() * Integer.parseInt(datMon.getGia());
+        }
+        txtTongtien.setText(tongtien+"");
         // xử lý tool bar
         txtTieuDeToolBar = view.findViewById(R.id.txtTieuDeToolBar);
         txtTieuDeToolBar.setText("Giỏ hàng");
@@ -61,25 +69,9 @@ public class AngiFragment extends Fragment {
         toolbar.setTitle("");
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
-
-//        txtTongtien=view.findViewById(R.id.txtTongTien);
-//        recyclerViewGioHang = view.findViewById(R.id.recyclerViewGioHang);
-////        gioHangContronller=new GioHangContronller(getContext());
-////        gioHangContronller.getDanhSachDatMon();
-//        Log.d("kiemtra", datMonList + "");
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-//        recyclerViewGioHang.setLayoutManager(layoutManager);
-//        adapterGioHang = new AdapterGioHang(context, datMonList, R.layout.custom_layout_monan);
-//        recyclerViewGioHang.setAdapter(adapterGioHang);
-        // adapterGioHang.notifyDataSetChanged();
-
-        tongtien();
-
         return view;
     }
 
-    private void tongtien() {
-    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -91,6 +83,7 @@ public class AngiFragment extends Fragment {
         adapterGioHang = new AdapterGioHang(context, datMonList, R.layout.custom_layout_monan);
         recyclerViewGioHang.setAdapter(adapterGioHang);
         adapterGioHang.notifyDataSetChanged();
+
     }
 
     public AngiFragment() {
@@ -115,11 +108,13 @@ public class AngiFragment extends Fragment {
     }
 
     public void getDanhSachDatMon() {
-        // datMonList.clear();
+
+         datMonList.clear();
         for (DatMon datMon : AdapterMonAn.datMonList) {
             datMonList.add(datMon);
-
-        
         }
+
+
     }
+
 }

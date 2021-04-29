@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foody2.Controller.interfaces.GioHangInterface;
 import com.example.foody2.Model.DatMon;
 import com.example.foody2.Model.MonAnModel;
 import com.example.foody2.R;
@@ -19,9 +20,7 @@ import com.example.foody2.View.TrangChuActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Binh on 7/17/17.
- */
+
 
 public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn> {
 //    GioHangContronller gioHangContronller;
@@ -32,12 +31,12 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
      public static List<DatMon> datMonList = new ArrayList<>();
 
 
-    public AdapterMonAn(Context context, List<MonAnModel> monAnModelList){
+    public AdapterMonAn(Context context, List<MonAnModel> monAnModelList ){
         this.context = context;
         this.monAnModelList = monAnModelList;
 
-    }
 
+    }
     public class HolderMonAn extends RecyclerView.ViewHolder {
         TextView txtTenMonAn,txtSoLuong,txtGia;
         ImageView imgGiamSoLuong,imgTangSoLuong;
@@ -61,26 +60,56 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
     }
 
     @Override
-    public void onBindViewHolder(final HolderMonAn holder, int position) {
+    public void onBindViewHolder(final HolderMonAn holder, final int position) {
   //      @NonNull final LayoutInflater inflater = null; @Nullable final ViewGroup container=null; @Nullable final Bundle savedInstanceState=null;
         final MonAnModel monAnModel = monAnModelList.get(position);
+//        holder.txtTenMonAn.setText(monAnModel.getTenmon());
+//        holder.txtGia.setText(monAnModel.getGiatien() + "đ");
+//        if (datMonList.size() - 1 >= position){
+//            holder.txtSoLuong.setText(datMonList.get(position).getSoLuong() + "");
+//            holder.txtSoLuong.setTag(datMonList.get(position).getSoLuong());
+//        }else{
+//            holder.txtSoLuong.setTag(0);
+//        }
+//        holder.imgTangSoLuong.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int dem = Integer.parseInt(holder.txtSoLuong.getTag().toString());
+//                if (datMonList.size() - 1 >= position){
+//                    dem = datMonList.get(position).getSoLuong();
+//
+//                }
+//                dem++;
+//                holder.txtSoLuong.setText(dem+"");
+//                holder.txtSoLuong.setTag(dem);
+//
+//                DatMon datMonTag = (DatMon) holder.imgGiamSoLuong.getTag();
+//                if(datMonTag != null){
+//                    AdapterMonAn.datMonList.remove(datMonTag);
+//
+//
+//                }
+//
+//                DatMon datMon = new DatMon();
+//                datMon.setSoLuong(dem);
+//                datMon.setTenMonAn(monAnModel.getTenmon());
+//                datMon.setGia(monAnModel.getGiatien()+"");
+//                holder.imgGiamSoLuong.setTag(datMon);
+//                AdapterMonAn.datMonList.add(datMon);
+//                angiFragment= AngiFragment.getInstance();
+//                angiFragment.getDanhSachDatMon();
+//
+//            }
+//        });
+
         holder.txtTenMonAn.setText(monAnModel.getTenmon());
         holder.txtGia.setText(monAnModel.getGiatien() + "đ");
-        if (datMonList.size() - 1 >= position){
-            holder.txtSoLuong.setText(datMonList.get(position).getSoLuong() + "");
-            holder.txtSoLuong.setTag(datMonList.get(position).getSoLuong());
-        }else{
-            holder.txtSoLuong.setTag(0);
 
-        }
+        holder.txtSoLuong.setTag(0);
         holder.imgTangSoLuong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int dem = Integer.parseInt(holder.txtSoLuong.getTag().toString());
-                if (datMonList.size() - 1 >= position){
-                    dem = datMonList.get(position).getSoLuong();
-
-                }
                 dem++;
                 holder.txtSoLuong.setText(dem+"");
                 holder.txtSoLuong.setTag(dem);
@@ -92,25 +121,21 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 
                 DatMon datMon = new DatMon();
                 datMon.setSoLuong(dem);
+                datMon.setGia(monAnModel.getGiatien()+"");
+                datMon.setSoLuong(dem);
                 datMon.setTenMonAn(monAnModel.getTenmon());
+
 
                 holder.imgGiamSoLuong.setTag(datMon);
 
                 AdapterMonAn.datMonList.add(datMon);
 
 
-//                gioHangContronller=new GioHangContronller(context);
-//                gioHangContronller.getDanhSachDatMon();
-                    angiFragment= AngiFragment.getInstance();
-                    angiFragment.getDanhSachDatMon();
-
-
-//                angiFragment.onCreateView(inflater,container,savedInstanceState);
-
+                angiFragment=new AngiFragment();
+                angiFragment.getDanhSachDatMon();
 
             }
         });
-
         holder.imgGiamSoLuong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,14 +144,13 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
                     dem--;
                     if(dem == 0){
                         DatMon datMon = (DatMon) v.getTag();
-                   AdapterMonAn.datMonList.remove(datMon);
+                      AdapterMonAn.datMonList.remove(datMon);
                     }
                 }
-
                 holder.txtSoLuong.setText(dem+"");
                 holder.txtSoLuong.setTag(dem);
-               angiFragment= AngiFragment.getInstance();
-                angiFragment.getDanhSachDatMon();
+
+
             }
         });
     }

@@ -7,35 +7,40 @@
     android:background="@color/colorBackgroungTrangchu"
     android:orientation="vertical"
     android:weightSum="3.5">
-    <include layout="@layout/layout_toolbar"/>
+
+    <include layout="@layout/layout_toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewGioHang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:layout_weight="2.5" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="20dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        >
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tong tien: "
             android:gravity="end"
+            android:text="Tổng tiền: "
             android:textAllCaps="false"
-            android:textStyle="bold"
-            />
+            android:textColor="@color/colorBack"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/txtTongTien"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            />
+            android:layout_weight="2"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <Button
@@ -47,8 +52,7 @@
         android:text="@string/thanhtoan"
         android:textAllCaps="false"
         android:textColor="#FFF"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
 
 </LinearLayout>

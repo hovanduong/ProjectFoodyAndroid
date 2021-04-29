@@ -149,7 +149,8 @@ public class AdapterGiaoHang extends RecyclerView.Adapter<AdapterGiaoHang.ViewHo
             }
 
         }else{
-            holder.cardView.removeAllViewsInLayout();
+            quanAnModelList.remove(holder.getAdapterPosition());
+            notifyItemRangeChanged(holder.getAdapterPosition(), quanAnModelList.size());
         }
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {

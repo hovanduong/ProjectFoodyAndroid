@@ -40,7 +40,7 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
     SharedPreferences sharedPreferences;
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
-    Button btnLuckyWheel, btnChat,btnBlog,btnGiaoHang,btnDeal;
+    Button btnLuckyWheel, btnChat, btnBlog, btnGiaoHang, btnDeal;
 
     private static OdauFragment odauFragment = null;
 
@@ -51,7 +51,6 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         }
         return odauFragment;
     }
-
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -68,15 +67,17 @@ public class OdauFragment extends Fragment implements View.OnClickListener {
         nestedScrollView = view.findViewById(R.id.netsScrollODau);
         swiperefresh = view.findViewById(R.id.swiperefresh);
         btnLuckyWheel = view.findViewById(R.id.btnLuckyWheel);
-        btnLuckyWheel.setOnClickListener(this);
         btnChat = view.findViewById(R.id.btnChat);
+        btnBlog = view.findViewById(R.id.btnblog);
+        btnGiaoHang = view.findViewById(R.id.btnGiaoHang);
+        btnDeal = view.findViewById(R.id.btnDeal);
+
+        btnLuckyWheel.setOnClickListener(this);
         btnChat.setOnClickListener(this);
-        btnBlog=view.findViewById(R.id.btnblog);
         btnBlog.setOnClickListener(this);
-        btnGiaoHang=view.findViewById(R.id.btnGiaoHang);
         btnGiaoHang.setOnClickListener(this);
-        btnDeal=view.findViewById(R.id.btnDeal);
         btnDeal.setOnClickListener(this);
+
         // Fragment dùng getCOntexxt để add Vào ACtivity
         sharedPreferences = getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
         Location vitrihientai = new Location("");

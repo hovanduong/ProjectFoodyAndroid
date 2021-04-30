@@ -13,21 +13,21 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewGioHang"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="20dp"
-        android:layout_weight="2.5" />
+        android:layout_weight="2" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="75dp"
         android:layout_margin="20dp"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:gravity="bottom"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="end"
             android:text="Tổng tiền: "
@@ -40,19 +40,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:textStyle="bold" />
+            android:textColor="@color/colorBack" />
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnThanhToan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_height="150dp"
         android:layout_weight="1"
         android:background="@drawable/custom_button_thanhtoan"
         android:text="@string/thanhtoan"
         android:textAllCaps="false"
         android:textColor="#FFF"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
 
 
 </LinearLayout>

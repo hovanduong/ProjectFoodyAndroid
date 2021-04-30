@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroungTrangchu"
+
     android:orientation="vertical"
     tools:context=".View.DealActivity">
 
     <LinearLayout
+        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <include layout="@layout/layout_toolbar"/>
+
 
         <ImageView
-            android:layout_marginTop="10dp"
             android:id="@+id/imgeDeal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

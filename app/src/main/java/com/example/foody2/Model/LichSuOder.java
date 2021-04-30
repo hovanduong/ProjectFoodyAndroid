@@ -11,6 +11,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.List;
+
 public class LichSuOder {
     private String tensp;
     private long soluong;
@@ -50,10 +52,10 @@ public class LichSuOder {
     public void setGiasanpham(String giasanpham) {
         this.giasanpham = giasanpham;
     }
-    public void ThemOderQuanAn(final Context context, LichSuOder lichSuOder, String getUid){
+    public void ThemOderQuanAn(final Context context, List<LichSuOder> lichSuOders, String getUid,LichSuOder lichSuOder){
         //Ghi dữ liệu vào FireBase
-        DatabaseReference dataNodeWifiQuanAn= FirebaseDatabase.getInstance().getReference().child("lichsuoder").child(getUid);
-        dataNodeWifiQuanAn.push().setValue(lichSuOder, new DatabaseReference.CompletionListener() {
+        DatabaseReference dataNodeWifiQuanAn= FirebaseDatabase.getInstance().getReference().child("lichsuoder").child(getUid).push();
+        dataNodeWifiQuanAn.push().setValue(lichSuOders, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
 //               Toast.makeText(context, "Thanh toán thành công!!",Toast.LENGTH_LONG).show();

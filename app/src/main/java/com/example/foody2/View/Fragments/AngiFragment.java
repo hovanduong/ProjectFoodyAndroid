@@ -97,14 +97,16 @@ public class AngiFragment extends Fragment
         btnThanhToan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                List<LichSuOder> lichSuOders=new ArrayList<>();
                 LichSuOder lichSuOder=new LichSuOder();
                 for(DatMon datMon : datMonList){
                     lichSuOder.setTensp(datMon.getTenMonAn());
                     lichSuOder.setGiasanpham(datMon.getGia());
                     lichSuOder.setSoluong(datMon.getSoLuong());
-                    lichSuOderController.ThemLichsuOder(context,lichSuOder,user.getUid());
+                    lichSuOders.add(lichSuOder);
                 }
+
+                lichSuOderController.ThemLichsuOder(context,lichSuOders,user.getUid(),lichSuOder);
                 txtTongtien.setText(0 + "");
                 datMonList.clear();
                 adapterGioHang.notifyDataSetChanged();

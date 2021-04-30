@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.example.foody2.Model.LichSuOder;
 
+import java.util.List;
+
 
 public class LichSuOderController {
     LichSuOder lichSuOder;
@@ -13,7 +15,8 @@ public class LichSuOderController {
         lichSuOder=new LichSuOder();
         this.context=context;
     }
-    public void ThemLichsuOder(Context context, LichSuOder lichSuOder, String getUid){
-        lichSuOder.ThemOderQuanAn(context,lichSuOder,getUid);
+    public void ThemLichsuOder(Context context, List<LichSuOder> lichSuOders, String getUid,LichSuOder lichSuOder){
+        lichSuOder.ThemOderQuanAn(context,lichSuOders,getUid,lichSuOder);
+
     }
 }

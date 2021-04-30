@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,9 +24,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foody2.Adapter.AdapterGioHang;
 import com.example.foody2.Adapter.AdapterMonAn;
+import com.example.foody2.Controller.LichSuOderController;
 import com.example.foody2.Controller.interfaces.GioHangInterface;
 import com.example.foody2.Model.DatMon;
+import com.example.foody2.Model.LichSuOder;
 import com.example.foody2.R;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +44,10 @@ public class AngiFragment extends Fragment
     TextView txtTongtien;
     TextView txtTieuDeToolBar;
     Toolbar toolbar;
-    int tongtien=0;
-
-
+    int tongtien;
+    Button btnThanhToan;
+    FirebaseUser firebaseUser;
+    LichSuOderController lichSuOderController;
 //    private static AngiFragment angiFragment = null;
 //    public static AngiFragment getInstance(){
 //        if (angiFragment == null){
@@ -57,7 +62,6 @@ public class AngiFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.layout_fragment_angi, container, false);
-        txtTongtien=view.findViewById(R.id.txtTongTien);
 
         // xử lý tool bar
         txtTieuDeToolBar = view.findViewById(R.id.txtTieuDeToolBar);
@@ -71,18 +75,15 @@ public class AngiFragment extends Fragment
     @Override
     public void onStart() {
         super.onStart();
-
-            for(DatMon datMon : datMonList){
-                tongtien=tongtien + datMon.getSoLuong() * Integer.parseInt(datMon.getGia());
-            }
-            txtTongtien.setText(tongtien+"");
-
-
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        recyclerViewGioHang = view.findViewById(R.id.recyclerViewGioHang);
+        txtTongtien=getView().findViewById(R.id.txtTongTien);
+        btnThanhToan=getView().findViewById(R.id.btnThanhToan);
+        lichSuOderController=new LichSuOderController();
+        tongtien=0;
+        for(DatMon datMon : datMonList){
+            tongtien=tongtien + datMon.getSoLuong() * Integer.parseInt(datMon.getGia());
+        }
+        txtTongtien.setText(tongtien+"");
+        recyclerViewGioHang = getView().findViewById(R.id.recyclerViewGioHang);
         recyclerViewGioHang.setHasFixedSize(true);
         recyclerViewGioHang.setRecycledViewPool(new RecyclerView.RecycledViewPool());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -90,6 +91,25 @@ public class AngiFragment extends Fragment
         adapterGioHang = new AdapterGioHang(context, datMonList, R.layout.custom_layout_monan);
         recyclerViewGioHang.setAdapter(adapterGioHang);
         adapterGioHang.notifyDataSetChanged();
+        btnThanhToan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LichSuOder lichSuOder=new LichSuOder();
+                for(DatMon datMon : datMonList){
+                    lichSuOder.setTensp(datMon.getTenMonAn());
+                    lichSuOder.setGiasanpham(txtTongtien.getText()+"");
+                    lichSuOder.setSoluong(datMon.getSoLuong());
+                }
+                lichSuOderController.ThemLichsuOder(context,lichSuOder,firebaseUser.getUid());
+            }
+        });
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
 
     }
 
@@ -120,7 +140,6 @@ public class AngiFragment extends Fragment
         for (DatMon datMon : AdapterMonAn.datMonList) {
             datMonList.add(datMon);
         }
-
 
     }
 

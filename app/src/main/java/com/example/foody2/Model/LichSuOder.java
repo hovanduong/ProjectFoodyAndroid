@@ -56,7 +56,7 @@ public class LichSuOder {
         dataNodeWifiQuanAn.push().setValue(lichSuOder, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                Toast.makeText(context, "Thanh toán thành công!!",Toast.LENGTH_LONG).show();
+//               Toast.makeText(context, "Thanh toán thành công!!",Toast.LENGTH_LONG).show();
             }
         });
 

@@ -3,6 +3,7 @@ package com.example.foody2.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,24 +40,31 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrangChuActivity extends AppCompatActivity  {
+public class TrangChuActivity extends AppCompatActivity {
 
-    private ApdaterRecyclerOdau apdaterRecyclerOdau;
-    private List<QuanAnModel> quanAnModelList;
+     ApdaterRecyclerOdau apdaterRecyclerOdau;
+     List<QuanAnModel> quanAnModelList;
     AdapterGioHang adapterGioHang;
-    private Fragment fragmentTemp = OdauFragment.getInstance();
+    //private Fragment fragmentTemp = OdauFragment.getInstance();
+    final Fragment fragment1 = new OdauFragment();
+    final Fragment fragment2 = new AngiFragment();
+    final Fragment fragment3 = new ProfileFragment();
+    final FragmentManager fm = getSupportFragmentManager();
+    Fragment active = fragment1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trang_chu);
 
-         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    OdauFragment.getInstance()).commit();
-        }
-        apdaterRecyclerOdau=new ApdaterRecyclerOdau(this,quanAnModelList,R.layout.cus_layout_recyclerview_odau);
+
+        fm.beginTransaction().add(R.id.fragment_container, fragment3, "3").hide(fragment3).commit();
+        fm.beginTransaction().add(R.id.fragment_container, fragment2, "2").hide(fragment2).commit();
+        fm.beginTransaction().add(R.id.fragment_container,fragment1, "1").commit();
+
+        apdaterRecyclerOdau = new ApdaterRecyclerOdau(this, quanAnModelList, R.layout.cus_layout_recyclerview_odau);
 
 
     }
@@ -66,24 +74,23 @@ public class TrangChuActivity extends AppCompatActivity  {
 
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
+
                     switch (item.getItemId()) {
                         case R.id.nav_home:
-                            selectedFragment = OdauFragment.getInstance();
-                            break;
+                            fm.beginTransaction().hide(active).show(fragment1).commit();
+                            active=fragment1;
+                            return true;
                         case R.id.nav_favorites:
-                            selectedFragment = AngiFragment.getInstance();
-                            break;
+                            fm.beginTransaction().hide(active).show(fragment2).commit();
+                            active=fragment2;
+                            return true;
                         case R.id.nav_profileuser:
-                            selectedFragment = new ProfileFragment();
-                            break;
+                            fm.beginTransaction().hide(active).show(fragment3).commit();
+                            active=fragment3;
+                            return true;
                     }
-                    String backStateName = fragmentTemp.getClass().getName();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
-//                    getSupportFragmentManager().beginTransaction().
-                    fragmentTemp = selectedFragment;
-                    return true;
+//
+                    return false;
                 }
             };
 

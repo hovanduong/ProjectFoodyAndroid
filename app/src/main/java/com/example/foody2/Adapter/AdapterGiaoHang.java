@@ -149,7 +149,7 @@ public class AdapterGiaoHang extends RecyclerView.Adapter<AdapterGiaoHang.ViewHo
             }
 
         }else{
-
+            holder.cardView.removeAllViewsInLayout();
         }
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {

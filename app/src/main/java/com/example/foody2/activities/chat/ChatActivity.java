@@ -1,17 +1,12 @@
 package com.example.foody2.activities.chat;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.example.foody2.Adapter.ChatAdapter;
 import com.example.foody2.Model.ThanhVienModel;
@@ -24,22 +19,10 @@ public class ChatActivity extends AppCompatActivity implements ChatAdapter.ISend
     RecyclerView rcvChat;
     ChatAdapter chatAdapter;
     ChatViewModel chatViewModel = new ChatViewModel(getApplication());
-    Toolbar toolbar;
-    TextView txtTieuDeToolBar;
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-
-        txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
-        txtTieuDeToolBar.setText("Chat");
-        txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(" ");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         init();
         // display user
@@ -57,14 +40,6 @@ public class ChatActivity extends AppCompatActivity implements ChatAdapter.ISend
         });
     }
 
-    // ham này thực thi khi nhấn vào nút quay trở lại phía trên tool bar
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
-
     private void init() {
         rcvChat = findViewById(R.id.rcv_Chat);
     }
@@ -75,6 +50,4 @@ public class ChatActivity extends AppCompatActivity implements ChatAdapter.ISend
         intent.putExtra("UID", uID);
         startActivity(intent);
     }
-
-   
 }

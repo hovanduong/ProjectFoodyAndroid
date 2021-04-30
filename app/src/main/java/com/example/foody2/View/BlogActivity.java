@@ -2,7 +2,6 @@ package com.example.foody2.View;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -13,7 +12,6 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.example.foody2.Controller.BlogController;
 import com.example.foody2.Controller.OdauController;
@@ -26,25 +24,13 @@ public class BlogActivity extends AppCompatActivity {
     NestedScrollView nestedScrollView;
     SwipeRefreshLayout swiperefresh;
     BlogController blogController;
-    Toolbar toolbar;
-    TextView txtTieuDeToolBar;
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_blog);
-
-        txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
-        txtTieuDeToolBar.setText("Blog");
-        txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(" ");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
-
         recyclerBlog = findViewById(R.id.recyclerBlog);
         progressBar = findViewById(R.id.progressBarOdau);
         nestedScrollView = findViewById(R.id.netsScrollODau);
@@ -57,11 +43,5 @@ public class BlogActivity extends AppCompatActivity {
         blogController = new BlogController(getApplicationContext());
         blogController.getDanhSachQuanAnControllerBlog(nestedScrollView, recyclerBlog, progressBar, vitrihientai, swiperefresh);
     }
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
 
 }

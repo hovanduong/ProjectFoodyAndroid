@@ -51,8 +51,7 @@ public class MessageFirebase {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 //        đọc tin toàn bộ tin nhắn user
                 ThanhVienModel user = snapshot.getValue(ThanhVienModel.class);
-//                assert user != null;
-
+                assert user != null;
                 callback.success("Message");
             }
 

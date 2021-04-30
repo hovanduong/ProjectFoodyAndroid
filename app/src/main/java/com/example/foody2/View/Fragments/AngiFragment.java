@@ -43,13 +43,13 @@ public class AngiFragment extends Fragment
     int tongtien=0;
 
 
-    private static AngiFragment angiFragment = null;
-    public static AngiFragment getInstance(){
-        if (angiFragment == null){
-            angiFragment = new AngiFragment();
-            return angiFragment;
-        }return angiFragment;
-    }
+//    private static AngiFragment angiFragment = null;
+//    public static AngiFragment getInstance(){
+//        if (angiFragment == null){
+//            angiFragment = new AngiFragment();
+//            return angiFragment;
+//        }return angiFragment;
+//    }
     // DatMon datMon;
     @Nullable
     @Override
@@ -58,20 +58,27 @@ public class AngiFragment extends Fragment
         setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.layout_fragment_angi, container, false);
         txtTongtien=view.findViewById(R.id.txtTongTien);
-        for(DatMon datMon : datMonList){
-            tongtien=tongtien + datMon.getSoLuong() * Integer.parseInt(datMon.getGia());
-        }
-        txtTongtien.setText(tongtien+"");
+
         // xử lý tool bar
         txtTieuDeToolBar = view.findViewById(R.id.txtTieuDeToolBar);
         txtTieuDeToolBar.setText("Giỏ hàng");
         toolbar = view.findViewById(R.id.toolbar);
         toolbar.setTitle("");
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+            for(DatMon datMon : datMonList){
+                tongtien=tongtien + datMon.getSoLuong() * Integer.parseInt(datMon.getGia());
+            }
+            txtTongtien.setText(tongtien+"");
+
+
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

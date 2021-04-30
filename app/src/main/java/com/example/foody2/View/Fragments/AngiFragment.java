@@ -29,6 +29,7 @@ import com.example.foody2.Controller.interfaces.GioHangInterface;
 import com.example.foody2.Model.DatMon;
 import com.example.foody2.Model.LichSuOder;
 import com.example.foody2.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class AngiFragment extends Fragment
     Button btnThanhToan;
     FirebaseUser firebaseUser;
     LichSuOderController lichSuOderController;
+    FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
 //    private static AngiFragment angiFragment = null;
 //    public static AngiFragment getInstance(){
 //        if (angiFragment == null){
@@ -78,6 +80,7 @@ public class AngiFragment extends Fragment
         txtTongtien=getView().findViewById(R.id.txtTongTien);
         btnThanhToan=getView().findViewById(R.id.btnThanhToan);
         lichSuOderController=new LichSuOderController();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
         tongtien=0;
         for(DatMon datMon : datMonList){
             tongtien=tongtien + datMon.getSoLuong() * Integer.parseInt(datMon.getGia());
@@ -98,10 +101,13 @@ public class AngiFragment extends Fragment
                 LichSuOder lichSuOder=new LichSuOder();
                 for(DatMon datMon : datMonList){
                     lichSuOder.setTensp(datMon.getTenMonAn());
-                    lichSuOder.setGiasanpham(txtTongtien.getText()+"");
+                    lichSuOder.setGiasanpham(datMon.getGia());
                     lichSuOder.setSoluong(datMon.getSoLuong());
+                    lichSuOderController.ThemLichsuOder(context,lichSuOder,user.getUid());
                 }
-                lichSuOderController.ThemLichsuOder(context,lichSuOder,firebaseUser.getUid());
+                txtTongtien.setText(0 + "");
+                datMonList.clear();
+                adapterGioHang.notifyDataSetChanged();
             }
         });
 

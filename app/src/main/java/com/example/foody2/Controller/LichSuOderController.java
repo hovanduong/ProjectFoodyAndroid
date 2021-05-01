@@ -27,17 +27,17 @@ public class LichSuOderController {
         lichSuOder.ThemOderQuanAn(context,lichSuOders,getUid,lichSuOder);
 
     }
-    public void HienThiKey(String Uid, RecyclerView recyclerView){
-        lichSuOders=new ArrayList<>();
-        LichSuOderInterface lichSuOderInterface=new LichSuOderInterface() {
-            @Override
-            public void HienThiDanhSachKey(LichSuOder lichSuOder) {
-//                lichSuOders.add(lichSuOder);
-//                AdapterLichSuMuaHang adapterLichSuMuaHang=new AdapterLichSuMuaHang(context,lichSuOders, R.layout.custom_lichsumuahang);
-//                recyclerView.setAdapter(adapterLichSuMuaHang);
-//                adapterLichSuMuaHang.notifyDataSetChanged();
-            }
-        };
-        lichSuOder.getKey(Uid,lichSuOderInterface);
-    }
+//    public void HienThiKey(String Uid, RecyclerView recyclerView){
+//        lichSuOders=new ArrayList<>();
+//        LichSuOderInterface lichSuOderInterface=new LichSuOderInterface() {
+//            @Override
+//            public void HienThiDanhSachKey(LichSuOder lichSuOder) {
+////                lichSuOders.add(lichSuOder);
+////                AdapterLichSuMuaHang adapterLichSuMuaHang=new AdapterLichSuMuaHang(context,lichSuOders, R.layout.custom_lichsumuahang);
+////                recyclerView.setAdapter(adapterLichSuMuaHang);
+////                adapterLichSuMuaHang.notifyDataSetChanged();
+//            }
+//        };
+//        lichSuOder.getKey(Uid,lichSuOderInterface);
+//    }
 }

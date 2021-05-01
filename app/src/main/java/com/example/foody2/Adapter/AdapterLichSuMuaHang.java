@@ -19,12 +19,12 @@ import java.util.List;
 
 public class AdapterLichSuMuaHang extends RecyclerView.Adapter<AdapterLichSuMuaHang.ViewHolder> {
     Context context;
-    List<LichSuOder> lichSuOderList;
+    List<KeyLichSuMuaHang> key;
     int resource;
 
-    public AdapterLichSuMuaHang(Context context, List<LichSuOder> lichSuOderList, int resource){
+    public AdapterLichSuMuaHang(Context context, List<KeyLichSuMuaHang> key, int resource){
         this.context=context;
-        this.lichSuOderList=lichSuOderList;
+        this.key=key;
         this.resource=resource;
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -46,13 +46,14 @@ public class AdapterLichSuMuaHang extends RecyclerView.Adapter<AdapterLichSuMuaH
 
     @Override
     public void onBindViewHolder(@NonNull AdapterLichSuMuaHang.ViewHolder holder, int position) {
-        LichSuOder lichSuOder= lichSuOderList.get(position);
-        holder.txtKey.setText(lichSuOder.getKey());
+     //   LichSuOder lichSuOder= lichSuOderList.get(position);
+        KeyLichSuMuaHang keyLichSuMuaHang=key.get(position);
+        holder.txtKey.setText(keyLichSuMuaHang.getKey());
     }
 
     @Override
     public int getItemCount() {
-        return lichSuOderList.size();
+        return key.size();
     }
 
 

@@ -4,12 +4,27 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     >
-    <TextView
-        android:layout_margin="20dp"
-        android:id="@+id/txtKeyGioHang"
-        android:textColor="@color/colorBack"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/com_facebook_blue"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        >
+        <TextView
+            android:id="@+id/tenDonHang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorButoon"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/txtKeyGioHang"
+            android:textColor="@color/colorBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+    </LinearLayout>
+
 </android.widget.LinearLayout>

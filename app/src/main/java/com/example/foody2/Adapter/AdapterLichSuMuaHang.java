@@ -29,10 +29,11 @@ public class AdapterLichSuMuaHang extends RecyclerView.Adapter<AdapterLichSuMuaH
         this.resource=resource;
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtKey;
+        TextView txtKey,txtTenDonHang;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtKey=itemView.findViewById(R.id.txtKeyGioHang);
+            txtTenDonHang=itemView.findViewById(R.id.tenDonHang);
         }
     }
 
@@ -49,7 +50,8 @@ public class AdapterLichSuMuaHang extends RecyclerView.Adapter<AdapterLichSuMuaH
      //   LichSuOder lichSuOder= lichSuOderList.get(position);
             String keyLichSuMuaHang=key.get(position);
             for(int i=0;i <=key.size();i++){
-                holder.txtKey.setText(keyLichSuMuaHang +"");
+                holder.txtTenDonHang.setText("Đơn hàng số: " + position);
+                holder.txtKey.setText("Mã đơn hàng: "+keyLichSuMuaHang);
 
             }
 
@@ -57,9 +59,9 @@ public class AdapterLichSuMuaHang extends RecyclerView.Adapter<AdapterLichSuMuaH
 
     @Override
     public int getItemCount() {
-//        if(key.size()  == 0){
-//            Toast.makeText(context,"Ban khong co lich su mua hang",Toast.LENGTH_LONG).show();
-//        }
+        if(key.size()  == 0){
+            Toast.makeText(context,"Ban khong co lich su mua hang",Toast.LENGTH_LONG).show();
+        }
         return key.size();
     }
 

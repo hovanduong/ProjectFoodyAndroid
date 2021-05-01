@@ -30,23 +30,24 @@ public class LichSuMuaHang extends AppCompatActivity {
     LichSuOderController lichSuOderController;
     FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
     DatabaseReference databaseReference;
-    List<KeyLichSuMuaHang> key;
+    List<String> key=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lich_su_mua_hang);
         FirebaseUser user=firebaseAuth.getCurrentUser();
         String Uid=user.getUid();
-        key=new ArrayList<>();
+
+
+
+
         recyclerViewLichSu=findViewById(R.id.recyclerViewLichSuMuaHang);
 //        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);// cột true chính là đảo ngược dữ liệu và ngược lại
 //        recyclerViewLichSu.setLayoutManager(layoutManager);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewLichSu.setLayoutManager(layoutManager);
-        AdapterLichSuMuaHang adapterLichSuMuaHang = new AdapterLichSuMuaHang(this, key, R.layout.custom_layout_monan);
-        recyclerViewLichSu.setAdapter(adapterLichSuMuaHang);
-        adapterLichSuMuaHang.notifyDataSetChanged();
+
 
         lichSuOderController=new LichSuOderController();
 //        lichSuOderController.HienThiKey(Uid,recyclerViewLichSu);
@@ -58,10 +59,13 @@ public class LichSuMuaHang extends AppCompatActivity {
                 for(DataSnapshot valuekey : dataSnapshot.getChildren()){
 
                   // KeyLichSuMuaHang keyLichSuMuaHang=valuekey.getValue(KeyLichSuMuaHang.class);
-                    KeyLichSuMuaHang keyLichSuMuaHang=valuekey.getValue(KeyLichSuMuaHang.class);
-                    key.add(keyLichSuMuaHang);
-                    Log.d("kiemtra",keyLichSuMuaHang + "");
-                    Log.d("kiemtra",keyLichSuMuaHang.getKey() + "");
+                    key.add(valuekey.getKey());
+                    Log.d("kiemtra",key+ "");
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getBaseContext());
+                    recyclerViewLichSu.setLayoutManager(layoutManager);
+                    AdapterLichSuMuaHang adapterLichSuMuaHang = new AdapterLichSuMuaHang(getBaseContext(), key, R.layout.custom_lichsumuahang);
+                    recyclerViewLichSu.setAdapter(adapterLichSuMuaHang);
+                    adapterLichSuMuaHang.notifyDataSetChanged();
                 }
             }
 
@@ -70,5 +74,6 @@ public class LichSuMuaHang extends AppCompatActivity {
 
             }
         });
+        Log.d("kiemtra",key+"");
     }
 }

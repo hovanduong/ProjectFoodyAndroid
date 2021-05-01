@@ -79,7 +79,7 @@ public class LichSuOder {
         });
 
     }
-
+//
 //    public void getKey(String Uid, LichSuOderInterface lichSuOderInterface) {
 //        nodeOder = FirebaseDatabase.getInstance().getReference().child("lichsuoder").child(Uid);
 //        nodeOder.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -87,7 +87,8 @@ public class LichSuOder {
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                for (DataSnapshot lichsuOder : dataSnapshot.getChildren()) {
 //                    LichSuOder lichSuOders = lichsuOder.getValue(LichSuOder.class);
-//                    lichSuOderInterface.HienThiDanhSachKey(lichsuOder.getKey(),lichSuOders);
+//                    Log.d("kietra",dataSnapshot.getChildren() + "");
+//                    lichSuOderInterface.HienThiDanhSachKey(lichSuOders);
 //                }
 //
 //            }

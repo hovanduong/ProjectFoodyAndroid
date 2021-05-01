@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.widget.LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     >
     <TextView
+        android:layout_margin="20dp"
         android:id="@+id/txtKeyGioHang"
+        android:textColor="@color/colorBack"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="@color/com_facebook_blue"
+        />
 </android.widget.LinearLayout>

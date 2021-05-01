@@ -65,6 +65,7 @@ public class AdapterGioHang  extends RecyclerView.Adapter<AdapterGioHang.ViewHol
 
     @Override
     public int getItemCount() {
+
         return datMons.size();
     }
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,10 +20,10 @@ import java.util.List;
 
 public class AdapterLichSuMuaHang extends RecyclerView.Adapter<AdapterLichSuMuaHang.ViewHolder> {
     Context context;
-    List<KeyLichSuMuaHang> key;
+    List<String> key;
     int resource;
 
-    public AdapterLichSuMuaHang(Context context, List<KeyLichSuMuaHang> key, int resource){
+    public AdapterLichSuMuaHang(Context context, List<String> key, int resource){
         this.context=context;
         this.key=key;
         this.resource=resource;
@@ -32,7 +33,6 @@ public class AdapterLichSuMuaHang extends RecyclerView.Adapter<AdapterLichSuMuaH
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtKey=itemView.findViewById(R.id.txtKeyGioHang);
-
         }
     }
 
@@ -47,12 +47,19 @@ public class AdapterLichSuMuaHang extends RecyclerView.Adapter<AdapterLichSuMuaH
     @Override
     public void onBindViewHolder(@NonNull AdapterLichSuMuaHang.ViewHolder holder, int position) {
      //   LichSuOder lichSuOder= lichSuOderList.get(position);
-        KeyLichSuMuaHang keyLichSuMuaHang=key.get(position);
-        holder.txtKey.setText(keyLichSuMuaHang.getKey());
+            String keyLichSuMuaHang=key.get(position);
+            for(int i=0;i <=key.size();i++){
+                holder.txtKey.setText(keyLichSuMuaHang +"");
+
+            }
+
     }
 
     @Override
     public int getItemCount() {
+//        if(key.size()  == 0){
+//            Toast.makeText(context,"Ban khong co lich su mua hang",Toast.LENGTH_LONG).show();
+//        }
         return key.size();
     }
 

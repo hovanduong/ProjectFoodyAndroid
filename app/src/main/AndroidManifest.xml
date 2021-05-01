@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-        <activity android:name=".View.DealActivity"></activity>
+        <activity android:name=".View.LichSuMuaHang"></activity>
+        <activity android:name=".View.DealActivity" />
         <activity android:name=".View.GiaoHangActivity" />
         <activity android:name=".View.BlogActivity" />
         <activity android:name=".activities.message.MessageActivity" /> <!-- <activity android:name=".activities.chat.ChatActivity" /> -->
@@ -51,9 +52,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.TrangChuActivity">
-
-        </activity>
+        <activity android:name=".View.TrangChuActivity"></activity>
         <activity android:name=".View.DangNhapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

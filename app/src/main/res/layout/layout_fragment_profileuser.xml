@@ -12,7 +12,7 @@
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorBackgroungTrangchu"
+        android:background="@color/colorPrimaryDark"
         android:paddingBottom="20dp"
 
         >
@@ -184,7 +184,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="30dp"
-                android:background="@color/colorButoon"
+                android:background="@color/colorPrimaryDark"
                 android:text="Lịch sử mua hàng"
                 android:textAllCaps="false"
                 android:textColor="@color/colorAccent"
@@ -198,7 +198,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="30dp"
-                android:background="@color/colorButoon"
+                android:background="@color/colorPrimaryDark"
                 android:text="Logout"
                 android:textAllCaps="false"
                 android:textColor="@color/colorAccent"

@@ -1,9 +1,12 @@
 package com.example.foody2.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.foody2.Model.KeyLichSuMuaHang;
 import com.example.foody2.Model.LichSuOder;
 import com.example.foody2.R;
+import com.example.foody2.View.DatMonAnActivity;
+import com.example.foody2.View.LichSuChiTietMuaHang;
 
 import org.w3c.dom.Text;
 
@@ -23,25 +28,32 @@ public class AdapterLichSuMuaHang extends RecyclerView.Adapter<AdapterLichSuMuaH
     List<String> key;
     int resource;
 
+
     public AdapterLichSuMuaHang(Context context, List<String> key, int resource){
         this.context=context;
         this.key=key;
         this.resource=resource;
     }
+
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtKey,txtTenDonHang;
+        LinearLayout btnlichsumuahang;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtKey=itemView.findViewById(R.id.txtKeyGioHang);
             txtTenDonHang=itemView.findViewById(R.id.tenDonHang);
+            btnlichsumuahang=itemView.findViewById(R.id.btnlichsumuahang);
+
         }
     }
-
     @NonNull
     @Override
     public AdapterLichSuMuaHang.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(resource,parent,false);
         AdapterLichSuMuaHang.ViewHolder viewHolder=new AdapterLichSuMuaHang.ViewHolder(view);
+
         return viewHolder;
     }
 
@@ -52,8 +64,15 @@ public class AdapterLichSuMuaHang extends RecyclerView.Adapter<AdapterLichSuMuaH
             for(int i=0;i <=key.size();i++){
                 holder.txtTenDonHang.setText("Đơn hàng số: " + position);
                 holder.txtKey.setText("Mã đơn hàng: "+keyLichSuMuaHang);
-
             }
+            holder.btnlichsumuahang.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent idchitietlichsu= new Intent(context, LichSuChiTietMuaHang.class);
+                    idchitietlichsu.putExtra("machitiet", holder.txtKey.getText());
+                    context.startActivity(idchitietlichsu);
+                }
+            });
 
     }
 

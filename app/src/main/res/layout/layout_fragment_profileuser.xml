@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackgroungTrangchu"
     tools:context=".View.ProfileUserActivity">
 
 
@@ -11,7 +12,7 @@
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorButoon"
+        android:background="@color/colorBackgroungTrangchu"
         android:paddingBottom="20dp"
 
         >
@@ -44,7 +45,7 @@
             android:layout_marginTop="15sp"
             android:fontFamily="sans-serif-light"
             android:text="Mr Duong"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorBack"
             android:textSize="32sp" />
 
         <TextView
@@ -86,21 +87,22 @@
             android:layout_weight="1"
             android:background="@color/followersBg"
             android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp">
-
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
 
 
         </RelativeLayout>
-
 
 
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
+
         android:layout_height="match_parent"
-        android:layout_below="@+id/linlay1">
+        android:layout_below="@+id/linlay1"
+        android:background="@color/colorBackgroungTrangchu">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -112,8 +114,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+
             android:orientation="vertical">
 
             <LinearLayout
@@ -176,39 +179,34 @@
 
             <Button
                 android:id="@+id/btnlichsumuahang"
-                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorButoon"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="30dp"
+                android:background="@color/colorButoon"
                 android:text="Lịch sử mua hàng"
-                android:textColor="@color/colorAccent"
                 android:textAllCaps="false"
-                android:textStyle="bold"
-                />
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
 
 
             <Button
                 android:id="@+id/btnLogout"
-                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorButoon"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="30dp"
+                android:background="@color/colorButoon"
                 android:text="Logout"
-                android:textColor="@color/colorAccent"
                 android:textAllCaps="false"
-                android:textStyle="bold"
-                />
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
         </LinearLayout>
 
 
-
     </RelativeLayout>
-
-
 
 
 </RelativeLayout>

@@ -64,16 +64,20 @@ public class AdapterLichSuMuaHang extends RecyclerView.Adapter<AdapterLichSuMuaH
             for(int i=0;i <=key.size();i++){
                 holder.txtTenDonHang.setText("Đơn hàng số: " + position);
                 holder.txtKey.setText("Mã đơn hàng: "+keyLichSuMuaHang);
-            }
-            holder.btnlichsumuahang.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent idchitietlichsu= new Intent(context, LichSuChiTietMuaHang.class);
-                    idchitietlichsu.putExtra("machitiet", holder.txtKey.getText());
-                    context.startActivity(idchitietlichsu);
-                }
-            });
 
+            }
+
+        holder.btnlichsumuahang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent idchitietlichsu= new Intent(context, LichSuChiTietMuaHang.class);
+                idchitietlichsu.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                idchitietlichsu.putExtra("machitiet", holder.txtKey.getText());
+                context.startActivity(idchitietlichsu);
+
+            }
+        });
     }
 
     @Override

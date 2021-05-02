@@ -14,7 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-        <activity android:name=".View.LichSuMuaHang"></activity>
+        <activity android:name=".View.LichSuMuaHang">   <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
         <activity android:name=".View.DealActivity" />
         <activity android:name=".View.GiaoHangActivity" />
         <activity android:name=".View.BlogActivity" />
@@ -29,6 +33,7 @@
         <activity android:name=".View.HienThiChiTietBinhLuanActivity" />
         <activity android:name=".View.ChiTietQuanAnActivity" />
         <activity android:name=".View.QuenMatKhauActivity" />
+        <activity android:name=".View.LichSuChiTietMuaHang"/>
         <activity android:name=".View.DangKyActivity" />
         <activity android:name=".activities.chat.ChatActivity" />
 
@@ -54,11 +59,7 @@
         </activity>
         <activity android:name=".View.TrangChuActivity"></activity>
         <activity android:name=".View.DangNhapActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".View.SplashScreenActivity" />
         <activity android:name=".View.ThemQuanAnActivity" />

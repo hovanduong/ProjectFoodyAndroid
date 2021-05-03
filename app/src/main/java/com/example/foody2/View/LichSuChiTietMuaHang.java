@@ -19,4 +19,13 @@ public class LichSuChiTietMuaHang extends AppCompatActivity implements ChiTietli
         Log.d("kiemtra1111",ma + "dfasdfsdfsa");
     }
 
+    @Override
+    public void OntemClick(int position) {
+
+    }
+
+    @Override
+    public void onLogItemLick(int position) {
+
+    }
 }

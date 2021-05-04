@@ -2,9 +2,6 @@ package com.example.foody2.View;
 
 import com.example.foody2.Model.MonAnModel;
 
-/**
- * Created by Binh on 8/18/17.
- */
 
 public class ThemThucDonModel {
     String mathucdon;

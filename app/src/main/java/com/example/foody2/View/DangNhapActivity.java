@@ -157,8 +157,8 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     private void DangNhap() {
-        String email = edEmail.getText().toString();
-        String password = edPassWord.getText().toString();
+        String email = edEmail.getText().toString().trim();
+        String password = edPassWord.getText().toString().trim();
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Vui long nhap thong tin day du", Toast.LENGTH_LONG).show();
         } else {
@@ -182,7 +182,9 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         FirebaseUser user = firebaseAuth.getCurrentUser();
         // Log.d("kiemtra",user + "");
         if (user != null) {
-            String email = user.getEmail();
+            String email = user.getEmail().trim();
+//            String email=edEmail.getText().toString().trim();
+//            String password=edPassWord.getText().toString().trim();
             if (email.equals("admin@gmail.com")) {
                 Intent idThemquanan = new Intent(DangNhapActivity.this, ThemQuanAnActivity.class);
                 startActivity(idThemquanan);

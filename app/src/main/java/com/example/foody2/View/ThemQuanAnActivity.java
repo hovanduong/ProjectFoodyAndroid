@@ -86,6 +86,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
     List<Uri> hinhQuanAn;
     Uri videoSelected;
 
+
     ArrayAdapter<String> adapterKhuVuc;
     ImageView imgTam,imgHinhQuan1,imgHinhQuan2,imgHinhQuan3,imgHinhQuan4,imgHinhQuan5,imgHinhQuan6,imgVideo;
     VideoView videoView;

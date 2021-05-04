@@ -114,9 +114,10 @@ public class AngiFragment extends Fragment {
                             lichSuOder.setGiasanpham(datMon.getGia());
                             lichSuOder.setSoluong(datMon.getSoLuong());
                             lichSuOders.add(lichSuOder);
+                            lichSuOderController.ThemLichsuOder(context, lichSuOders, user.getUid(), lichSuOder);
                         }
 
-                        lichSuOderController.ThemLichsuOder(context, lichSuOders, user.getUid(), lichSuOder);
+
                         txtTongtien.setText(0 + "");
                         datMonList.clear();
                         adapterGioHang.notifyDataSetChanged();

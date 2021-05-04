@@ -88,7 +88,7 @@ public class AngiFragment extends Fragment {
         for (DatMon datMon : datMonList) {
             tongtien = tongtien + datMon.getSoLuong() * Integer.parseInt(datMon.getGia());
         }
-        txtTongtien.setText(tongtien + "");
+        txtTongtien.setText(tongtien +"đ");
         recyclerViewGioHang = getView().findViewById(R.id.recyclerViewGioHang);
         recyclerViewGioHang.setHasFixedSize(true);
         recyclerViewGioHang.setRecycledViewPool(new RecyclerView.RecycledViewPool());

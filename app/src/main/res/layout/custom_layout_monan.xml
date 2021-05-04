@@ -55,7 +55,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="da dat duoc 2 lan"
+                    android:text="Đã đặt được 2 lần"
                     android:textColor="@color/colorBack"
                     android:textAllCaps="false"
                     />

@@ -53,7 +53,7 @@ public class AdapterGioHang  extends RecyclerView.Adapter<AdapterGioHang.ViewHol
        DatMon datMon=datMons.get(position);
        holder.txtTenMonAn.setText(datMon.getTenMonAn());
        holder.txtSoLuong.setText(datMon.getSoLuong() + "");
-       holder.txtGia.setText(datMon.getGia());
+       holder.txtGia.setText(datMon.getGia()+"đ");
 //      sum=datMon.getSoLuong() * Double.parseDouble(datMon.getGia());
 
 

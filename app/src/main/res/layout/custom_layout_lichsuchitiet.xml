@@ -52,13 +52,7 @@
                     android:textColor="@color/colorBack"
                     android:textAllCaps="false"
                     android:textStyle="bold" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="da dat duoc 2 lan"
-                    android:textColor="@color/colorBack"
-                    android:textAllCaps="false"
-                    />
+
             </LinearLayout>
 
             <TextView

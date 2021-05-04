@@ -23,6 +23,7 @@ public class LuckyWheel extends AppCompatActivity {
     List<LuckyItem> data = new ArrayList<>();
     Toolbar toolbar;
     TextView txtTieuDeToolBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,7 @@ public class LuckyWheel extends AppCompatActivity {
 
         LuckyItem luckyItem2 = new LuckyItem();
         luckyItem2.topText = "200";
-      //  luckyItem2.icon = R.drawable.test2;
+        //  luckyItem2.icon = R.drawable.test2;
         luckyItem2.color = 0xffFFE0B2;
         data.add(luckyItem2);
 
@@ -58,13 +59,13 @@ public class LuckyWheel extends AppCompatActivity {
         //////////////////
         LuckyItem luckyItem4 = new LuckyItem();
         luckyItem4.topText = "400";
-       // luckyItem4.icon = R.drawable.test4;
+        // luckyItem4.icon = R.drawable.test4;
         luckyItem4.color = 0xffFFF3E0;
         data.add(luckyItem4);
 
         LuckyItem luckyItem5 = new LuckyItem();
         luckyItem5.topText = "500";
-      //  luckyItem5.icon = R.drawable.test5;
+        //  luckyItem5.icon = R.drawable.test5;
         luckyItem5.color = 0xffFFE0B2;
         data.add(luckyItem5);
 
@@ -84,7 +85,7 @@ public class LuckyWheel extends AppCompatActivity {
 
         LuckyItem luckyItem8 = new LuckyItem();
         luckyItem8.topText = "800";
-       // luckyItem8.icon = R.drawable.test8;
+        // luckyItem8.icon = R.drawable.test8;
         luckyItem8.color = 0xffFFE0B2;
         data.add(luckyItem8);
 
@@ -98,7 +99,7 @@ public class LuckyWheel extends AppCompatActivity {
 
         LuckyItem luckyItem10 = new LuckyItem();
         luckyItem10.topText = "1000";
-       // luckyItem10.icon = R.drawable.test10;
+        // luckyItem10.icon = R.drawable.test10;
         luckyItem10.color = 0xffFFE0B2;
         data.add(luckyItem10);
 
@@ -110,7 +111,7 @@ public class LuckyWheel extends AppCompatActivity {
 
         LuckyItem luckyItem12 = new LuckyItem();
         luckyItem12.topText = "3000";
-       // luckyItem12.icon = R.drawable.test10;
+        // luckyItem12.icon = R.drawable.test10;
         luckyItem12.color = 0xffFFE0B2;
         data.add(luckyItem12);
 
@@ -145,6 +146,7 @@ public class LuckyWheel extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
     private int getRandomIndex() {
         Random rand = new Random();
         return rand.nextInt(data.size() - 1) + 0;

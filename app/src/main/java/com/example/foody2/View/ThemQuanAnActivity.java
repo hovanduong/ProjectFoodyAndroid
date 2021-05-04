@@ -60,7 +60,7 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnClickListener,AdapterView.OnItemSelectedListener{
+public class ThemQuanAnActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     final int RESULT_IMG1 = 111;
     final int RESULT_IMG2 = 112;
     final int RESULT_IMG3 = 113;
@@ -70,16 +70,16 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
     final int RESULT_IMGTHUCDON = 117;
     final int RESULT_VIDEO = 200;
 
-    Button btnGioMoCua,btnGioDongCua,btnThemQuanAn;
+    Button btnGioMoCua, btnGioDongCua, btnThemQuanAn;
     Spinner spinnerKhuVuc;
-    LinearLayout khungTienIch,khungChiNhanh,khungChuaChiNhanh,khungChuaThucDon;
-    String gioMoCua,gioDongCua,khuvuc;
+    LinearLayout khungTienIch, khungChiNhanh, khungChuaChiNhanh, khungChuaThucDon;
+    String gioMoCua, gioDongCua, khuvuc;
     RadioGroup rdgTrangThai;
-    EditText edTenQuanAn,edGiaToiDa,edGiaThoiThieu;
+    EditText edTenQuanAn, edGiaToiDa, edGiaThoiThieu;
 
     List<ThucDonModel> thucDonModelList;
     List<String> selectedTienIchList;
-    List<String> khuVucList,thucDonList;
+    List<String> khuVucList, thucDonList;
     List<String> chiNhanhList;
     List<ThemThucDonModel> themThucDonModelList;
     List<Bitmap> hinhDaChup;
@@ -88,7 +88,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
 
 
     ArrayAdapter<String> adapterKhuVuc;
-    ImageView imgTam,imgHinhQuan1,imgHinhQuan2,imgHinhQuan3,imgHinhQuan4,imgHinhQuan5,imgHinhQuan6,imgVideo;
+    ImageView imgTam, imgHinhQuan1, imgHinhQuan2, imgHinhQuan3, imgHinhQuan4, imgHinhQuan5, imgHinhQuan6, imgVideo;
     VideoView videoView;
 
     String maQuanAn;
@@ -126,7 +126,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
         hinhDaChup = new ArrayList<>();
         hinhQuanAn = new ArrayList<>();
 
-        adapterKhuVuc = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,khuVucList);
+        adapterKhuVuc = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, khuVucList);
         spinnerKhuVuc.setAdapter(adapterKhuVuc);
         adapterKhuVuc.notifyDataSetChanged();
 
@@ -154,9 +154,9 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch (requestCode){
+        switch (requestCode) {
             case RESULT_IMG1:
-                if(RESULT_OK == resultCode){
+                if (RESULT_OK == resultCode) {
                     Uri uri = data.getData();
                     imgHinhQuan1.setImageURI(uri);
                     hinhQuanAn.add(uri);
@@ -164,7 +164,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
                 break;
 
             case RESULT_IMG2:
-                if(RESULT_OK == resultCode){
+                if (RESULT_OK == resultCode) {
                     Uri uri = data.getData();
                     imgHinhQuan2.setImageURI(uri);
                     hinhQuanAn.add(uri);
@@ -172,7 +172,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
                 break;
 
             case RESULT_IMG3:
-                if(RESULT_OK == resultCode){
+                if (RESULT_OK == resultCode) {
                     Uri uri = data.getData();
                     imgHinhQuan3.setImageURI(uri);
                     hinhQuanAn.add(uri);
@@ -180,7 +180,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
                 break;
 
             case RESULT_IMG4:
-                if(RESULT_OK == resultCode){
+                if (RESULT_OK == resultCode) {
                     Uri uri = data.getData();
                     imgHinhQuan4.setImageURI(uri);
                     hinhQuanAn.add(uri);
@@ -188,7 +188,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
                 break;
 
             case RESULT_IMG5:
-                if(RESULT_OK == resultCode){
+                if (RESULT_OK == resultCode) {
                     Uri uri = data.getData();
                     imgHinhQuan5.setImageURI(uri);
                     hinhQuanAn.add(uri);
@@ -196,7 +196,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
                 break;
 
             case RESULT_IMG6:
-                if(RESULT_OK == resultCode){
+                if (RESULT_OK == resultCode) {
                     Uri uri = data.getData();
                     imgHinhQuan6.setImageURI(uri);
                     hinhQuanAn.add(uri);
@@ -210,7 +210,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
                 break;
 
             case RESULT_VIDEO:
-                if(RESULT_OK == resultCode){
+                if (RESULT_OK == resultCode) {
                     imgVideo.setVisibility(View.GONE);
                     Uri uri = data.getData();
                     videoSelected = uri;
@@ -223,8 +223,8 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
 
     }
 
-    private void CloneThucDon(){
-        View view = LayoutInflater.from(ThemQuanAnActivity.this).inflate(R.layout.layout_clone_thucdon,null);
+    private void CloneThucDon() {
+        View view = LayoutInflater.from(ThemQuanAnActivity.this).inflate(R.layout.layout_clone_thucdon, null);
         final Spinner spinnerThucDon = (Spinner) view.findViewById(R.id.spinnerThucDon);
         Button btnThemThucDOn = (Button) view.findViewById(R.id.btnThemThucDon);
         final EditText edTenMon = (EditText) view.findViewById(R.id.edTenMon);
@@ -232,10 +232,10 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
         ImageView imageChupHinh = (ImageView) view.findViewById(R.id.imgChupHinh);
         imgTam = imageChupHinh;
 
-        ArrayAdapter<String> adapterThucDon = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,thucDonList);
+        ArrayAdapter<String> adapterThucDon = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, thucDonList);
         spinnerThucDon.setAdapter(adapterThucDon);
         adapterThucDon.notifyDataSetChanged();
-        if(thucDonModelList.size() == 0){
+        if (thucDonModelList.size() == 0) {
             LayDanhSachThucDon(adapterThucDon);
         }
 
@@ -243,7 +243,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,RESULT_IMGTHUCDON);
+                startActivityForResult(intent, RESULT_IMGTHUCDON);
             }
         });
 
@@ -253,7 +253,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
                 v.setVisibility(View.GONE);
 
                 long thoigian = Calendar.getInstance().getTimeInMillis();
-                String tenhinh = String.valueOf(thoigian)+".jpg";
+                String tenhinh = String.valueOf(thoigian) + ".jpg";
 
                 int position = spinnerThucDon.getSelectedItemPosition();
                 String maThucDon = thucDonModelList.get(position).getMathucdon();
@@ -275,8 +275,8 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
         khungChuaThucDon.addView(view);
     }
 
-    private void CloneChiNhanh(){
-        final View view = LayoutInflater.from(ThemQuanAnActivity.this).inflate(R.layout.layout_clone_chinhanh,null);
+    private void CloneChiNhanh() {
+        final View view = LayoutInflater.from(ThemQuanAnActivity.this).inflate(R.layout.layout_clone_chinhanh, null);
         ImageButton btnThemChiNhanh = (ImageButton) view.findViewById(R.id.btnThemChiNhanh);
         final ImageButton btnXoaChiNhanh = (ImageButton) view.findViewById(R.id.btnXoaChiNhanh);
 
@@ -309,11 +309,11 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
         khungChuaChiNhanh.addView(view);
     }
 
-    private void LayDanhSachKhuVuc(){
+    private void LayDanhSachKhuVuc() {
         FirebaseDatabase.getInstance().getReference().child("khuvucs").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String tenKhuVuc = snapshot.getKey();
                     khuVucList.add(tenKhuVuc);
                 }
@@ -328,11 +328,11 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
         });
     }
 
-    private void LayDanhSachThucDon(final ArrayAdapter<String> adapterThucDon){
+    private void LayDanhSachThucDon(final ArrayAdapter<String> adapterThucDon) {
         FirebaseDatabase.getInstance().getReference().child("thucdons").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     ThucDonModel thucDonModel = new ThucDonModel();
                     String key = snapshot.getKey();
                     String value = snapshot.getValue(String.class);
@@ -355,12 +355,12 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
         });
     }
 
-    private void LayDanhSachTienIch(){
+    private void LayDanhSachTienIch() {
         FirebaseDatabase.getInstance().getReference().child("quanlytienichs").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String maTienIch = snapshot.getKey();
                     TienIchModel tienIchModel = snapshot.getValue(TienIchModel.class);
                     tienIchModel.setMaTienIch(maTienIch);
@@ -373,9 +373,9 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             String maTienIch = buttonView.getTag().toString();
-                            if(isChecked){
+                            if (isChecked) {
                                 selectedTienIchList.add(maTienIch);
-                            }else{
+                            } else {
                                 selectedTienIchList.remove(maTienIch);
                             }
                         }
@@ -399,29 +399,29 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
         int gio = calendar.get(Calendar.HOUR_OF_DAY);
         int phut = calendar.get(Calendar.MINUTE);
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnGioDongCua:
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(ThemQuanAnActivity.this, new TimePickerDialog.OnTimeSetListener(){
+                TimePickerDialog timePickerDialog = new TimePickerDialog(ThemQuanAnActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                       gioDongCua = hourOfDay +":"+minute;
-                        ((Button)v).setText(gioDongCua);
+                        gioDongCua = hourOfDay + ":" + minute;
+                        ((Button) v).setText(gioDongCua);
                     }
-                },gio,phut,true);
+                }, gio, phut, true);
 
                 timePickerDialog.show();
                 break;
 
             case R.id.btnGioMoCua:
 
-                TimePickerDialog moCuaTimePickerDialog = new TimePickerDialog(ThemQuanAnActivity.this, new TimePickerDialog.OnTimeSetListener(){
+                TimePickerDialog moCuaTimePickerDialog = new TimePickerDialog(ThemQuanAnActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        gioMoCua = hourOfDay +":"+minute;
-                        ((Button)v).setText(gioMoCua);
+                        gioMoCua = hourOfDay + ":" + minute;
+                        ((Button) v).setText(gioMoCua);
                     }
-                },gio,phut,true);
+                }, gio, phut, true);
 
                 moCuaTimePickerDialog.show();
                 break;
@@ -463,15 +463,15 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
         }
     }
 
-    private void ThemQuanAn(){
+    private void ThemQuanAn() {
         String tenQuanAn = edTenQuanAn.getText().toString();
         long giaToiDa = Long.parseLong(edGiaToiDa.getText().toString());
         long giaToiThieu = Long.parseLong(edGiaThoiThieu.getText().toString());
         int idRadioSelected = rdgTrangThai.getCheckedRadioButtonId();
         boolean giaoHang = false;
-        if(idRadioSelected == R.id.rdGiaoHang){
+        if (idRadioSelected == R.id.rdGiaoHang) {
             giaoHang = true;
-        }else{
+        } else {
             giaoHang = false;
         }
 
@@ -481,8 +481,8 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
 
         nodeRoot.child("khuvucs").child(khuvuc).push().setValue(maQuanAn);
 
-        for(String chinhanh : chiNhanhList){
-            String urlGeoCoding = "https://maps.googleapis.com/maps/api/geocode/json?address="+chinhanh.replace(" ","%20")+"&key=AIzaSyBVd2D3evAh1Ip_f5nuN1P6ad-14G3Ns0g";
+        for (String chinhanh : chiNhanhList) {
+            String urlGeoCoding = "https://maps.googleapis.com/maps/api/geocode/json?address=" + chinhanh.replace(" ", "%20") + "&key=AIzaSyBVd2D3evAh1Ip_f5nuN1P6ad-14G3Ns0g";
             DownloadToaDo downloadToaDo = new DownloadToaDo();
             downloadToaDo.execute(urlGeoCoding);
 
@@ -510,21 +510,21 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
 //            nodeRoot.child("hinhanhquanans").child(maQuanAn).push().child(hinhquan.getLastPathSegment());
 //        }
 
-        for (int i=0 ;i< themThucDonModelList.size() ; i++){
+        for (int i = 0; i < themThucDonModelList.size(); i++) {
             nodeRoot.child("thucdonquanans").child(maQuanAn).child(themThucDonModelList.get(i).getMathucdon()).push().setValue(themThucDonModelList.get(i).getMonAnModel());
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             Bitmap bitmap = hinhDaChup.get(i);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
             byte[] data = baos.toByteArray();
 
-            FirebaseStorage.getInstance().getReference().child("hinhanh/"+themThucDonModelList.get(i).getMonAnModel().getHinhanh()).putBytes(data);
+            FirebaseStorage.getInstance().getReference().child("hinhanh/" + themThucDonModelList.get(i).getMonAnModel().getHinhanh()).putBytes(data);
         }
         Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show();
 
 
     }
 
-    class DownloadToaDo extends AsyncTask<String,Void,String>{
+    class DownloadToaDo extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... strings) {
@@ -539,10 +539,9 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
 
                 String line;
 
-                while ((line = bufferedReader.readLine()) != null){
-                    stringBuilder.append(line+"\n");
+                while ((line = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(line + "\n");
                 }
-
 
 
             } catch (MalformedURLException e) {
@@ -559,7 +558,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
             try {
                 JSONObject jsonObject = new JSONObject(s);
                 JSONArray results = jsonObject.getJSONArray("results");
-                for (int i =0 ;i<results.length();i++){
+                for (int i = 0; i < results.length(); i++) {
                     JSONObject object = results.getJSONObject(i);
                     String address = object.getString("formatted_address");
                     JSONObject geometry = object.getJSONObject("geometry");
@@ -580,20 +579,20 @@ public class ThemQuanAnActivity extends AppCompatActivity implements  View.OnCli
         }
     }
 
-    private void ChonHinhTuGallary(int requestCode){
+    private void ChonHinhTuGallary(int requestCode) {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"Chọn hình..."),requestCode);
+        startActivityForResult(Intent.createChooser(intent, "Chọn hình..."), requestCode);
     }
 
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        switch (parent.getId()){
+        switch (parent.getId()) {
             case R.id.spinnerKhuVuc:
-               khuvuc = khuVucList.get(position);
+                khuvuc = khuVucList.get(position);
                 break;
 
         }

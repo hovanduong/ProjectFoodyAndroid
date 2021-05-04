@@ -22,16 +22,10 @@ public class LichSuOder {
     private String tensp;
     private long soluong;
     private String giasanpham;
-    private String key;
+
     private DatabaseReference nodeOder;
 
-    public String getKey() {
-        return key;
-    }
 
-    public void setKey(String key) {
-        this.key = key;
-    }
 
     public LichSuOder() {
 
@@ -41,7 +35,7 @@ public class LichSuOder {
         this.tensp = tensp;
         this.soluong = soluong;
         this.giasanpham = giasanpham;
-        this.key = key;
+
     }
 
     public String getTensp() {

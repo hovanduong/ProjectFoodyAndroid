@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.foody2.Adapter.AdapterGioHang;
 import com.example.foody2.Adapter.AdapterLichSuMuaHang;
 import com.example.foody2.Controller.LichSuOderController;
+import com.example.foody2.Controller.interfaces.ChiTietlichsumuahangInterface;
 import com.example.foody2.Model.KeyLichSuMuaHang;
 import com.example.foody2.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,13 +27,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LichSuMuaHang extends AppCompatActivity {
+public class LichSuMuaHang extends AppCompatActivity implements ChiTietlichsumuahangInterface {
     RecyclerView recyclerViewLichSu;
-    String Uid;
     LichSuOderController lichSuOderController;
     FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
     DatabaseReference databaseReference;
-    List<String> key=new ArrayList<>();
+    List<String> key;
+    AdapterLichSuMuaHang adapterLichSuMuaHang;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,7 @@ public class LichSuMuaHang extends AppCompatActivity {
         FirebaseUser user=firebaseAuth.getCurrentUser();
         String Uid=user.getUid();
 
-
+        key=new ArrayList<>();
 
 
         recyclerViewLichSu=findViewById(R.id.recyclerViewLichSuMuaHang);
@@ -63,7 +66,7 @@ public class LichSuMuaHang extends AppCompatActivity {
                     Log.d("kiemtra",key+ "");
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getBaseContext());
                     recyclerViewLichSu.setLayoutManager(layoutManager);
-                    AdapterLichSuMuaHang adapterLichSuMuaHang = new AdapterLichSuMuaHang(getBaseContext(), key, R.layout.custom_lichsumuahang);
+                    adapterLichSuMuaHang = new AdapterLichSuMuaHang(getBaseContext(), key,LichSuMuaHang.this);
                     recyclerViewLichSu.setAdapter(adapterLichSuMuaHang);
                     adapterLichSuMuaHang.notifyDataSetChanged();
                 }
@@ -75,5 +78,20 @@ public class LichSuMuaHang extends AppCompatActivity {
             }
         });
         Log.d("kiemtra",key+"");
+    }
+
+    @Override
+    public void OntemClick(int position) {
+        Toast.makeText(this,key.get(position),Toast.LENGTH_LONG).show();
+//        Log.d("kiemtrakey",key.get(position) +"");
+        Intent idLichSuChiTietmuahang=new Intent(this,LichSuChiTietMuaHang.class);
+        idLichSuChiTietmuahang.putExtra("makey",key.get(position));
+        startActivity(idLichSuChiTietmuahang);
+    }
+
+    @Override
+    public void onLogItemLick(int position) {
+        key.remove(position);
+        adapterLichSuMuaHang.notifyItemRemoved(position);
     }
 }

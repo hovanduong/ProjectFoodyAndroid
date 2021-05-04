@@ -2,6 +2,7 @@
 package com.example.foody2.View.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ActionMode;
@@ -13,9 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -35,8 +38,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AngiFragment extends Fragment
-{
+public class AngiFragment extends Fragment {
     //GioHangContronller gioHangContronller;
     Context context;
     private RecyclerView recyclerViewGioHang;
@@ -49,8 +51,9 @@ public class AngiFragment extends Fragment
     Button btnThanhToan;
     FirebaseUser firebaseUser;
     LichSuOderController lichSuOderController;
-    FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
-//    private static AngiFragment angiFragment = null;
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+    //    private static AngiFragment angiFragment = null;
 //    public static AngiFragment getInstance(){
 //        if (angiFragment == null){
 //            angiFragment = new AngiFragment();
@@ -77,15 +80,15 @@ public class AngiFragment extends Fragment
     @Override
     public void onStart() {
         super.onStart();
-        txtTongtien=getView().findViewById(R.id.txtTongTien);
-        btnThanhToan=getView().findViewById(R.id.btnThanhToan);
-        lichSuOderController=new LichSuOderController();
+        txtTongtien = getView().findViewById(R.id.txtTongTien);
+        btnThanhToan = getView().findViewById(R.id.btnThanhToan);
+        lichSuOderController = new LichSuOderController();
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        tongtien=0;
-        for(DatMon datMon : datMonList){
-            tongtien=tongtien + datMon.getSoLuong() * Integer.parseInt(datMon.getGia());
+        tongtien = 0;
+        for (DatMon datMon : datMonList) {
+            tongtien = tongtien + datMon.getSoLuong() * Integer.parseInt(datMon.getGia());
         }
-        txtTongtien.setText(tongtien+"");
+        txtTongtien.setText(tongtien + "");
         recyclerViewGioHang = getView().findViewById(R.id.recyclerViewGioHang);
         recyclerViewGioHang.setHasFixedSize(true);
         recyclerViewGioHang.setRecycledViewPool(new RecyclerView.RecycledViewPool());
@@ -97,19 +100,39 @@ public class AngiFragment extends Fragment
         btnThanhToan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<LichSuOder> lichSuOders=new ArrayList<>();
-                LichSuOder lichSuOder=new LichSuOder();
-                for(DatMon datMon : datMonList){
-                    lichSuOder.setTensp(datMon.getTenMonAn());
-                    lichSuOder.setGiasanpham(datMon.getGia());
-                    lichSuOder.setSoluong(datMon.getSoLuong());
-                    lichSuOders.add(lichSuOder);
-                }
 
-                lichSuOderController.ThemLichsuOder(context,lichSuOders,user.getUid(),lichSuOder);
-                txtTongtien.setText(0 + "");
-                datMonList.clear();
-                adapterGioHang.notifyDataSetChanged();
+                AlertDialog.Builder altdial = new AlertDialog.Builder(getContext());
+                altdial.setMessage("Bạn chắc chắn đồng ý thanh toán ?");
+                altdial.setCancelable(true);
+                altdial.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        List<LichSuOder> lichSuOders = new ArrayList<>();
+                        LichSuOder lichSuOder = new LichSuOder();
+                        for (DatMon datMon : datMonList) {
+                            lichSuOder.setTensp(datMon.getTenMonAn());
+                            lichSuOder.setGiasanpham(datMon.getGia());
+                            lichSuOder.setSoluong(datMon.getSoLuong());
+                            lichSuOders.add(lichSuOder);
+                        }
+
+                        lichSuOderController.ThemLichsuOder(context, lichSuOders, user.getUid(), lichSuOder);
+                        txtTongtien.setText(0 + "");
+                        datMonList.clear();
+                        adapterGioHang.notifyDataSetChanged();
+                        Toast.makeText(getContext(), "Thanh toán thành công!!", Toast.LENGTH_LONG).show();
+                    }
+                });
+                altdial.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alertDialog = altdial.create();
+                alertDialog.setTitle("Oder Foody");
+                alertDialog.show();
+
             }
         });
 
@@ -144,7 +167,7 @@ public class AngiFragment extends Fragment
 
     public void getDanhSachDatMon() {
 
-         datMonList.clear();
+        datMonList.clear();
         for (DatMon datMon : AdapterMonAn.datMonList) {
             datMonList.add(datMon);
         }

@@ -7,6 +7,9 @@
     android:background="@color/colorBackgroungTrangchu"
     android:orientation="vertical"
     tools:context=".View.LichSuMuaHang">
+
+    <include layout="@layout/layout_toolbar"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewLichSuMuaHang"
         android:layout_width="match_parent"

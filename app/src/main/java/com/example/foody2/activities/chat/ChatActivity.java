@@ -1,11 +1,13 @@
 package com.example.foody2.activities.chat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foody2.Adapter.ChatAdapter;
@@ -19,11 +21,20 @@ public class ChatActivity extends AppCompatActivity implements ChatAdapter.ISend
     RecyclerView rcvChat;
     ChatAdapter chatAdapter;
     ChatViewModel chatViewModel = new ChatViewModel(getApplication());
+    Toolbar toolbar;
+    TextView txtTieuDeToolBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
+        txtTieuDeToolBar.setText("Chat");
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(" ");
+        setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         init();
         // display user
         chatViewModel.displayChat(new ChatViewModel.IDisplaySuccess() {
@@ -49,5 +60,9 @@ public class ChatActivity extends AppCompatActivity implements ChatAdapter.ISend
         Intent intent = new Intent(ChatActivity.this, MessageActivity.class);
         intent.putExtra("UID", uID);
         startActivity(intent);
+    }
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

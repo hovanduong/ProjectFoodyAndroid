@@ -2,12 +2,14 @@ package com.example.foody2.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 
 import com.example.foody2.Adapter.AdapterGioHang;
@@ -29,6 +31,8 @@ import java.util.List;
 import java.util.Map;
 
 public class LichSuChiTietMuaHang extends AppCompatActivity {
+    Toolbar toolbar;
+    TextView txtTieuDeToolBar;
     String makey;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
@@ -38,6 +42,15 @@ public class LichSuChiTietMuaHang extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lich_su_chi_tiet_mua_hang);
+
+        txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
+        txtTieuDeToolBar.setText("Lịch sử mua hàng");
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(" ");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         FirebaseUser user=firebaseAuth.getCurrentUser();
         String Uid=user.getUid();
         Intent intent=getIntent();
@@ -63,7 +76,6 @@ public class LichSuChiTietMuaHang extends AppCompatActivity {
                             adapterLichSuMuaHangChiTiet = new AdapterLichSuMuaHangChiTiet(getBaseContext(), lichSuOders, R.layout.custom_layout_monan);
                             recycler_chitietlichsumuahang.setAdapter(adapterLichSuMuaHangChiTiet);
                             adapterLichSuMuaHangChiTiet.notifyDataSetChanged();
-
                         }
                     }
 
@@ -74,6 +86,10 @@ public class LichSuChiTietMuaHang extends AppCompatActivity {
 
             }
         });
+    }
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 

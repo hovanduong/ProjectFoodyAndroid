@@ -2,12 +2,14 @@ package com.example.foody2.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foody2.Adapter.AdapterGioHang;
@@ -28,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LichSuMuaHang extends AppCompatActivity implements ChiTietlichsumuahangInterface {
+    Toolbar toolbar;
+    TextView txtTieuDeToolBar;
     RecyclerView recyclerViewLichSu;
     LichSuOderController lichSuOderController;
     FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
@@ -38,9 +42,18 @@ public class LichSuMuaHang extends AppCompatActivity implements ChiTietlichsumua
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lich_su_mua_hang);
+
+        txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
+        txtTieuDeToolBar.setText("Lịch sử mua hàng");
+        txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(" ");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         FirebaseUser user=firebaseAuth.getCurrentUser();
         String Uid=user.getUid();
-
         key=new ArrayList<>();
 
 
@@ -82,7 +95,7 @@ public class LichSuMuaHang extends AppCompatActivity implements ChiTietlichsumua
 
     @Override
     public void OntemClick(int position) {
-        Toast.makeText(this,key.get(position),Toast.LENGTH_LONG).show();
+//        Toast.makeText(this,key.get(position),Toast.LENGTH_LONG).show();
 //        Log.d("kiemtrakey",key.get(position) +"");
         Intent idLichSuChiTietmuahang=new Intent(this,LichSuChiTietMuaHang.class);
         idLichSuChiTietmuahang.putExtra("makey",key.get(position));
@@ -91,7 +104,11 @@ public class LichSuMuaHang extends AppCompatActivity implements ChiTietlichsumua
 
     @Override
     public void onLogItemLick(int position) {
-        key.remove(position);
-        adapterLichSuMuaHang.notifyItemRemoved(position);
+//        key.remove(position);
+//        adapterLichSuMuaHang.notifyItemRemoved(position);
+    }
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

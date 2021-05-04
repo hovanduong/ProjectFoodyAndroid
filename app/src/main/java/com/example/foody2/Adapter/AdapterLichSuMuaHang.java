@@ -76,8 +76,8 @@ public class AdapterLichSuMuaHang extends RecyclerView.Adapter<AdapterLichSuMuaH
     @Override
     public void onBindViewHolder(@NonNull AdapterLichSuMuaHang.ViewHolder holder, int position) {
 
-        holder.txtTenDonHang.setText(String.valueOf(position));
-        holder.txtKey.setText(key.get(position));
+        holder.txtTenDonHang.setText("Đơn hàng: "+position);
+        holder.txtKey.setText("Mã đơn hàng: "+key.get(position));
      //   LichSuOder lichSuOder= lichSuOderList.get(position);
 //            String keyLichSuMuaHang=key.get(position);
 //            for(int i=0;i <=key.size();i++){

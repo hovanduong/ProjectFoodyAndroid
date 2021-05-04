@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".View.LichSuChiTietMuaHang">
 
-
+    <include layout="@layout/layout_toolbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_chitietlichsumuahang"

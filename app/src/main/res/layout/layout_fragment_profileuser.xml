@@ -45,7 +45,8 @@
             android:layout_marginTop="15sp"
             android:fontFamily="sans-serif-light"
             android:text="Mr Duong"
-            android:textColor="@color/colorBack"
+            android:textColor="#FFF"
+            android:textStyle="bold"
             android:textSize="32sp" />
 
         <TextView
@@ -55,7 +56,6 @@
             android:layout_below="@+id/txtNameProfile"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif"
-            android:text="new york, usa"
             android:textAllCaps="true"
             android:textColor="@color/address"
             android:textSize="14sp" />
@@ -128,8 +128,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email"
-                    android:textColor="@color/colorButoon"
-                    android:textSize="13sp" />
+                    android:textColor="@color/colorBack"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtMailProfile"
@@ -158,8 +159,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Phone"
-                    android:textColor="@color/colorButoon"
-                    android:textSize="13sp" />
+                    android:textColor="@color/colorBack"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"

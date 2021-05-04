@@ -73,7 +73,7 @@ public class LichSuChiTietMuaHang extends AppCompatActivity {
                             lichSuOders.add(education);
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getBaseContext());
                             recycler_chitietlichsumuahang.setLayoutManager(layoutManager);
-                            adapterLichSuMuaHangChiTiet = new AdapterLichSuMuaHangChiTiet(getBaseContext(), lichSuOders, R.layout.custom_layout_monan);
+                            adapterLichSuMuaHangChiTiet = new AdapterLichSuMuaHangChiTiet(getBaseContext(), lichSuOders, R.layout.custom_layout_lichsuchitiet);
                             recycler_chitietlichsumuahang.setAdapter(adapterLichSuMuaHangChiTiet);
                             adapterLichSuMuaHangChiTiet.notifyDataSetChanged();
                         }

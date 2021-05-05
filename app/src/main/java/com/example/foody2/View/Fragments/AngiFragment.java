@@ -110,18 +110,18 @@ public class AngiFragment extends Fragment {
                         List<LichSuOder> lichSuOders = new ArrayList<>();
                         LichSuOder lichSuOder = new LichSuOder();
                         for (DatMon datMon : datMonList) {
-                            lichSuOder.setTensp(datMon.getTenMonAn());
-                            lichSuOder.setGiasanpham(datMon.getGia());
-                            lichSuOder.setSoluong(datMon.getSoLuong());
+                            lichSuOder= new LichSuOder(datMon.getTenMonAn(),datMon.getSoLuong(),datMon.getGia());
                             lichSuOders.add(lichSuOder);
-                            lichSuOderController.ThemLichsuOder(context, lichSuOders, user.getUid(), lichSuOder);
                         }
 
 
+                        lichSuOderController.ThemLichsuOder(context, lichSuOders, user.getUid(), lichSuOder);
                         txtTongtien.setText(0 + "");
                         datMonList.clear();
+                        AdapterMonAn.datMonList.clear();
                         adapterGioHang.notifyDataSetChanged();
                         Toast.makeText(getContext(), "Thanh toán thành công!!", Toast.LENGTH_LONG).show();
+
                     }
                 });
                 altdial.setNegativeButton("No", new DialogInterface.OnClickListener() {

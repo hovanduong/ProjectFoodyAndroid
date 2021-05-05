@@ -31,7 +31,7 @@ public class LichSuOder {
 
     }
 
-    public LichSuOder(String tensp, long soluong, String giasanpham, String key) {
+    public LichSuOder(String tensp, long soluong, String giasanpham ) {
         this.tensp = tensp;
         this.soluong = soluong;
         this.giasanpham = giasanpham;

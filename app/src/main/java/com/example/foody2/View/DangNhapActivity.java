@@ -47,7 +47,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     private TextView txtDangKyMoi, txtQuenMatKhau;
     LinearLayout btnDangNhap, btnDangNhapFB;
     private EditText edEmail, edPassWord;
-    private CallbackManager callbackManager;
+    CallbackManager callbackManager;
 
 
     @Override
@@ -144,7 +144,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
 
             @Override
             public void onError(FacebookException error) {
-
+                Log.d("facebook:onError", "facebook:onError", error);
             }
         });
     }
@@ -200,7 +200,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                        } 
+                        }
                     }
                 });
     }

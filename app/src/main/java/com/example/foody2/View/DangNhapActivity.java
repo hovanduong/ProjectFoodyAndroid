@@ -82,16 +82,13 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Intent intent=new Intent(DangNhapActivity.this,TrangChuActivity.class);
+                    Intent intent = new Intent(DangNhapActivity.this, TrangChuActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }
             }
         };
     }
-
-
-
 
 
     @Override
@@ -107,8 +104,6 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     }
 
 
-
-
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
@@ -117,9 +112,11 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-//            case R.id.btn_Login_FB:
-//                DanhNhapFb();
-//                break;
+            case R.id.btn_Login_FB:
+                DanhNhapFb();
+                Intent idHome = new Intent(DangNhapActivity.this, TrangChuActivity.class);
+                startActivity(idHome);
+                break;
             case R.id.txtDangKyKhoiPhuc:
                 Intent idDangKy = new Intent(DangNhapActivity.this, DangKyActivity.class);
                 startActivity(idDangKy);
@@ -139,9 +136,9 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+
                 handleFacebookAccessToken(loginResult.getAccessToken());
-                Intent idHome = new Intent(DangNhapActivity.this, TrangChuActivity.class);
-                startActivity(idHome);
+
             }
 
             @Override
@@ -209,13 +206,13 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+
                         } else {
 
                         }
                     }
                 });
     }
-    }
+}
 
 

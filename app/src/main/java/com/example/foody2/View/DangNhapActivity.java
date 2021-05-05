@@ -69,15 +69,11 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         edPassWord = findViewById(R.id.edPassWordDangNhap);
         btnDangNhapFB = findViewById(R.id.btn_Login_FB);
 
-        btnDangNhapFB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DanhNhapFb();
-            }
-        });
+
         txtQuenMatKhau.setOnClickListener(this);
         txtDangKyMoi.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
+        btnDangNhapFB.setOnClickListener(this);
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -114,8 +110,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         switch (id) {
             case R.id.btn_Login_FB:
                 DanhNhapFb();
-                Intent idHome = new Intent(DangNhapActivity.this, TrangChuActivity.class);
-                startActivity(idHome);
+
                 break;
             case R.id.txtDangKyKhoiPhuc:
                 Intent idDangKy = new Intent(DangNhapActivity.this, DangKyActivity.class);
@@ -136,8 +131,9 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-
                 handleFacebookAccessToken(loginResult.getAccessToken());
+                Intent idHome = new Intent(DangNhapActivity.this, TrangChuActivity.class);
+                startActivity(idHome);
 
             }
 
@@ -191,14 +187,11 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
                 startActivity(idTrangChu);
             }
 
-        } else {
-
         }
     }
 
     // End
     private void handleFacebookAccessToken(AccessToken token) {
-
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         firebaseAuth.signInWithCredential(credential)
@@ -207,9 +200,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                        } else {
-
-                        }
+                        } 
                     }
                 });
     }

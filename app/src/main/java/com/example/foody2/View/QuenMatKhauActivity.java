@@ -21,60 +21,64 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.regex.Pattern;
 
 public class QuenMatKhauActivity extends AppCompatActivity implements View.OnClickListener {
-        TextView txtDangKykhoiPhuc;
-        Button btnGuiMailKhoiPhuc;
-        EditText edEmailKhoiPhucMatKhau;
-        FirebaseAuth firebaseAuth;
-        ProgressDialog progressDialog;
+    TextView txtDangKykhoiPhuc;
+    Button btnGuiMailKhoiPhuc;
+    EditText edEmailKhoiPhucMatKhau;
+    FirebaseAuth firebaseAuth;
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quen_mat_khau);
-        firebaseAuth=FirebaseAuth.getInstance();
-        txtDangKykhoiPhuc=findViewById(R.id.txtDangKyKhoiPhuc);
-        btnGuiMailKhoiPhuc=findViewById(R.id.btnGuiMailKhoiPhuc);
-        edEmailKhoiPhucMatKhau=findViewById(R.id.edEmailKhoiPhucMatKhau);
+        firebaseAuth = FirebaseAuth.getInstance();
+        txtDangKykhoiPhuc = findViewById(R.id.txtDangKyKhoiPhuc);
+        btnGuiMailKhoiPhuc = findViewById(R.id.btnGuiMailKhoiPhuc);
+        edEmailKhoiPhucMatKhau = findViewById(R.id.edEmailKhoiPhucMatKhau);
 
+        progressDialog = new ProgressDialog(this);
         btnGuiMailKhoiPhuc.setOnClickListener(this);
         txtDangKykhoiPhuc.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-            int id=v.getId();
-        switch (id){
+        int id = v.getId();
+        switch (id) {
             case R.id.btnGuiMailKhoiPhuc:
-                String email=edEmailKhoiPhucMatKhau.getText().toString();
-                boolean kiemtraemail=KiemTraEmail(email);
-                if(kiemtraemail){
-//                        progressDialog.setMessage(getString(R.string.dangxuly));
-//                        progressDialog.setIndeterminate(true);
-//                        progressDialog.show();
-                        firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                  //  progressDialog.dismiss();
-                                    Toast.makeText(QuenMatKhauActivity.this,getString(R.string.thongbaoguimailthanhcong),Toast.LENGTH_SHORT).show();
-                                    Intent idDangNhap=new Intent(QuenMatKhauActivity.this,DangNhapActivity.class);
-                                    startActivity(idDangNhap);
-                                }else{
-                                  //  progressDialog.dismiss();
-                                    Toast.makeText(QuenMatKhauActivity.this,"that bai",Toast.LENGTH_SHORT).show();
-                                }
+                String email = edEmailKhoiPhucMatKhau.getText().toString();
+                boolean kiemtraemail = KiemTraEmail(email);
+                if (kiemtraemail) {
+                    progressDialog.setMessage(getString(R.string.dangxuly));
+                    progressDialog.setIndeterminate(true);
+                    progressDialog.show();
+                    firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                progressDialog.dismiss();
+                                Toast.makeText(QuenMatKhauActivity.this, getString(R.string.thongbaoguimailthanhcong), Toast.LENGTH_SHORT).show();
+                                Intent idDangNhap = new Intent(QuenMatKhauActivity.this, DangNhapActivity.class);
+                                startActivity(idDangNhap);
+                            } else {
+                                progressDialog.dismiss();
+                                Toast.makeText(QuenMatKhauActivity.this, "Email không tồn tại", Toast.LENGTH_SHORT).show();
                             }
-                        });
-                }else{
-                    Toast.makeText(QuenMatKhauActivity.this,getString(R.string.thongbaoemailkhonghople),Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    progressDialog.dismiss();
+                    Toast.makeText(QuenMatKhauActivity.this, getString(R.string.thongbaoemailkhonghople), Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.txtDangKyKhoiPhuc:
-                Intent idDangKy=new Intent(QuenMatKhauActivity.this,DangKyActivity.class);
+                Intent idDangKy = new Intent(QuenMatKhauActivity.this, DangKyActivity.class);
                 startActivity(idDangKy);
                 break;
         }
     }
-    private boolean KiemTraEmail(String email){
+
+    private boolean KiemTraEmail(String email) {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }

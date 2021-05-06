@@ -20,7 +20,7 @@
     <string name="guimail">Gửi mail</string>
     <string name="chuoithanhvien">Bạn Không Phải Là Thành Viên?</string>
     <string name="thongbaoemailkhonghople">Email Không Hợp Lệ Vui Lòng Nhập Đúng Định Dạng Email</string>
-    <string name="thongbaoguimailthanhcong">Vui Lòng Kiểm Tra Mail</string>
+    <string name="thongbaoguimailthanhcong">Vui lòng kiểm tra hộp thư trong mail</string>
     <string name="odau">Ở Đâu</string>
     <string name="angi">Ăn Gì</string>
     <string name="moinhat">Mới Nhất</string>
@@ -61,7 +61,7 @@
     <string name="giatoithieu">Giá tối thiểu</string>
     <string name="twitterUsername">\@joeytribbiani</string>
     <string name="thanhtoan">Thanh toán</string>
-    <string name="facebook_app_id">1119413118523322</string>
-    <string name="fb_login_protocol_scheme">fb1119413118523322</string>
+    <string name="facebook_app_id">fb919794921926992</string>
+    <string name="fb_login_protocol_scheme">fb919794921926992</string>
 
 </resources>

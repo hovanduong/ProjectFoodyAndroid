@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -39,6 +40,9 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 
 import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
+
 
 public class DangNhapActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener, FirebaseAuth.AuthStateListener {
 
@@ -48,6 +52,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     LinearLayout btnDangNhap, btnDangNhapFB;
     private EditText edEmail, edPassWord;
     CallbackManager callbackManager;
+    ProgressDialog progressDialog;
 
 
     @Override
@@ -69,7 +74,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         edPassWord = findViewById(R.id.edPassWordDangNhap);
         btnDangNhapFB = findViewById(R.id.btn_Login_FB);
 
-
+        progressDialog=new ProgressDialog(this);
         txtQuenMatKhau.setOnClickListener(this);
         txtDangKyMoi.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
@@ -78,6 +83,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
+                    progressDialog.dismiss();
                     Intent intent = new Intent(DangNhapActivity.this, TrangChuActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
@@ -155,6 +161,9 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Vui long nhap thong tin day du", Toast.LENGTH_LONG).show();
         } else {
+            progressDialog.setMessage(getString(R.string.dangxuly));
+            progressDialog.setIndeterminate(true);
+             progressDialog.show();
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -172,6 +181,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     // Sự Kiện kiểm tra người dùng đã đăng nhập thành công hay đăng xuất
     @Override
     public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+        progressDialog.dismiss();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         // Log.d("kiemtra",user + "");
         if (user != null) {
@@ -182,7 +192,9 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
                 Intent idThemquanan = new Intent(DangNhapActivity.this, ThemQuanAnActivity.class);
                 startActivity(idThemquanan);
 
+
             } else {
+
                 Intent idTrangChu = new Intent(DangNhapActivity.this, TrangChuActivity.class);
                 startActivity(idTrangChu);
             }

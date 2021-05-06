@@ -50,7 +50,7 @@
             android:background="@drawable/custom_shadow_green"
             android:drawableLeft="@drawable/ic_email"
             android:drawablePadding="35dp"
-            android:hint="Emxample@gmal.com"
+            android:hint="hovanduong@gmal.com"
             android:inputType="text"
             android:paddingLeft="20dp"
             android:textColorHint="@color/drak" />

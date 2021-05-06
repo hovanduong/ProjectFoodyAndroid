@@ -3,6 +3,7 @@ package com.example.foody2.View.Fragments;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ActionMode;
@@ -32,6 +33,7 @@ import com.example.foody2.Controller.interfaces.GioHangInterface;
 import com.example.foody2.Model.DatMon;
 import com.example.foody2.Model.LichSuOder;
 import com.example.foody2.R;
+import com.example.foody2.View.LichSuMuaHang;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -121,7 +123,8 @@ public class AngiFragment extends Fragment {
                         AdapterMonAn.datMonList.clear();
                         adapterGioHang.notifyDataSetChanged();
                         Toast.makeText(getContext(), "Thanh toán thành công!!", Toast.LENGTH_LONG).show();
-
+                        Intent idLichsumuahang = new Intent(getContext(), LichSuMuaHang.class);
+                        startActivity(idLichsumuahang);
                     }
                 });
                 altdial.setNegativeButton("No", new DialogInterface.OnClickListener() {

@@ -22,9 +22,11 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.foody2.Adapter.AdapterGioHang;
 import com.example.foody2.Adapter.AdapterMonAn;
+import com.example.foody2.Adapter.AdapterThucDon;
 import com.example.foody2.Adapter.AdapterViewPagerTrangChu;
 import com.example.foody2.Adapter.ApdaterRecyclerOdau;
 import com.example.foody2.Model.DatMon;
@@ -81,9 +83,14 @@ public class TrangChuActivity extends AppCompatActivity {
                             active=fragment1;
                             return true;
                         case R.id.nav_favorites:
-                            fm.beginTransaction().hide(active).show(fragment2).commit();
-                            active=fragment2;
-                            return true;
+                            if(AdapterMonAn.datMonList.size() == 0){
+                                Toast.makeText(getApplicationContext(),"Chưa có sản phẩm",Toast.LENGTH_LONG).show();
+                                return  false;
+                            }else{
+                                fm.beginTransaction().hide(active).show(fragment2).commit();
+                                active=fragment2;
+                                return true;
+                            }
                         case R.id.nav_profileuser:
                             fm.beginTransaction().hide(active).show(fragment3).commit();
                             active=fragment3;

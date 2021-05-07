@@ -157,6 +157,7 @@ public class AdapterGiaoHang extends RecyclerView.Adapter<AdapterGiaoHang.ViewHo
             public void onClick(View v) {
                 Intent iChiTietQuanAn = new Intent(context, ChiTietQuanAnActivity.class);
                 iChiTietQuanAn.putExtra("quanan", quanAnModel);
+                iChiTietQuanAn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(iChiTietQuanAn);
             }
         });

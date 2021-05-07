@@ -101,6 +101,9 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 //
 //            }
 //        });
+//        if(datMonList.size() != 0){
+//            holder.txtSoLuong.setText(datMonList.get(position).getSoLuong()+"");
+//        }
 
         holder.txtTenMonAn.setText(monAnModel.getTenmon());
         holder.txtGia.setText(monAnModel.getGiatien() + "đ");

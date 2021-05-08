@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
 
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,13 +40,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 import java.util.Arrays;
+import java.util.List;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
 
 public class DangNhapActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener, FirebaseAuth.AuthStateListener {
-
+    Button btnDangNhapGoogle;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private TextView txtDangKyMoi, txtQuenMatKhau;
@@ -132,12 +135,14 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     private void DanhNhapFb() {
-        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "public_profile"));
+        LoginManager.getInstance().logInWithReadPermissions(DangNhapActivity.this, Arrays.asList("email", "public_profile"));
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                handleFacebookAccessToken(loginResult.getAccessToken());
-                firebaseAuthListener.onAuthStateChanged(firebaseAuth);
+                Log.d("kiemtra", "111");
+                handleFacebookAccessToken(loginResult.getAccessToken().getToken());
+                Log.d("kiemtra", "111111");
+//                firebaseAuthListener.onAuthStateChanged(firebaseAuth);
 
             }
 
@@ -201,10 +206,16 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     // End
-    private void handleFacebookAccessToken(AccessToken token) {
-        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+    private void handleFacebookAccessToken(String token) {
+        AuthCredential credential = FacebookAuthProvider.getCredential(token);
         firebaseAuth.signInWithCredential(credential);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }
 

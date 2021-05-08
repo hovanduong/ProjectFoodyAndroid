@@ -144,6 +144,12 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
                     DatMon datMon1 = (DatMon) v.getTag();
                     AdapterMonAn.datMonList.remove(datMon1);
                     dem--;
+
+                    DatMon datMonTag = (DatMon) holder.imgTangSoLuong.getTag();
+                    if (datMonTag != null) {
+                        AdapterMonAn.datMonList.remove(datMonTag);
+                    }
+
                     if (dem == 0) {
                         DatMon datMon = (DatMon) v.getTag();
                         AdapterMonAn.datMonList.remove(datMon);
@@ -158,7 +164,7 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
                     datMon.setSoLuong(dem);
                     datMon.setTenMonAn(monAnModel.getTenmon());
 
-                    holder.imgTangSoLuong.setTag(datMon);
+                   holder.imgTangSoLuong.setTag(datMon);
                     AdapterMonAn.datMonList.add(datMon);
 
 

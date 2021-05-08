@@ -173,7 +173,11 @@ public class AngiFragment extends Fragment {
 
         datMonList.clear();
         for (DatMon datMon : AdapterMonAn.datMonList) {
-            datMonList.add(datMon);
+//            datMonList.add(datMon);
+            if(datMon.getSoLuong() !=0){
+                datMonList.add(datMon);
+            }
+
         }
 
     }

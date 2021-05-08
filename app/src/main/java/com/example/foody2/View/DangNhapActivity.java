@@ -43,7 +43,6 @@ import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
 
-
 public class DangNhapActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener, FirebaseAuth.AuthStateListener {
 
     private FirebaseAuth firebaseAuth;
@@ -74,7 +73,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         edPassWord = findViewById(R.id.edPassWordDangNhap);
         btnDangNhapFB = findViewById(R.id.btn_Login_FB);
 
-        progressDialog=new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this);
         txtQuenMatKhau.setOnClickListener(this);
         txtDangKyMoi.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
@@ -138,8 +137,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
             @Override
             public void onSuccess(LoginResult loginResult) {
                 handleFacebookAccessToken(loginResult.getAccessToken());
-                Intent idHome = new Intent(DangNhapActivity.this, TrangChuActivity.class);
-                startActivity(idHome);
+                firebaseAuthListener.onAuthStateChanged(firebaseAuth);
 
             }
 
@@ -163,7 +161,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         } else {
             progressDialog.setMessage(getString(R.string.dangxuly));
             progressDialog.setIndeterminate(true);
-             progressDialog.show();
+            progressDialog.show();
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -204,17 +202,9 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
 
     // End
     private void handleFacebookAccessToken(AccessToken token) {
-
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-        firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+        firebaseAuth.signInWithCredential(credential);
 
-                        }
-                    }
-                });
     }
 }
 
